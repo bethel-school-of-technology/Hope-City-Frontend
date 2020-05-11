@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+$bg: #C6C3C3;
+
+.card {
+  margin: 2rem;
+}
+.card-body {
+  background-color: $bg;
+}
+
