@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 $bg: #C6C3C3;
 
+$theme-colors: (
+  "primary": #0074d9,
+  "danger": rgb(207, 14, 14)
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
 .card {
-  margin: 2rem;
+  margin: 10rem 25% 0 25%;
 }
 .card-body {
   background-color: $bg;
 }
-
