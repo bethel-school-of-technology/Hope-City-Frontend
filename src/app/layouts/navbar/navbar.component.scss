@@ -1,0 +1,15 @@
+.navBar {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px rgb(19, 52, 214);
+}
+
+.navbar a:hover {
+  color: var(--primary-color);
+}
