@@ -1,7 +1,7 @@
 <h1>Sign up Page</h1>
 <div class="card">
   <div class="card-body">
-    <form>
+    <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
       <div class="row">
       <div class="form-group col-sm">
         <label for="firstName">First Name</label>
@@ -16,8 +16,10 @@
     </div>
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input type="email" class="form-control"
-          placeholder="Enter email">
+        <input  type="email" class="form-control"
+          placeholder="Enter email"
+          required email>
+          <!-- ngModel #emailInput="ngModel" -->
       </div>
       <div class="row">
       <div class="form-group col-sm">
@@ -38,8 +40,10 @@
     </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control"
-          placeholder="password">
+        <input  type="password" class="form-control"
+          placeholder="password"
+          required>
+          <!-- ngModel #passwordInput="ngModel" -->
       </div>
       <button type="submit" class="btn btn-primary">SIGNUP</button>
     </form>

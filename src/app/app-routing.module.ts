@@ -10,7 +10,7 @@ import { PrayerComponent } from './views/prayer/prayer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path:'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'events', component: EventsComponent },
   { path: 'prayer', component: PrayerComponent },
