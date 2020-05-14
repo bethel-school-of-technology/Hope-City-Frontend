@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { Auth } from "./auth.model"
 
-const URL = "";
+const URL = "http://localhost:3000";
 
 @Injectable({ providedIn: "root" })
 
@@ -13,7 +13,7 @@ export class AuthService {
 
   userSignUp(email: string, password: string) {
     const signupData: Auth = {email: email, password: password}
-    this.http.post(URL + '/signup', signupData)
+    this.http.post(URL + "/auth", signupData)
       .subscribe((response) => {
         console.log(response)
       })
