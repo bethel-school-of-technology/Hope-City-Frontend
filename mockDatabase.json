@@ -1,24 +1,24 @@
 {
   "auth": [
     {
-      "id": 0,
-      "email": "t@t.com",
-      "password": "t"
-    },
-    {
-      "email": "s@s.com",
-      "password": "s",
+      "firstName": "Sean",
+      "lastName": "Rathbun",
+      "email": "seanfrathbun@gmail.com",
+      "city": "Fort mill",
+      "state": "SC",
+      "zip": "29715",
+      "password": "password",
       "id": 1
     },
     {
-      "email": "w@w.com",
-      "password": "w",
+      "firstName": "Testing",
+      "lastName": "mockDatabase",
+      "email": "testing@gmail.com",
+      "city": "testingcity",
+      "state": "SC",
+      "zip": "29715",
+      "password": "testingMockDatabase",
       "id": 2
-    },
-    {
-      "email": "z@z.com",
-      "password": "z",
-      "id": 3
     }
   ]
 }
