@@ -6,6 +6,8 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 
+// import { fakeBackendProvider } from './backendtester';
+
 // authorization
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -37,7 +39,9 @@ import { PrayerComponent } from './views/prayer/prayer.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    // fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

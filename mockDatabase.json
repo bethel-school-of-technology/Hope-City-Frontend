@@ -1,5 +1,5 @@
 {
-  "auth": [
+  "signup": [
     {
       "firstName": "Sean",
       "lastName": "Rathbun",
@@ -19,6 +19,16 @@
       "zip": "29715",
       "password": "testingMockDatabase",
       "id": 2
+    },
+    {
+      "firstName": "Wesley",
+      "lastName": "Duris",
+      "email": "wes.duris@gmail.com",
+      "city": "Hamilton",
+      "state": "MA",
+      "zip": "01982",
+      "password": "1132",
+      "id": 3
     }
   ]
 }
