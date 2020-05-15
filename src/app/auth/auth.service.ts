@@ -11,15 +11,22 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  userSignUp(email: string, password: string) {
-    const signupData: Auth = {email: email, password: password}
+  userSignUp(firstName: string, lastName: string, email: string, city: string, state: string, zip: number, password: string) {
+    const signupData: Auth = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      city: city,
+      state: state,
+      zip: zip,
+      password: password}
     this.http.post(URL + "/auth", signupData)
       .subscribe((response) => {
         console.log(response)
       })
   }
 
-  userLogin(email: string, password: string) {
+  userLogin(firstName: string, lastName: string, email: string, city: string, state: string, zip: number, password: string) {
 
   }
 

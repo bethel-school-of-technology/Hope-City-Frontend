@@ -3,16 +3,16 @@
 <div class="card">
   <div class="card-body">
       <div class="row">
-      <!-- <div class="form-group col-sm">
+      <div class="form-group col-sm">
         <label for="firstName">First Name</label>
-        <input type="firstName" class="form-control"
-          placeholder="First Name">
+        <input type="firstName" name="firstName" class="form-control"
+          placeholder="First Name" ngModel #firstNameInput="ngModel">
       </div>
       <div class="form-group col-sm">
         <label for="lastName">Last Name</label>
-        <input type="lastName" class="form-control"
-          placeholder="Last Name">
-      </div> -->
+        <input type="lastName" name="lastName" class="form-control"
+          placeholder="Last Name" ngModel #lastNameInput="ngModel">
+      </div>
     </div>
       <div class="form-group">
         <label for="email">Email Address</label>
@@ -21,21 +21,21 @@
           required email>
       </div>
       <div class="row">
-      <!-- <div class="form-group col-sm">
-        <label for="City">City</label>
-        <input type="City" class="form-control"
-          placeholder="City">
+      <div class="form-group col-sm">
+        <label for="city">City</label>
+        <input type="city" name="city" class="form-control"
+          placeholder="City" ngModel #cityInput="ngModel">
       </div>
       <div class="form-group col-sm">
-        <label for="State">State</label>
-        <input type="State" class="form-control"
-          placeholder="State">
+        <label for="state">State</label>
+        <input type="state" name="state" class="form-control"
+          placeholder="State" ngModel #stateInput="ngModel">
       </div>
       <div class="form-group col-sm">
-        <label for="Zip">Zip</label>
-        <input type="Zip" class="form-control"
-          placeholder="Zip">
-      </div> -->
+        <label for="zip">Zip</label>
+        <input type="zip" name="zip" class="form-control"
+          placeholder="Zip" ngModel #zipInput="ngModel">
+      </div>
     </div>
       <div class="form-group">
         <label for="password">Password</label>

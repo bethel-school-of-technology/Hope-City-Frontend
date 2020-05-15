@@ -16,7 +16,14 @@ export class SignupComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    this.authService.userSignUp(form.value.email, form.value.password)
+    this.authService.userSignUp(
+      form.value.firstName,
+      form.value.lastName,
+      form.value.email,
+      form.value.city,
+      form.value.state,
+      form.value.zip,
+      form.value.password)
   }
 
   ngOnInit(): void {
