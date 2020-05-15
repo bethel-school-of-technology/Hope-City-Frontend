@@ -1,9 +1,9 @@
 <h1>Sign up Page</h1>
+<form (submit)="onSignup(signupForm)" #signupForm="ngForm">
 <div class="card">
   <div class="card-body">
-    <form>
       <div class="row">
-      <div class="form-group col-sm">
+      <!-- <div class="form-group col-sm">
         <label for="firstName">First Name</label>
         <input type="firstName" class="form-control"
           placeholder="First Name">
@@ -12,15 +12,16 @@
         <label for="lastName">Last Name</label>
         <input type="lastName" class="form-control"
           placeholder="Last Name">
-      </div>
+      </div> -->
     </div>
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input type="email" class="form-control"
-          placeholder="Enter email">
+        <input  type="email" name="email" class="form-control"
+          placeholder="Enter email" ngModel #emailInput="ngModel"
+          required email>
       </div>
       <div class="row">
-      <div class="form-group col-sm">
+      <!-- <div class="form-group col-sm">
         <label for="City">City</label>
         <input type="City" class="form-control"
           placeholder="City">
@@ -34,14 +35,15 @@
         <label for="Zip">Zip</label>
         <input type="Zip" class="form-control"
           placeholder="Zip">
-      </div>
+      </div> -->
     </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control"
-          placeholder="password">
+        <input  type="password" name="password" class="form-control"
+          placeholder="password" ngModel #passwordInput="ngModel"
+          required>
       </div>
       <button type="submit" class="btn btn-primary">SIGNUP</button>
-    </form>
+    </div>
   </div>
-</div>
+</form>
