@@ -1,7 +1,13 @@
 <!-- all of this is up for change. I just threw it up here for now to get something going. Feel free to change it, Wesley. -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <img class="navTitle navbar-brand" src="../../../assets/images//HCnavTitle.png" alt="">
+<button class="navbar-toggler" data-target="#navbarSupportedContent">
+  <span class="navbar-toggler-icon"></span>
+</button>
 
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
 <ul class="navBar nav justify-content-end">
-  <img class="navTitle" src="../../../assets/images//HCnavTitle.png" alt="">
+
   <li class="nav-item">
     <a class="nav-link active" [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a>
   </li>
@@ -18,3 +24,33 @@
     <a class="nav-link" [routerLink]="['/prayer']" routerLinkActive="router-link-active" >Prayer</a>
   </li>
 </ul>
+</div>
+</nav>
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light">
+  <a><img class="navTitle" src="../../../assets/images//HCnavTitle.png" alt=""></a>
+  <button class="navbar-toggler" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a>
+      </li>
+      <li>
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
+      </li>
+      <li>
+        <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign up</a>
+      </li>
+      <li>
+        <a class="nav-link" [routerLink]="['/events']" routerLinkActive="router-link-active" >Events</a>
+      </li>
+      <li>
+        <a class="nav-link" [routerLink]="['/prayer']" routerLinkActive="router-link-active" >Prayer</a>
+      </li>
+    </ul>
+  </div>
+</nav> -->
