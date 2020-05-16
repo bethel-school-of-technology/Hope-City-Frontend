@@ -5,23 +5,18 @@
   padding: 0.7rem;
   position: fixed;
   z-index: 1;
-  width: 85%;
+  width: 100%;
   top: 0;
   transition: top 0.3s;
-  // border-bottom: solid 1px rgb(19, 52, 214);
 }
 
 .navbar a:hover {
   color: var(--primary-color);
 }
 
-// this is not right. I added margin right because I have not yet figured out how to make the logo stay on the left side.
 .navTitle {
   height: 50px;
   width: auto;
-  // display: flex-start;
-  // text-align: left;
-  // margin-right: 60%;
 }
 
 
