@@ -10,7 +10,7 @@ import { AuthService } from "../auth.service";
   styleUrls: ["./signup.component.scss"],
 })
 export class SignupComponent implements OnInit {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -19,6 +19,13 @@ export class SignupComponent implements OnInit {
       return;
     }
 
-    this.authService.userSignUp(form.value);
+    this.authService.userSignUp(form.value).subscribe(
+      (auth) => {
+        this.router.navigate(["/login"]);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
