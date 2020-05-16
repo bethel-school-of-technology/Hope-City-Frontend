@@ -1,6 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// MDBBootstrap
+import {
+  MDBBootstrapModule,
+  NavbarModule,
+  WavesModule,
+  ButtonsModule
+} from 'angular-bootstrap-md';
+
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
@@ -37,7 +45,11 @@ import { PrayerComponent } from './views/prayer/prayer.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MDBBootstrapModule.forRoot(),
+    NavbarModule,
+    WavesModule,
+    ButtonsModule
   ],
   providers: [
     // fakeBackendProvider
