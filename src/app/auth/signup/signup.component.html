@@ -1,61 +1,60 @@
-<div class="signUpBody">
-  <div class="row">
-    <div class="col-lg-auto">
-      <img class="signUpImg" src="../../../assets/images/signUpImg.png" alt="">
-    </div>
-    <div class="col">
-      <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
-        <div class="card">
-          <div class="card-body">
-            <h2>Sign Up</h2>
-              <div class="row">
-              <div class="form-group col-sm">
-                <label for="firstName">First Name</label>
-                <input type="firstName" name="firstName" class="form-control"
-                  placeholder="First Name" ngModel #firstNameInput="ngModel">
-              </div>
-              <div class="form-group col-sm">
-                <label for="lastName">Last Name</label>
-                <input type="lastName" name="lastName" class="form-control"
-                  placeholder="Last Name" ngModel #lastNameInput="ngModel">
+<div class="parent">
+  <div class="div1">
+    <img class="signUpImg" src="../../../assets/images/signUpImg.png" alt="">
+  </div>
+  <div class="div2">
+    <div class="signUpBody">
+      <div class="row">
+        <div class="col-lg-auto">
+        </div>
+        <div class="col">
+          <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
+            <div class="card">
+              <div class="card-body">
+                <h2>Sign Up</h2>
+                <div class="row">
+                  <div class="form-group col-sm">
+                    <label for="firstName">First Name</label>
+                    <input type="firstName" name="firstName" class="form-control" placeholder="First Name" ngModel
+                      #firstNameInput="ngModel">
+                  </div>
+                  <div class="form-group col-sm">
+                    <label for="lastName">Last Name</label>
+                    <input type="lastName" name="lastName" class="form-control" placeholder="Last Name" ngModel
+                      #lastNameInput="ngModel">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" name="email" class="form-control" placeholder="Enter email" ngModel
+                    #emailInput="ngModel" required email>
+                </div>
+                <div class="row">
+                  <div class="form-group col-sm">
+                    <label for="city">City</label>
+                    <input type="city" name="city" class="form-control" placeholder="City" ngModel #cityInput="ngModel">
+                  </div>
+                  <div class="form-group col-sm">
+                    <label for="state">State</label>
+                    <input type="state" name="state" class="form-control" placeholder="State" ngModel
+                      #stateInput="ngModel">
+                  </div>
+                  <div class="form-group col-sm">
+                    <label for="zip">Zip</label>
+                    <input type="zip" name="zip" class="form-control" placeholder="Zip" ngModel #zipInput="ngModel">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Password" ngModel
+                    #passwordInput="ngModel" required>
+                </div>
+                <button type="submit" class="btn btn-primary">SIGNUP</button>
               </div>
             </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input  type="email" name="email" class="form-control"
-                  placeholder="Enter email" ngModel #emailInput="ngModel"
-                  required email>
-              </div>
-              <div class="row">
-              <div class="form-group col-sm">
-                <label for="city">City</label>
-                <input type="city" name="city" class="form-control"
-                  placeholder="City" ngModel #cityInput="ngModel">
-              </div>
-              <div class="form-group col-sm">
-                <label for="state">State</label>
-                <input type="state" name="state" class="form-control"
-                  placeholder="State" ngModel #stateInput="ngModel">
-              </div>
-              <div class="form-group col-sm">
-                <label for="zip">Zip</label>
-                <input type="zip" name="zip" class="form-control"
-                  placeholder="Zip" ngModel #zipInput="ngModel">
-              </div>
-            </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input  type="password" name="password" class="form-control"
-                  placeholder="Password" ngModel #passwordInput="ngModel"
-                  required>
-              </div>
-              <button type="submit" class="btn btn-primary">SIGNUP</button>
-            </div>
-          </div>
-        </form>
-        <img class="signupBGImage img-responsive" src="../../../assets//images/city.png">
+          </form>
+        </div>
       </div>
     </div>
+  </div>
 </div>
-
-

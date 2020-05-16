@@ -1,15 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 $bg: #C6C3C3;
+$h1MarginTop: 3.5%;
 
-$theme-colors: (
-  "primary": #0074d9,
-  "danger": rgb(207, 14, 14)
-);
+// $theme-colors: (
+//   "primary": #0074d9,
+//   "danger": rgb(207, 14, 14)
+// );
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
+.pageTitle {
+  margin-top: $h1MarginTop;
+  text-align: center;
+}
 .card {
-  margin: 10rem 25% 0 25%;
+  margin: 5rem;
 }
 .card-body {
   background-color: $bg;
