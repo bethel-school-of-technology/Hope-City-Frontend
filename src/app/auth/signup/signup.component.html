@@ -1,61 +1,162 @@
-<div class="signUpBody">
+<div class="view">
+<div class="jumbotron text-center hoverable p-4">
+  <!-- Grid row -->
   <div class="row">
-    <div class="col-lg-auto">
-      <img class="signUpImg" src="../../../assets/images/signUpImg.png" alt="">
-    </div>
-    <div class="col">
-      <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
-        <div class="card">
-          <div class="card-body">
-            <h2>Sign Up</h2>
-              <div class="row">
-              <div class="form-group col-sm">
-                <label for="firstName">First Name</label>
-                <input type="firstName" name="firstName" class="form-control"
-                  placeholder="First Name" ngModel #firstNameInput="ngModel">
-              </div>
-              <div class="form-group col-sm">
-                <label for="lastName">Last Name</label>
-                <input type="lastName" name="lastName" class="form-control"
-                  placeholder="Last Name" ngModel #lastNameInput="ngModel">
-              </div>
-            </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input  type="email" name="email" class="form-control"
-                  placeholder="Enter email" ngModel #emailInput="ngModel"
-                  required email>
-              </div>
-              <div class="row">
-              <div class="form-group col-sm">
-                <label for="city">City</label>
-                <input type="city" name="city" class="form-control"
-                  placeholder="City" ngModel #cityInput="ngModel">
-              </div>
-              <div class="form-group col-sm">
-                <label for="state">State</label>
-                <input type="state" name="state" class="form-control"
-                  placeholder="State" ngModel #stateInput="ngModel">
-              </div>
-              <div class="form-group col-sm">
-                <label for="zip">Zip</label>
-                <input type="zip" name="zip" class="form-control"
-                  placeholder="Zip" ngModel #zipInput="ngModel">
-              </div>
-            </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input  type="password" name="password" class="form-control"
-                  placeholder="Password" ngModel #passwordInput="ngModel"
-                  required>
-              </div>
-              <button type="submit" class="btn btn-primary">SIGNUP</button>
-            </div>
-          </div>
-        </form>
-        <img class="signupBGImage img-responsive" src="../../../assets//images/city.png">
+    <!-- Grid column -->
+    <div class="col-md-4 offset-md-1 mx-3 my-3">
+      <!-- Featured image -->
+      <div class="view overlay waves-light" mdbWavesEffect>
+        <img src="../../../assets/images/HCSignUp2.png" class="img-fluid" alt="Sample image for first version of blog listing">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
       </div>
+
     </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-7 text-md-left ml-3 mt-3">
+
+      <!-- Horizontal Steppers -->
+<div class="row">
+  <div class="col-md-12">
+
+    <h3>Create your Hope City account to get started</h3>
+    <!-- Stepers Wrapper. This is the 1, 2, 3 at the top of the sign up form -->
+    <ul class="stepper stepper-horizontal">
+
+      <!-- First Step -->
+      <li class="active">
+        <a href="#">
+          <span class="circle">1</span>
+          <span class="label">Sign Up</span>
+        </a>
+      </li>
+
+      <!-- Second Step -->
+      <li class="">
+        <a href="#">
+          <span class="circle">2</span>
+          <span class="label">Find Local Missions</span>
+        </a>
+      </li>
+
+      <!-- Third Step -->
+      <li class="">
+        <a href="#">
+          <span class="circle">3</span>
+          <span class="label">Change your City</span>
+        </a>
+      </li>
+
+    </ul>
+
+  </div>
 </div>
 
+<!-- This is the start of the sign up form -->
+      <form class="signUpForm" (submit)="onSignup(signupForm)" #signupForm="ngForm">
 
+        <!-- Grid row 1. first name and last name -->
+        <div class="row">
+          <div class="col">
+            <div class="md-form mt-0">
+              <input
+                mdbInput
+                type="text"
+                name="firstName"
+                class="form-control"
+                placeholder="First Name"
+                ngModel #firstNameInput="ngModel">
+            </div>
+          </div>
+          <div class="col">
+            <div class="md-form mt-0">
+              <input
+                mdbInput
+                type="text"
+                name="lastName"
+                class="form-control"
+                placeholder="Last Name"
+                ngModel #lastNameInput="ngModel">
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid row 3. City, State, Zip -->
+        <div class="row">
+          <div class="col">
+            <div class="md-form mt-0">
+              <input
+                mdbInput
+                type="text"
+                name="city"
+                class="form-control"
+                placeholder="City"
+                ngModel #cityInput="ngModel">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="md-form mt-0">
+              <input
+                mdbInput
+                type="text"
+                name="state"
+                class="form-control"
+                placeholder="State"
+                ngModel #stateInput="ngModel">
+            </div>
+          </div>
+
+           <div class="col">
+            <div class="md-form mt-0">
+              <input
+                mdbInput
+                type="number"
+                name="zip"
+                class="form-control"
+                placeholder="Zip"
+                ngModel #zipInput="ngModel">
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid row 3. Email and password -->
+        <div class="row">
+          <div class="col">
+            <div class="md-form mt-0">
+              <input
+                mdbInput
+                type="text"
+                name="email"
+                class="form-control"
+                placeholder="Email"
+                ngModel #emailInput="ngModel">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="md-form mt-0">
+              <input
+                mdbInput
+                type="text"
+                name="password"
+                class="form-control"
+                placeholder="Password"
+                ngModel #passwordInput="ngModel">
+            </div>
+          </div>
+        </div>
+
+        <div class="signUpButton">
+          <button type="submit" class="btn btn-primary">SIGN UP</button>
+        </div>
+      </form>
+
+      <h5>Already have an account?<a [routerLink]="['/login']" routerLinkActive="router-link-active"> Log in</a></h5>
+    </div>
+  </div>
+</div>
+</div>

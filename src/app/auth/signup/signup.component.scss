@@ -1,22 +1,29 @@
-h1 {
-  margin-top: 100px;
+.jumbotron {
+  margin: 5% 20%;
+  margin-bottom: 40vh;
+}
+.view {
+  background: url('../../../assets/images/cityBG.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.signUpForm {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+h3 {
   text-align: center;
 }
 
-.signUpImg {
-  height: 100vh; //also tried with min-height
- -webkit-background-size: cover;
--moz-background-size: cover;
- -o-background-size: cover;
- background-size: cover;
+h5 a {
+  text-align: center;
 }
 
-.signUpBody {
-  margin-top: 0px;
-}
-
-.signupBGImage {
-  position: fixed;
+img {
+  border-radius: 5px;
   height: auto;
   width: 100%;
 }
