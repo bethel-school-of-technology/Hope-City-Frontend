@@ -1,57 +1,45 @@
-<!-- all of this is up for change. I just threw it up here for now to get something going. Feel free to change it, Wesley. -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <img class="navTitle navbar-brand" src="../../../assets/images//HCnavTitle.png" alt="">
-<button class="navbar-toggler">
-  <span class="navbar-toggler-icon"></span>
-</button>
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light sticky-top" [containerInside]="false">
 
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navBar nav justify-content-end">
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active"> <img class="navTitle navbar-brand" src="../../../assets/images//HCnavTitle.png" alt=""></a></mdb-navbar-brand>
 
-  <li class="nav-item">
-    <a class="nav-link active" [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign up</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/events']" routerLinkActive="router-link-active" >Events</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/prayer']" routerLinkActive="router-link-active" >Prayer</a>
-  </li>
-</ul>
-</div>
-</nav>
+  <!-- Collapsible content -->
+  <links>
 
-
-<!-- <nav class="navbar navbar-expand-lg navbar-light">
-  <a><img class="navTitle" src="../../../assets/images//HCnavTitle.png" alt=""></a>
-  <button class="navbar-toggler" data-target="#navbarSupportedContent">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active" >Home</a>
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/']" routerLinkActive="router-link-active" ><mdb-icon fas icon=""></mdb-icon> Home<span class="sr-only" >(current)</span></a>
       </li>
-      <li>
-        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
+      <li class="nav-item">
+        <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/events']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Events</a>
       </li>
-      <li>
-        <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Sign up</a>
+      <li class="nav-item">
+        <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/prayer']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Prayer</a>
       </li>
-      <li>
-        <a class="nav-link" [routerLink]="['/events']" routerLinkActive="router-link-active" >Events</a>
+      <li class="nav-item">
+        <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/signup']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Sign-up</a>
       </li>
-      <li>
-        <a class="nav-link" [routerLink]="['/prayer']" routerLinkActive="router-link-active" >Prayer</a>
-      </li>
-    </ul>
-  </div>
-</nav> -->
+      <!-- <li class="nav-item">
+        <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/login']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Login</a>
+      </li> -->
 
+      <!-- Dropdown -->
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Profile</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/login']" routerLinkActive="router-link-active">Log in</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+        </div>
+      </li>
+
+    </ul>
+    <!-- Links -->
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
