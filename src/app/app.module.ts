@@ -28,6 +28,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { HomeComponent } from './views/home/home.component';
 import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PrayerComponent } from './views/prayer/prayer.component';
     NavbarComponent,
     FooterComponent,
     EventsComponent,
-    PrayerComponent
+    PrayerComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
