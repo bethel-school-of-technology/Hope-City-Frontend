@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
+import { Router } from '@angular/router';
 
 import { AuthService } from "../auth.service";
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from "../auth.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -16,6 +17,13 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.authService.userLogin(form.value.email, form.value.password);
+    this.authService.userLogin(form.value.email, form.value.password).subscribe(
+      (auth) => {
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
