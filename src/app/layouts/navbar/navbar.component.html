@@ -10,16 +10,16 @@
     <!-- Links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/']" routerLinkActive="router-link-active" ><mdb-icon fas icon=""></mdb-icon> Home<span class="sr-only" >(current)</span></a>
+        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/']" routerLinkActive="router-link-active" ><mdb-icon fas icon=""></mdb-icon> Home<span class="sr-only" >(current)</span></a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/events']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Events</a>
+        <a  class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/events']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Events</a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/prayer']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Prayer</a>
+        <a  class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/prayer']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Prayer</a>
       </li>
       <li class="nav-item">
-        <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/signup']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Sign-up</a>
+        <a  class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/signup']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Sign-up</a>
       </li>
       <!-- <li class="nav-item">
         <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/login']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Login</a>
@@ -27,12 +27,12 @@
 
       <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-dark" mdbWavesEffect>
           <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Profile</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect [routerLink]="['/login']" routerLinkActive="router-link-active">Log in</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+          <a class="dropdown-item waves-dark" mdbWavesEffect [routerLink]="['/profile']" routerLinkActive="router-link-active">My Profile</a>
+          <a class="dropdown-item waves-dark" mdbWavesEffect [routerLink]="['/login']" routerLinkActive="router-link-active">Log in</a>
+          <a class="dropdown-item waves-dark" mdbWavesEffect href="#">Log out</a>
         </div>
       </li>
 
