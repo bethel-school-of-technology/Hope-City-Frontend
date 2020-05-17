@@ -6,6 +6,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { HomeComponent } from './views/home/home.component';
 import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
+import { ProfileComponent } from './views/profile/profile.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'events', component: EventsComponent },
   { path: 'prayer', component: PrayerComponent },
+  { path: 'profile', component: ProfileComponent}
 
 ];
 
