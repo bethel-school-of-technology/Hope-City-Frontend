@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Subscription } from 'rxjs';
 
 import { AuthService } from "../auth.service";
 
@@ -10,22 +11,24 @@ import { AuthService } from "../auth.service";
   styleUrls: ["./signup.component.scss"],
 })
 export class SignupComponent implements OnInit {
-  constructor(public authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  private authStatusSub: Subscription;
+
+  constructor(public authService: AuthService) {}
+
+  ngOnInit() {
+    this.authStatusSub = this.authService.getStatusListener()
+      .subscribe(r => {});
+  }
 
   onSignup(form: NgForm) {
     if (form.invalid) {
       return;
     }
+    this.authService.userSignUp(form.value);
+  }
 
-    this.authService.userSignUp(form.value).subscribe(
-      (auth) => {
-        this.router.navigate(["/login"]);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
   }
 }
