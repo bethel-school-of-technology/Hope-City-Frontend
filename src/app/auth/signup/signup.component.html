@@ -91,6 +91,7 @@
               <input
                 mdbInput
                 type="text"
+                pattern="[A-Za-z]+"
                 name="city"
                 class="form-control"
                 placeholder="City"
@@ -103,6 +104,7 @@
               <input
                 mdbInput
                 type="text"
+                pattern="[A-Z]{2}"
                 name="state"
                 class="form-control"
                 placeholder="State"
@@ -114,7 +116,8 @@
             <div class="md-form mt-0">
               <input
                 mdbInput
-                type="number"
+                type="text"
+                pattern="[0-9]{5}"
                 name="zip"
                 class="form-control"
                 placeholder="Zip"
@@ -129,11 +132,12 @@
             <div class="md-form mt-0">
               <input
                 mdbInput
-                type="text"
+                type="email"
                 name="email"
                 class="form-control"
                 placeholder="Email"
-                ngModel #emailInput="ngModel">
+                ngModel #emailInput="ngModel"
+                required email>
             </div>
           </div>
 
@@ -141,11 +145,12 @@
             <div class="md-form mt-0">
               <input
                 mdbInput
-                type="text"
+                type="password"
                 name="password"
                 class="form-control"
                 placeholder="Password"
-                ngModel #passwordInput="ngModel">
+                ngModel #passwordInput="ngModel"
+                required>
             </div>
           </div>
         </div>
