@@ -29,6 +29,26 @@
       "email": "wesley.duris@gmail.com",
       "password": "pass",
       "id": 3
+    },
+    {
+      "firstName": "Wesley",
+      "lastName": "Duris",
+      "city": "South Hamilton",
+      "state": "Massachusetts",
+      "zip": "01982",
+      "email": "wesley.duris@gmail.com",
+      "password": "pass",
+      "id": 4
+    },
+    {
+      "firstName": "Wesley",
+      "lastName": "Duris",
+      "city": "South Hamilton",
+      "state": "Massachusetts",
+      "zip": "01982",
+      "email": "wesley.duris@gmail.com",
+      "password": "pass",
+      "id": 5
     }
   ],
   "login": [
@@ -38,64 +58,14 @@
       "id": 1
     },
     {
-      "email": "seanfrathbun@gmail.com",
-      "password": "password",
+      "email": "wesley.duris@gmail.com",
+      "password": "pass",
       "id": 2
     },
     {
-      "email": "seanfrathbun@gmail.com",
-      "password": "password",
+      "email": "wesley.duris@gmail.com",
+      "password": "pass",
       "id": 3
-    },
-    {
-      "email": "seanfrathbun@gmail.com",
-      "password": "password",
-      "id": 4
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 5
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 6
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 7
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 8
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 9
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 10
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 11
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 12
-    },
-    {
-      "email": "wesley.duris@gmail.com",
-      "password": "pass",
-      "id": 13
     }
   ],
   "events": [
