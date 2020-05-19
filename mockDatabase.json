@@ -39,6 +39,16 @@
       "email": "wesley.duris@gmail.com",
       "password": "pass",
       "id": 4
+    },
+    {
+      "firstName": "Wesley",
+      "lastName": "Duris",
+      "city": "South Hamilton",
+      "state": "Massachusetts",
+      "zip": "01982",
+      "email": "wesley.duris@gmail.com",
+      "password": "pass",
+      "id": 5
     }
   ],
   "login": [
