@@ -4,31 +4,64 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { environment } from "../../environments/environment";
-import { Events } from "./events.model"
+import { Events } from "./events.model";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class EventsService {
-  public events: Observable<Events>;
+  // events: Events[] = [];
+
+  events: Events[] = []
 
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<Events[]> {
-    return this.http.get<Events[]>(`${environment.apiUrl}/events`,)
+      return this.http.get<Events[]>(`${environment.apiUrl}/events`)
+    }
 
-  };
+    // this ↓ is working enough to console.log the data from the mock database.
+    // getEvents() {
+    //   return this.http.get<Events[]>(`${environment.apiUrl}/events`)
+    //   .subscribe(eventsData => {
+    //     this.events = eventsData;
 
-  getEventById(id: number) :Observable<Events[]> {
-    return this.http.get<Events[]>(`${environment.apiUrl}/events + "/" + id`)
-  };
+    //     console.log("this is the getEvents() from the eventsService", this.events);
+    //   })
+    // }
 
-  // this ↓ will be used in the eventsModal once we make it
-  // I believe it should be a put but it's giving me an error which is why it's commented out. 
+    getEventById(id: number) :Observable<Events[]> {
+      return this.http.get<Events[]>(`${environment.apiUrl}/events + "/" + id`)
+    };
 
-  // goingToEvent(id:number) :Observable<Events[]> {
-  //   return this.http.put<Events[]>(`${environment.apiUrl}/events + "/" + id`)
-  // }
+    // this ↓ will be used in the eventsModal once we make it
+    // I believe it should be a put but it's giving me an error which is why it's commented out.
 
-}
+    // goingToEvent(id:number) :Observable<Events[]> {
+      //   return this.http.put<Events[]>(`${environment.apiUrl}/events + "/" + id`)
+      // }
+
+    }
+
+
+
+
+
+
+
+
+    // getEvents() {
+    //   return this.http.get<{events: any}>(`${environment.apiUrl}/events`)
+    //     .pipe(map((eventData) => {
+    //       return { events: eventData.events.map(events => {
+    //         return {
+    //           eventName: events.eventName,
+    //           eventInfo: events.eventInfo
+    //         };
+    //       })};
+    //     }))
+    //     .subscribe(getSomeEventData => {
+    //       this.events = getSomeEventData.events;
+    //     });
+    // };

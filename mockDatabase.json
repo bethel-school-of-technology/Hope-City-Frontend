@@ -70,31 +70,40 @@
   ],
   "events": [
     {
-      "eventName": "Testing Event Name",
-      "eventInfo": "Testing Event Info",
+      "eventName": "City wide weekly prayer meeting",
+      "eventInfo": "Come join us to pray for our city at our weekly prayer meeting",
       "eventAddress": "Testing Event Address",
       "eventCity": "Testing Event City",
       "eventState": "Testing Event State",
       "eventZip": "Testing Event Zip",
-      "eventDay": "Testing Event Day"
+      "eventDay": "May 24, 2020"
     },
     {
-      "eventName": "Testing Event 2 Name",
-      "eventInfo": "Testing Event 2 Info",
+      "eventName": "Neighbor Evangelism Training.",
+      "eventInfo": "Come and learn how you can evangelize to your neighbors",
       "eventAddress": "Testing Event 2 Address",
       "eventCity": "Testing Event 2 City",
       "eventState": "Testing Event 2 State",
       "eventZip": "Testing Event 2 Zip",
-      "eventDay": "Testing Event 2 Day"
+      "eventDay": "May 28, 2020"
     },
     {
-      "eventName": "Testing Event 3 Name",
-      "eventInfo": "Testing Event 3 Info",
+      "eventName": "Billy Graham Chaplin Training",
+      "eventInfo": "Come to our 4 hr Chaplin training day and get certified",
       "eventAddress": "Testing Event 3 Address",
       "eventCity": "Testing Event 3 City",
       "eventState": "Testing Event 3 State",
       "eventZip": "Testing Event 3 Zip",
-      "eventDay": "Testing Event 3 Day"
+      "eventDay": "June 3, 2020"
+    },
+    {
+      "eventName": "Bike Donation Day",
+      "eventInfo": "Bring a used bike and donate it to someone in need at our yearly bike donation day.",
+      "eventAddress": "Testing Event 4 Address",
+      "eventCity": "Testing Event 4 City",
+      "eventState": "Testing Event 4 State",
+      "eventZip": "Testing Event 4 Zip",
+      "eventDay": "June 5, 2020"
     }
   ]
 }
