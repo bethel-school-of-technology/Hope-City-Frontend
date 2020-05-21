@@ -15,10 +15,18 @@
   margin-left: 18%;
 }
 
-.card-deck {
-  margin: 5rem;
-}
-
 mdb-card-footer, mdb-card-header, mdb-card-text {
   text-align: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .card-deck {
+    margin: 5rem;
+  }
+}
+@media only screen and (min-width: 950px) {
+  .card-deck {
+    margin: 7%;
+    margin-top: 1rem;
+  }
 }

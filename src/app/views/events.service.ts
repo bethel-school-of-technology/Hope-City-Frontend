@@ -18,7 +18,7 @@ export class EventsService {
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<Events[]> {
-      return this.http.get<Events[]>(`${environment.apiUrl}/events`)
+      return this.http.get<Events[]>(`${environment.apiUrlDev}/events`)
     }
 
     // this ↓ is working enough to console.log the data from the mock database.
@@ -32,7 +32,7 @@ export class EventsService {
     // }
 
     getEventById(id: number) :Observable<Events[]> {
-      return this.http.get<Events[]>(`${environment.apiUrl}/events + "/" + id`)
+      return this.http.get<Events[]>(`${environment.apiUrlDev}/events + "/" + id`)
     };
 
     // this ↓ will be used in the eventsModal once we make it
