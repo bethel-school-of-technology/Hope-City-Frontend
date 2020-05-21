@@ -6,7 +6,8 @@ import {
   MDBBootstrapModule,
   NavbarModule,
   WavesModule,
-  ButtonsModule
+  ButtonsModule,
+  ModalModule
 } from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,7 @@ import { HomeComponent } from './views/home/home.component';
 import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import { EventsModalComponent } from './views/events-modal/events-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ProfileComponent } from './views/profile/profile.component';
     FooterComponent,
     EventsComponent,
     PrayerComponent,
-    ProfileComponent
+    ProfileComponent,
+    EventsModalComponent
+
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ import { ProfileComponent } from './views/profile/profile.component';
     MDBBootstrapModule.forRoot(),
     NavbarModule,
     WavesModule,
-    ButtonsModule
+    ButtonsModule,
+    ModalModule
   ],
   providers: [
     // fakeBackendProvider
