@@ -32,20 +32,20 @@ export class AuthService {
   getStatusListener() {
     return this.statusListener.asObservable();
   }
-
+  // /signup for mockdb /user for backend
   userSignUp(auth: Auth) {
     return this.http
-      .post(`${environment.apiUrl}/signup`, auth)
+      .post(`${environment.apiUrlDev}/user`, auth)
       .subscribe(() => {
         this.router.navigate(['/login']);
       }, error => {
         this.statusListener.next(false);
-      });;
+      });
   }
-
+  // /login for mockdb /user/login for backend
   userLogin(email: string, password: string) {
     return this.http
-      .post<{userId: string}>(`${environment.apiUrl}/login`, { email: email, password: password })
+      .post<{userId: string}>(`${environment.apiUrlDev}/user/login`, { email: email, password: password })
         .subscribe(user => {
           console.log(user);
           this.authorized = true;
