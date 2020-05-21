@@ -1,0 +1,44 @@
+<button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+  (click)="frame.show()" mdbWavesEffect>Event Details</button>
+
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" (opened)="onOpened($event)">
+  <div class="modal-dialog modal-lg" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Event Details</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+
+
+        <div class="modal-body view overlay rounded z-depth-1 waves-light eventImage" mdbWavesEffect>
+          <img
+            src="../../../assets/images/EventPlaceholder.png"
+            class="img-fluid"
+            alt="Sample project image"
+          />
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect>Get it now
+          <mdb-icon far icon="gem" class="ml-1"></mdb-icon>
+        </a>
+        <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()"
+          data-dismiss="modal">Going to Event</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
