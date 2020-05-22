@@ -32,9 +32,9 @@ export class EventsService {
     })
   }
 
+
 // this ↓ is the route we need to make if a user clicks a button to attend an event.
   // goingToEvent(id:number) :Observable<Events[]> {
     //     return this.http.put<Events[]>(`${environment.apiUrl}/events` + "/" + id)
     //   }
-
 }
