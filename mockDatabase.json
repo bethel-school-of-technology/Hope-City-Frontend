@@ -70,6 +70,7 @@
   ],
   "events": [
     {
+      "id": 1,
       "eventName": "City wide weekly prayer meeting",
       "eventInfo": "Come join us to pray for our city at our weekly prayer meeting",
       "eventAddress": "Testing Event Address",
@@ -79,6 +80,7 @@
       "eventDay": "May 24, 2020"
     },
     {
+      "id": 2,
       "eventName": "Neighbor Evangelism Training.",
       "eventInfo": "Come and learn how you can evangelize to your neighbors",
       "eventAddress": "Testing Event 2 Address",
@@ -88,6 +90,7 @@
       "eventDay": "May 28, 2020"
     },
     {
+      "id": 3,
       "eventName": "Billy Graham Chaplin Training",
       "eventInfo": "Come to our 4 hr Chaplin training day and get certified",
       "eventAddress": "Testing Event 3 Address",
@@ -97,6 +100,7 @@
       "eventDay": "June 3, 2020"
     },
     {
+      "id": 4,
       "eventName": "Bike Donation Day",
       "eventInfo": "Bring a used bike and donate it to someone in need at our yearly bike donation day.",
       "eventAddress": "Testing Event 4 Address",
@@ -104,6 +108,26 @@
       "eventState": "Testing Event 4 State",
       "eventZip": "Testing Event 4 Zip",
       "eventDay": "June 5, 2020"
+    },
+    {
+      "id": 5,
+      "eventName": "Billy Graham Chaplin Training",
+      "eventInfo": "Come to our 4 hr Chaplin training day and get certified",
+      "eventAddress": "Testing Event 3 Address",
+      "eventCity": "Testing Event 3 City",
+      "eventState": "Testing Event 3 State",
+      "eventZip": "Testing Event 3 Zip",
+      "eventDay": "June 3, 2020"
+    },
+    {
+      "id": 6,
+      "eventName": "Billy Graham Chaplin Training",
+      "eventInfo": "Come to our 4 hr Chaplin training day and get certified",
+      "eventAddress": "Testing Event 3 Address",
+      "eventCity": "Testing Event 3 City",
+      "eventState": "Testing Event 3 State",
+      "eventZip": "Testing Event 3 Zip",
+      "eventDay": "June 3, 2020"
     }
   ]
 }

@@ -1,4 +1,5 @@
 export interface Events {
+  id: number;
   eventName: string;
   eventInfo: string;
   eventAddress: string;

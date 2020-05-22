@@ -11,57 +11,30 @@ import { Events } from "./events.model";
 })
 
 export class EventsService {
-  // events: Events[] = [];
 
   events: Events[] = []
 
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<Events[]> {
-      return this.http.get<Events[]>(`${environment.apiUrl}/events`)
+      return this.http.get<Events[]>(`${environment.apiUrlDev}/events`)
     }
 
-    // this ↓ is working enough to console.log the data from the mock database.
-    // getEvents() {
-    //   return this.http.get<Events[]>(`${environment.apiUrl}/events`)
-    //   .subscribe(eventsData => {
-    //     this.events = eventsData;
+  editEvent(): Observable<Events> {
+    return this.http.get<Events>(`${environment.apiUrlDev}/events + id`)
+  }
 
-    //     console.log("this is the getEvents() from the eventsService", this.events);
-    //   })
-    // }
+  getEventById(id: number) {
+    return this.http.get<Events[]>(`${environment.apiUrlDev}/events` + "/" + id)
+    .subscribe(events => {
+      this.events = events;
+        console.log(this.events)
+    })
+  }
 
-    getEventById(id: number) :Observable<Events[]> {
-      return this.http.get<Events[]>(`${environment.apiUrl}/events + "/" + id`)
-    };
+// this ↓ is the route we need to make if a user clicks a button to attend an event.
+  // goingToEvent(id:number) :Observable<Events[]> {
+    //     return this.http.put<Events[]>(`${environment.apiUrl}/events` + "/" + id)
+    //   }
 
-    // this ↓ will be used in the eventsModal once we make it
-    // I believe it should be a put but it's giving me an error which is why it's commented out.
-
-    // goingToEvent(id:number) :Observable<Events[]> {
-      //   return this.http.put<Events[]>(`${environment.apiUrl}/events + "/" + id`)
-      // }
-
-    }
-
-
-
-
-
-
-
-
-    // getEvents() {
-    //   return this.http.get<{events: any}>(`${environment.apiUrl}/events`)
-    //     .pipe(map((eventData) => {
-    //       return { events: eventData.events.map(events => {
-    //         return {
-    //           eventName: events.eventName,
-    //           eventInfo: events.eventInfo
-    //         };
-    //       })};
-    //     }))
-    //     .subscribe(getSomeEventData => {
-    //       this.events = getSomeEventData.events;
-    //     });
-    // };
+}
