@@ -70,40 +70,64 @@
   ],
   "events": [
     {
+      "id": 1,
       "eventName": "City wide weekly prayer meeting",
-      "eventInfo": "Come join us to pray for our city at our weekly prayer meeting",
-      "eventAddress": "Testing Event Address",
-      "eventCity": "Testing Event City",
-      "eventState": "Testing Event State",
-      "eventZip": "Testing Event Zip",
+      "eventInfo": "Come join us to pray for our city at our weekly prayer meeting. This is a time to gather together and unite in prayer for our city.",
+      "eventAddress": "1567 Tryon Street",
+      "eventCity": "Charlotte",
+      "eventState": "NC",
+      "eventZip": "29715",
       "eventDay": "May 24, 2020"
     },
     {
+      "id": 2,
       "eventName": "Neighbor Evangelism Training.",
-      "eventInfo": "Come and learn how you can evangelize to your neighbors",
-      "eventAddress": "Testing Event 2 Address",
-      "eventCity": "Testing Event 2 City",
-      "eventState": "Testing Event 2 State",
-      "eventZip": "Testing Event 2 Zip",
+      "eventInfo": "Having a hard time knowing how to make an influence in your neighborhood? Come and learn how you can evangelize to your neighbors. We will teach you how to share the gospel in 5 easy steps!",
+      "eventAddress": "8734 Church Street",
+      "eventCity": "Charlotte",
+      "eventState": "NC",
+      "eventZip": "29715",
       "eventDay": "May 28, 2020"
     },
     {
+      "id": 3,
       "eventName": "Billy Graham Chaplin Training",
-      "eventInfo": "Come to our 4 hr Chaplin training day and get certified",
-      "eventAddress": "Testing Event 3 Address",
-      "eventCity": "Testing Event 3 City",
-      "eventState": "Testing Event 3 State",
-      "eventZip": "Testing Event 3 Zip",
+      "eventInfo": "Come to our 4 hr Chaplin training day and get certified. We will teach you to bring hope to others and how to bring peace to tough situations.",
+      "eventAddress": "92845 Legion Rd",
+      "eventCity": "Charlotte",
+      "eventState": "NC",
+      "eventZip": "29715",
       "eventDay": "June 3, 2020"
     },
     {
-      "eventName": "Bike Donation Day",
-      "eventInfo": "Bring a used bike and donate it to someone in need at our yearly bike donation day.",
-      "eventAddress": "Testing Event 4 Address",
-      "eventCity": "Testing Event 4 City",
-      "eventState": "Testing Event 4 State",
-      "eventZip": "Testing Event 4 Zip",
+      "id": 4,
+      "eventName": "Charlotte Bike Donation Day",
+      "eventInfo": "Bring a used bike and donate it to someone in need at our yearly bike donation day. THere are so many kids out there that would love to have a bike. Spread the love and donate your bike to someone in need.",
+      "eventAddress": "7446 Park Rd",
+      "eventCity": "Charlotte",
+      "eventState": "NC",
+      "eventZip": "29715",
       "eventDay": "June 5, 2020"
+    },
+    {
+      "id": 5,
+      "eventName": "Healing on the streets ministry",
+      "eventInfo": "Join us to bring healing on the streets in Charlotte. Starting at Trade street, we will walk the streets and pray for people to get healed. Let's impact our city by sharing the love of Jesus through His healing power.",
+      "eventAddress": "187 Trade St",
+      "eventCity": "Charlotte",
+      "eventState": "NC",
+      "eventZip": "29715",
+      "eventDay": "June 3, 2020"
+    },
+    {
+      "id": 6,
+      "eventName": "Charlotte Family Fun Day",
+      "eventInfo": "Don't miss this family fun day at Freedom Park. This is a day to build our community and relationships with family and friends. Bring some outdoor games and sunscreen. It's going to be a blast!",
+      "eventAddress": "90876 Freedom Park Rd",
+      "eventCity": "Charlotte",
+      "eventState": "NC",
+      "eventZip": "29715",
+      "eventDay": "June 3, 2020"
     }
   ]
 }

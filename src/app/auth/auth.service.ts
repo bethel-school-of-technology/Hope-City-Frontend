@@ -34,6 +34,7 @@ export class AuthService {
   getStatusListener() {
     return this.statusListener.asObservable();
   }
+  
   // /signup for mockdb /user/register for backend
   userSignUp(auth: any) {
     return this.http.post(`${environment.apiUrlDev}/signup`, auth);

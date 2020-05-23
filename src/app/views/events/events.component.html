@@ -1,31 +1,144 @@
-<h1 class="pageTitle display-4">Hope City Events Page</h1>
+<!-- jumbotron -->
+<div class="view">
+  <h1 class="pageTitle display-4">Church Events and Local Missions</h1>
+  <div class="pageBody">
+    <div class="row">
+      <div class="col-4" *ngFor="let event of events">
+        <div class="jumbotron text-center hoverable p-4">
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+              <!-- Featured image -->
+              <div
+                class="view overlay rounded z-depth-1 waves-light"
+                mdbWavesEffect
+              >
+                <img
+                  src="../../../assets/images/EventPlaceholder.png"
+                  class="img-fluid"
+                  alt="Sample project image"
+                />
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            </div>
+            <!-- Grid column -->
 
-<div class="card-deck">
-  <mdb-card *ngFor="let event of events">
-    <mdb-card-header>
-      <h5>{{ event.eventName }}</h5>
-    </mdb-card-header>
-    <mdb-card-body>
-      <div class="view overlay rounded z-depth-1 waves-light" mdbWavesEffect>
-        <img
-          src="../../../assets/images/EventPlaceholder.png"
-          class="img-fluid"
-          alt="Sample project image"
-        />
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+              <h3 class="h3 mb-4">{{ event.eventName }}</h3>
+
+              <h4 class="h4 mb-4">{{ event.eventDay }}</h4>
+
+              <!-- ↓ Toggle button if we want to use it somewhere ↓ -->
+                <!-- <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
+                  Toggle collapse
+                </button>
+
+                <div class="" mdbCollapse #test="bs-collapse">
+                  <p> {{event.eventInfo}} </p>
+                </div> -->
+
+              <!-- Modal Window -->
+              <button
+                class=""
+                type="button"
+                mdbBtn
+                color="primary"
+                class="waves-light"
+                data-toggle="modal"
+                data-target="#basicExample"
+                (click)="frame.show()"
+                mdbWavesEffect>
+                More Info
+              </button>
+
+              <button
+              type="button"
+              mdbBtn
+              color="info"
+              class="waves-light"
+              mdbWavesEffect>
+              Attend
+            </button>
+
+              <div
+                mdbModal
+                #frame="mdbModal"
+                class="modal fade top"
+                id="frameModalTop"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true"
+                [config]="{ backdrop: false, ignoreBackdropClick: true }">
+                <div
+                  class="modal-dialog modal-lg modal-top-center modal-notify modal-info"
+                  role="document">
+
+                  <!-- Modal Content -->
+                  <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <p class="heading">{{ event.eventName }}</p>
+
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        (click)="frame.hide()"
+                      >
+                        <span aria-hidden="true" class="white-text"
+                          >&times;</span
+                        >
+                      </button>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-5">
+                          <img
+                            src="../../../assets/images/EventPlaceholder.png"
+                            class="img-fluid"
+                            alt="Sample project image"
+                          />
+                        </div>
+
+                        <div class="col-7">
+                          <h3><strong>{{ event.eventName }}</strong></h3>
+                          <hr>
+                          <h5>{{ event.eventInfo }}</h5>
+                          <br>
+                          <h5><strong>Location:</strong> {{ event.eventAddress }}. {{ event.eventCity }}, {{ event.eventState }}</h5>
+                          <h5><strong>Day:</strong> {{ event.eventDay }}</h5>
+
+                          <!-- This is the button we will use if a person decides to attend an event -->
+                          <button
+                            type="button"
+                            mdbBtn
+                            color="info"
+                            class="waves-light"
+                            mdbWavesEffect>
+                            Attend
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/.Content-->
+                </div>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
       </div>
-      <br />
-      <mdb-card-text>
-        {{ event.eventInfo }}
-      </mdb-card-text>
-      <mdb-card-text>
-        {{ event.eventDay }}
-      </mdb-card-text>
-    </mdb-card-body>
-    <mdb-card-footer>
-      <small class="text-muted"><app-events-modal></app-events-modal></small
-    ></mdb-card-footer>
-  </mdb-card>
+      <!-- News jumbotron -->
+    </div>
+  </div>
 </div>

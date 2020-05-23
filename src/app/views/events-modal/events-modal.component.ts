@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EventsService } from '../events.service'
 import { Events } from '../events.model';
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-events-modal',
@@ -9,13 +10,19 @@ import { Events } from '../events.model';
 })
 export class EventsModalComponent implements OnInit {
 
-  onOpened(event: any) {
-    console.log(event);
+  @Input() id: number;
+  events: Events[];
+
+  getEventById() {
+    return this.eventsService.getEventById(this.id);
   }
 
-  constructor() { }
+  constructor(private eventsService: EventsService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {
 
+    // this.eventsService.getEventById(this.id)
+  //  .subscribe(events => this.events = events)
+  //  console.log("getEventById in the ngOnInit", this.events)
+  };
 }

@@ -7,8 +7,11 @@ import {
   NavbarModule,
   WavesModule,
   ButtonsModule,
-  ModalModule
+  ModalModule,
+  CollapseModule
 } from 'angular-bootstrap-md';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
@@ -58,7 +61,9 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     NavbarModule,
     WavesModule,
     ButtonsModule,
-    ModalModule
+    ModalModule,
+    CollapseModule,
+    BrowserAnimationsModule
   ],
   providers: [
     // fakeBackendProvider

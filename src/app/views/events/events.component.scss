@@ -24,9 +24,34 @@ mdb-card-footer, mdb-card-header, mdb-card-text {
     margin: 5rem;
   }
 }
+
 @media only screen and (min-width: 950px) {
   .card-deck {
     margin: 7%;
     margin-top: 1rem;
   }
+}
+
+.jumbotron {
+  border-radius: 10px;
+}
+
+.view {
+  background: url('../../../assets/images/cityBG.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+img {
+  border-radius: 5px;
+}
+
+.pageBody {
+  margin-left: 6%;
+  margin-right: 6%;
+  margin-bottom: 6%
+}
+
+h1 {
+  margin-bottom: 50px;
 }
