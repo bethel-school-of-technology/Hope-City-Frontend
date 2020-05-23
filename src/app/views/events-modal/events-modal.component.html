@@ -1,12 +1,12 @@
-<button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+<!-- <button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
   (click)="frame.show()" mdbWavesEffect>Event Details</button>
 
 <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
   aria-labelledby="myModalLabel" aria-hidden="true" (opened)="getEventById()">
   <div class="modal-dialog modal-lg" role="document">
-    <!--Content-->
+
     <div class="modal-content">
-      <!--Header-->
+
       <div class="modal-header">
         <p class="heading lead">Event Details</p>
 
@@ -15,10 +15,28 @@
         </button>
       </div>
 
-      <!--Body-->
+            <div class="modal-body">
 
-      <!-- testing a for loop to see if we can pass data to the modal window but it is not yet working. -->
-      <div>
+              <div class="row">
+                <div class="col-5">
+                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg" class="img-fluid"
+                    alt="">
+                </div>
+
+                <div class="col-7">
+                  <p>
+                    <strong>My travel to paradise</strong>
+                  </p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit [...]</p>
+                  <button type="button" mdbBtn color="info" class="waves-light" mdbWavesEffect>Read more</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+      <div >
         <ul *ngFor="let event of events">
           <li>{{event.eventName}}Testing</li>
           <li>{{event.eventInfo}}</li>
@@ -29,23 +47,23 @@
         </ul>
       </div>
 
-        <div class="modal-body view overlay rounded z-depth-1 waves-light eventImage" mdbWavesEffect>
+        <div class="modal-body view overlay rounded z-depth-1 waves-light eventImage" mdbWavesEffect *ngFor="let event of events">
           <img
             src="../../../assets/images/EventPlaceholder.png"
             class="img-fluid"
             alt="Sample project image"
           />
+          <p>{{this.event.eventName}}</p>
           <a>
             <div class="mask rgba-white-slight"></div>
           </a>
           <div class="text-center">
             <p></p>
           </div>
-        </div>
 
 
 
-      <!--Footer-->
+
       <div class="modal-footer justify-content-center">
         <a type="button" mdbBtn color="primary" class="waves-effect" mdbWavesEffect>Get it now
           <mdb-icon far icon="gem" class="ml-1"></mdb-icon>
@@ -54,6 +72,6 @@
           data-dismiss="modal">Going to Event</a>
       </div>
     </div>
-    <!--/.Content-->
+
   </div>
-</div>
+</div> -->

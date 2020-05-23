@@ -21,7 +21,7 @@ export class EventsModalComponent implements OnInit {
 
   ngOnInit() {
 
-  //   this.eventsService.getEventById()
+    // this.eventsService.getEventById(this.id)
   //  .subscribe(events => this.events = events)
   //  console.log("getEventById in the ngOnInit", this.events)
   };

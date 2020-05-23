@@ -20,21 +20,22 @@ export class EventsService {
       return this.http.get<Events[]>(`${environment.apiUrlDev}/events`)
     }
 
-  editEvent(): Observable<Events> {
-    return this.http.get<Events>(`${environment.apiUrlDev}/events + id`)
+  // ↓ we are not using this yet ↓
+    editEvent(id: number): Observable<Events> {
+    return this.http.get<Events>(`${environment.apiUrlDev}/events/` + id)
   }
 
+  // ↓ this is not being used right now ↓
   getEventById(id: number) {
-    return this.http.get<Events[]>(`${environment.apiUrlDev}/events` + "/" + id)
+    return this.http.get<Events[]>(`${environment.apiUrlDev}/events/` + id)
     .subscribe(events => {
       this.events = events;
         console.log(this.events)
     })
   }
 
-
 // this ↓ is the route we need to make if a user clicks a button to attend an event.
   // goingToEvent(id:number) :Observable<Events[]> {
-    //     return this.http.put<Events[]>(`${environment.apiUrl}/events` + "/" + id)
-    //   }
+  //       return this.http.put<Events[]>(`${environment.apiUrlDev}/events/` + id)
+  //     }
 }
