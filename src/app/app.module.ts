@@ -7,8 +7,11 @@ import {
   NavbarModule,
   WavesModule,
   ButtonsModule,
-  ModalModule
+  ModalModule,
+  CollapseModule
 } from 'angular-bootstrap-md';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
@@ -56,7 +59,9 @@ import { EventsModalComponent } from './views/events-modal/events-modal.componen
     NavbarModule,
     WavesModule,
     ButtonsModule,
-    ModalModule
+    ModalModule,
+    CollapseModule,
+    BrowserAnimationsModule
   ],
   providers: [
     // fakeBackendProvider
