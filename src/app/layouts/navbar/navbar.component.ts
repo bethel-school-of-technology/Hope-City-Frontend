@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   private authListenerSubs: Subscription;
 
   constructor(private authService: AuthService) {}
-  
+
   ngOnInit() {
     this.userAuthorized = this.authService.getAuth();
     this.authListenerSubs = this.authService

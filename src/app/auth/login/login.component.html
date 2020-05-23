@@ -5,13 +5,13 @@
     <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" name="email" class="form-control" placeholder="Enter email" ngModel #emailInput="ngModel"
+        <input type="email" name="email" class="form-control" placeholder="Enter email" ngModel #email="ngModel"
           required email>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" name="password" class="form-control" placeholder="Password" ngModel
-          #passwordInput="ngModel" required>
+          #password="ngModel" required>
       </div>
       <button type="submit" class="btn btn-primary">LOGIN</button>
     </form>

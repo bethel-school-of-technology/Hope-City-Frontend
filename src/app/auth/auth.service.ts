@@ -4,16 +4,18 @@ import { Observable, Subject } from "rxjs";
 
 import { environment } from "../../environments/environment";
 import { Auth } from "./auth.model";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
+import { map, share } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
-  public auth: Observable<Auth>;
-  private authorized = false;
-  private userId: string;
-  private statusListener = new Subject<boolean>();
-  private token: string = "saklhgasdlkg";
-  private tokenTimer: NodeJS.Timer;
+  auth: Auth;
+  public authSubject: Subject<Auth> = new Subject();
+  authorized = false;
+  userId: string;
+  statusListener = new Subject<boolean>();
+  token: string;
+  tokenTimer: NodeJS.Timer;
 
   constructor(private http: HttpClient, private router: Router) {}
   // can add in token when backend is ready to
@@ -32,48 +34,23 @@ export class AuthService {
   getStatusListener() {
     return this.statusListener.asObservable();
   }
-  // /signup for mockdb /user for backend
-  userSignUp(auth: Auth) {
-    return this.http
-      .post(`${environment.apiUrlDev}/signup`, auth)
-      .subscribe(() => {
-        this.router.navigate(['/login']);
-      }, error => {
-        this.statusListener.next(false);
-      });
+  // /signup for mockdb /user/register for backend
+  userSignUp(auth: any) {
+    return this.http.post(`${environment.apiUrlDev}/signup`, auth);
   }
 
   // /login for mockdb /user/login for backend
-  userLogin(email: string, password: string) {
-    return this.http
-      .post<{
-        // token: string,
-        userId: string, expires: number}>(`${environment.apiUrlDev}/login`, { email: email, password: password })
-        .subscribe(user => {
-          // const token = user.token;
-          // this.token = token;
-          // if (token) {
-          //   console.log(token);
-            const expiresIn = 3600;
-            this.setTimer(expiresIn);
-            this.authorized = true;
-            this.userId = user.userId;
-            this.statusListener.next(true);
-            const now = new Date();
-            const expirationTime = new Date(now.getTime() + expiresIn * 1000);
-            this.addAuthData(
-              // token,
-              this.userId, expirationTime)
-            this.router.navigate(['/']);
-            // return user;
-          // }
-        }, error => {
-          console.log(error)
-          this.statusListener.next(false);
-        });
+  userLogin(auth: Auth): Observable<Auth> {
+    const pho = this.http
+      .post<Auth>(`${environment.apiUrlDev}/login`, auth)
+      .pipe(share());
+    pho.subscribe((user: Auth) => {
+      this.auth = user;
+      this.authSubject.next(user);
+    });
+    return pho;
   }
-
-
+  // checking to authenticated user
   authUser() {
     const info = this.getAuthData();
     if (!info) {
@@ -85,7 +62,7 @@ export class AuthService {
       console.log(expires);
       // this.token = info.token;
       this.authorized = true;
-      this.userId = info.userId
+      this.userId = info.userId;
       this.setTimer(expires / 1000);
       this.statusListener.next(true);
     }
@@ -93,40 +70,39 @@ export class AuthService {
 
   logout() {
     this.userId = null;
-    this.token = null;
+    // this.token = null;
     this.authorized = false;
     this.statusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
-    this.router.navigate(['/events']);
+    this.router.navigate(["/events"]);
   }
 
-  private setTimer(timer: number) {
+  public setTimer(timer: number) {
     this.tokenTimer = setTimeout(() => {
       this.logout();
-    },  timer * 1000);
+    }, timer * 1000);
     console.log("Timer " + timer);
   }
-
-  private addAuthData(
+  //setting local storage
+  addAuthData(
     // token: string,
     userId: string, expirationTime: Date) {
     // localStorage.setItem('token', token);
-    localStorage.setItem('userId', userId);
-    localStorage.setItem('expiration', expirationTime.toISOString());
+    localStorage.setItem("userId", userId);
+    localStorage.setItem("expiration", expirationTime.toISOString());
   }
-
-  private clearAuthData() {
+  //clearing local storage
+  clearAuthData() {
     // localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('expiration');
+    localStorage.removeItem("userId");
+    localStorage.removeItem("expiration");
   }
-
-  private getAuthData() {
-    // const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
-    const expirationTime = localStorage.getItem('expiration');
-    console.log(userId, expirationTime)
+  //pulling items from local storage
+  getAuthData() {
+    // const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+    const expirationTime = localStorage.getItem("expiration");
     if (
       // !token ||
       !expirationTime) {
@@ -135,7 +111,15 @@ export class AuthService {
     return {
       // token: token,
       userId: userId,
-      expirationTime: new Date(expirationTime)
-    }
+      expirationTime: new Date(expirationTime),
+    };
+  }
+  //getting current user of type auth
+  getUser() {
+    return this.authSubject;
+  }
+  //refreshes auth of auth subject
+  refetchUser() {
+    this.authSubject.next(this.auth);
   }
 }
