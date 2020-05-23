@@ -1,164 +1,140 @@
 <div class="view">
-<div class="jumbotron text-center hoverable p-4">
-  <!-- Grid row -->
-  <div class="row">
-    <!-- Grid column -->
-    <div class="col-md-4 offset-md-1 mx-3 my-3">
-      <!-- Featured image -->
-      <div class="view overlay waves-light" mdbWavesEffect>
-        <img src="../../../assets/images/HCSignUp2.png" class="img-fluid" alt="Sample image for first version of blog listing">
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
+  <div class="jumbotron text-center hoverable p-4">
+    <!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-4 offset-md-1 mx-3 my-3">
+        <!-- Featured image -->
+        <div class="view overlay waves-light" mdbWavesEffect>
+          <img src="../../../assets/images/HCSignUp2.png" class="img-fluid"
+            alt="Sample image for first version of blog listing">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
       </div>
+      <!-- Grid column -->
 
-    </div>
-    <!-- Grid column -->
+      <!-- Grid column -->
+      <div class="col-md-7 text-md-left ml-3 mt-3">
 
-    <!-- Grid column -->
-    <div class="col-md-7 text-md-left ml-3 mt-3">
-
-      <!-- Horizontal Steppers -->
-<div class="row">
-  <div class="col-md-12">
-
-    <h3>Create your Hope City account to get started</h3>
-    <!-- Steppers Wrapper. This is the 1, 2, 3 at the top of the sign up form -->
-    <ul class="stepper stepper-horizontal">
-
-      <!-- First Step -->
-      <li class="active">
-        <a href="#">
-          <span class="circle">1</span>
-          <span class="label">Sign Up</span>
-        </a>
-      </li>
-
-      <!-- Second Step -->
-      <li class="">
-        <a href="#">
-          <span class="circle">2</span>
-          <span class="label">Find Local Missions</span>
-        </a>
-      </li>
-
-      <!-- Third Step -->
-      <li class="">
-        <a href="#">
-          <span class="circle">3</span>
-          <span class="label">Change your City</span>
-        </a>
-      </li>
-
-    </ul>
-
-  </div>
-</div>
-
-<!-- This is the start of the sign up form -->
-      <form class="signUpForm" (submit)="onSignup(signupForm)" #signupForm="ngForm">
-
-        <!-- Grid row 1. first name and last name -->
+        <!-- Horizontal Steppers -->
         <div class="row">
-          <div class="col">
-            <div class="md-form mt-0">
-              <input
-                mdbInput
-                type="text"
-                name="firstName"
-                class="form-control"
-                placeholder="First Name"
-                ngModel #firstNameInput="ngModel">
-            </div>
-          </div>
-          <div class="col">
-            <div class="md-form mt-0">
-              <input
-                mdbInput
-                type="text"
-                name="lastName"
-                class="form-control"
-                placeholder="Last Name"
-                ngModel #lastNameInput="ngModel">
-            </div>
-          </div>
-        </div>
+          <div class="col-md-12">
 
-        <!-- Grid row 3. City, State, Zip -->
-        <div class="row">
-          <div class="col">
-            <div class="md-form mt-0">
-              <input
-                mdbInput
-                type="text"
-                name="city"
-                class="form-control"
-                placeholder="City"
-                ngModel #cityInput="ngModel">
-            </div>
-          </div>
+            <h3>Create your Hope City account to get started</h3>
+            <!-- Steppers Wrapper. This is the 1, 2, 3 at the top of the sign up form -->
+            <ul class="stepper stepper-horizontal">
 
-          <div class="col">
-            <div class="md-form mt-0">
-              <input
-                mdbInput
-                type="text"
-                name="state"
-                class="form-control"
-                placeholder="State"
-                ngModel #stateInput="ngModel">
-            </div>
-          </div>
+              <!-- First Step -->
+              <li class="active">
+                <a href="#">
+                  <span class="circle">1</span>
+                  <span class="label">Sign Up</span>
+                </a>
+              </li>
 
-          <div class="col">
-            <div class="md-form mt-0">
-              <input
-                mdbInput
-                type="text"
-                name="zip"
-                class="form-control"
-                placeholder="Zip"
-                ngModel #zipInput="ngModel">
-            </div>
+              <!-- Second Step -->
+              <li class="">
+                <a href="#">
+                  <span class="circle">2</span>
+                  <span class="label">Find Local Missions</span>
+                </a>
+              </li>
+
+              <!-- Third Step -->
+              <li class="">
+                <a href="#">
+                  <span class="circle">3</span>
+                  <span class="label">Change your City</span>
+                </a>
+              </li>
+
+            </ul>
+
           </div>
         </div>
 
-        <!-- Grid row 3. Email and password -->
-        <div class="row">
-          <div class="col">
-            <div class="md-form mt-0">
-              <input
-                mdbInput
-                type="email"
-                name="email"
-                class="form-control"
-                placeholder="Email"
-                ngModel #emailInput="ngModel"
-                required email>
+        <!-- This is the start of the sign up form -->
+        <form class="signUpForm" (submit)="onSignup(signupForm)" #signupForm="ngForm">
+
+          <!-- Grid row 1. first name and last name -->
+          <div class="row">
+            <div class="col">
+              <div class="md-form mt-0">
+                <input mdbInput mdbValidate type="text" name="firstName" class="form-control" pattern="[A-Za-z]+"
+                  placeholder="First Name" ngModel #firstNameInput="ngModel" required>
+                <mdb-error *ngIf="firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)">Not a name
+                </mdb-error>
+              </div>
+            </div>
+            <div class="col">
+              <div class="md-form mt-0">
+                <input mdbInput type="text" name="lastName" class="form-control" pattern="[A-Za-z_]+" placeholder="Last Name" ngModel
+                  #lastNameInput="ngModel" required>
+                  <mdb-error *ngIf="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)">Not a name
+                  </mdb-error>
+              </div>
             </div>
           </div>
 
-          <div class="col">
-            <div class="md-form mt-0">
-              <input
-                mdbInput
-                type="password"
-                name="password"
-                class="form-control"
-                placeholder="Password"
-                ngModel #passwordInput="ngModel"
-                required>
+          <!-- Grid row 3. City, State, Zip -->
+          <div class="row">
+            <div class="col">
+              <div class="md-form mt-0">
+                <input mdbInput type="text" name="city" class="form-control" placeholder="City" ngModel
+                  #cityInput="ngModel" required>
+                  <mdb-error *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)">Not a city
+                  </mdb-error>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="md-form mt-0">
+                <input mdbInput type="text" name="state" class="form-control" placeholder="State" ngModel
+                  #stateInput="ngModel" required>
+                  <mdb-error *ngIf="stateInput.invalid && (stateInput.dirty || stateInput.touched)">Not a state
+                  </mdb-error>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="md-form mt-0">
+                <input mdbInput type="text" name="zip" class="form-control" pattern="[0-9]{5}" placeholder="Zip" ngModel
+                  #zipInput="ngModel" required>
+                  <mdb-error *ngIf="zipInput.invalid && (zipInput.dirty || zipInput.touched)">Not a zip
+                  </mdb-error>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="signUpButton">
-          <button type="submit" class="btn btn-primary">SIGN UP</button>
-        </div>
-      </form>
+          <!-- Grid row 3. Email and password -->
+          <div class="row">
+            <div class="col">
+              <div class="md-form mt-0">
+                <input mdbInput type="email" name="email" class="form-control" placeholder="Email" ngModel
+                  #emailInput="ngModel" required email>
+                <mdb-error *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">Not an email address
+                </mdb-error>
+              </div>
+            </div>
 
-      <h5>Already have an account?<a [routerLink]="['/login']" routerLinkActive="router-link-active"> Log in</a></h5>
+            <div class="col">
+              <div class="md-form mt-0">
+                <input mdbInput type="password" name="password" class="form-control" placeholder="Password" ngModel
+                  #passwordInput="ngModel" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="signUpButton">
+            <button type="submit" class="btn btn-primary">SIGN UP</button>
+          </div>
+        </form>
+
+        <h5>Already have an account?<a [routerLink]="['/login']" routerLinkActive="router-link-active"> Log in</a></h5>
+      </div>
     </div>
   </div>
-</div>
 </div>

@@ -1,4 +1,5 @@
 export interface Auth {
+  id: string;
   firstName: string;
   lastName: string;
   email: string;

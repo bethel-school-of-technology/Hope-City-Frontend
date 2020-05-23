@@ -15,7 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppComponent } from './app.component';
 
 // import { fakeBackendProvider } from './backendtester';
@@ -34,6 +34,8 @@ import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { EventsModalComponent } from './views/events-modal/events-modal.component';
+
+import { AuthInterceptor } from '../app/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,7 @@ import { EventsModalComponent } from './views/events-modal/events-modal.componen
   ],
   providers: [
     // fakeBackendProvider
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

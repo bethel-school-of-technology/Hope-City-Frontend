@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
 
   private authStatusSub: Subscription;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.authStatusSub = this.authService.getStatusListener()
@@ -25,7 +25,11 @@ export class SignupComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.authService.userSignUp(form.value);
+    this.authService.userSignUp(form.value).subscribe(() => {
+      this.router.navigate(['/login']);
+    }, error => {
+      this.authService.statusListener.next(false);
+    });;
   }
 
   ngOnDestroy() {

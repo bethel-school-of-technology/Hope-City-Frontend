@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   private authStatusSub: Subscription;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.authStatusSub = this.authService.getStatusListener()
@@ -24,7 +24,33 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.authService.userLogin(form.value.email, form.value.password);
+    console.log(form.value);
+    this.authService.userLogin(form.value)
+    .subscribe(user => {
+      console.log(user)
+      // const token = user.token;
+      // this.authService.token = token;
+      // if (token) {
+      //   console.log(token);
+        const expiresIn = 3600;
+        this.authService.setTimer(expiresIn);
+        this.authService.authorized = true;
+        this.authService.userId = user.id;
+        this.authService.statusListener.next(true);
+        const now = new Date();
+        const expirationTime = new Date(
+          now.getTime() + expiresIn * 1000
+          );
+        this.authService.addAuthData(
+          // token,
+          this.authService.userId, expirationTime)
+        this.router.navigate(['/']);
+        return user;
+      // }
+    }, error => {
+      console.log(error)
+      this.authService.statusListener.next(false);
+    });
   }
 
   ngOnDestroy() {

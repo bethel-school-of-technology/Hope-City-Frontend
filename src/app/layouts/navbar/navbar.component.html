@@ -30,29 +30,31 @@
           <mdb-icon fas icon=""></mdb-icon> Sign-up
         </a>
       </li>
+      <li class="nav-item" *ngIf="!userAuthorized">
+        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/login'] "
+          routerLinkActive="router-link-active">Log in</a>
+      </li>
       <!-- <li class="nav-item">
         <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/login']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Login</a>
       </li> -->
 
       <!-- Dropdown -->
+      <div *ngIf="userAuthorized">
       <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-dark" mdbWavesEffect>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-dark" *ngIf="userAuthorized" mdbWavesEffect>
           <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span>
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <div *ngIf="userAuthorized">
+          <!-- <div *ngIf="userAuthorized"> -->
           <a class="dropdown-item waves-dark" mdbWavesEffect [routerLink]="['/profile']"
             routerLinkActive="router-link-active">My Profile</a>
-          </div>
-          <div *ngIf="!userAuthorized">
-            <a class="dropdown-item waves-dark" mdbWavesEffect [routerLink]="['/login']"
-              routerLinkActive="router-link-active">Log in</a>
-          </div>
-          <div *ngIf="userAuthorized">
+          <!-- </div> -->
+          <!-- <div *ngIf="userAuthorized"> -->
             <a class="dropdown-item waves-dark" mdbWavesEffect (click)="onLogout()">Log out</a>
-          </div>
+          <!-- </div> -->
         </div>
       </li>
+    </div>
 
     </ul>
     <!-- Links -->
