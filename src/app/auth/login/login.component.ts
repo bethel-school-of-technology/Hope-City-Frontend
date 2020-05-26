@@ -3,7 +3,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { AuthService } from "../auth.service";
+import { AuthService } from "../../services/auth.service";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
     this.authService.userLogin(form.value)
     .subscribe(user => {
       console.log(user)
-      // const token = user.token;
-      // this.authService.token = token;
+      const token = this.authService.token;
+      this.authService.token = token;
       // if (token) {
       //   console.log(token);
         const expiresIn = 3600;
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           now.getTime() + expiresIn * 1000
           );
         this.authService.addAuthData(
-          // token,
+          token,
           this.authService.userId, expirationTime)
         this.router.navigate(['/']);
         return user;

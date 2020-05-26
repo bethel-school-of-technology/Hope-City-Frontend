@@ -8,7 +8,8 @@ import {
   WavesModule,
   ButtonsModule,
   ModalModule,
-  CollapseModule
+  CollapseModule,
+  InputsModule
 } from 'angular-bootstrap-md';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -34,8 +35,9 @@ import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { EventsModalComponent } from './views/events-modal/events-modal.component';
-
+import { ErrorComponent } from './error/error.component';
 import { AuthInterceptor } from '../app/auth/auth.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -48,8 +50,8 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     EventsComponent,
     PrayerComponent,
     ProfileComponent,
-    EventsModalComponent
-
+    EventsModalComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -63,11 +65,12 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     ButtonsModule,
     ModalModule,
     CollapseModule,
+    InputsModule,
     BrowserAnimationsModule
   ],
   providers: [
     // fakeBackendProvider
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

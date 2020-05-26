@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 
 import { environment } from "../../environments/environment";
-import { Auth } from "./auth.model";
+import { Auth } from "../models/auth.model";
 import { Router } from "@angular/router";
 import { map, share } from "rxjs/operators";
 
@@ -30,25 +30,32 @@ export class AuthService {
   getuserId() {
     return this.userId;
   }
-
+  //creating an observable of type subject bool
   getStatusListener() {
     return this.statusListener.asObservable();
   }
-  
+  //getting current user of type auth
+  getUser() {
+    return this.authSubject;
+  }
+  //refreshes auth of auth subject
+  refetchUser() {
+    this.authSubject.next(this.auth);
+  }
   // /signup for mockdb /user/register for backend
   userSignUp(auth: any) {
-    return this.http.post(`${environment.apiUrlDev}/signup`, auth);
+    return this.http.post(`${environment.apiUrlFull}/user`, auth);
   }
-
   // /login for mockdb /user/login for backend
   userLogin(auth: Auth): Observable<Auth> {
     const pho = this.http
-      .post<Auth>(`${environment.apiUrlDev}/login`, auth)
+      .post<Auth>(`${environment.apiUrlFull}/user/login`, auth)
       .pipe(share());
     pho.subscribe((user: Auth) => {
       this.auth = user;
       this.authSubject.next(user);
     });
+    // console.log(pho);
     return pho;
   }
   // checking to authenticated user
@@ -87,7 +94,7 @@ export class AuthService {
   }
   //setting local storage
   addAuthData(
-    // token: string,
+    token: string,
     userId: string, expirationTime: Date) {
     // localStorage.setItem('token', token);
     localStorage.setItem("userId", userId);
@@ -114,13 +121,5 @@ export class AuthService {
       userId: userId,
       expirationTime: new Date(expirationTime),
     };
-  }
-  //getting current user of type auth
-  getUser() {
-    return this.authSubject;
-  }
-  //refreshes auth of auth subject
-  refetchUser() {
-    this.authSubject.next(this.auth);
   }
 }

@@ -4,15 +4,13 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { environment } from "../../environments/environment";
-import { Events } from "./events.model";
+import { Events } from "../models/events.model";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class EventsService {
-
-  events: Events[] = []
 
   constructor(private http: HttpClient) {}
 
@@ -28,10 +26,6 @@ export class EventsService {
   // ↓ this is not being used right now ↓
   getEventById(id: number) {
     return this.http.get<Events[]>(`${environment.apiUrlDev}/events/` + id)
-    .subscribe(events => {
-      this.events = events;
-        console.log(this.events)
-    })
   }
 
 // this ↓ is the route we need to make if a user clicks a button to attend an event.
