@@ -34,6 +34,7 @@ import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { EventsModalComponent } from './views/events-modal/events-modal.component';
+import { EventCreateComponent } from './views/event-create/event-create.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +47,8 @@ import { EventsModalComponent } from './views/events-modal/events-modal.componen
     EventsComponent,
     PrayerComponent,
     ProfileComponent,
-    EventsModalComponent
-
+    EventsModalComponent,
+    EventCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,7 @@ import { EventsModalComponent } from './views/events-modal/events-modal.componen
     ButtonsModule,
     ModalModule,
     CollapseModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     // fakeBackendProvider
