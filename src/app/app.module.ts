@@ -34,6 +34,7 @@ import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { EventsModalComponent } from './views/events-modal/events-modal.component';
+import { EventCreateComponent } from './views/event-create/event-create.component';
 
 import { AuthInterceptor } from '../app/auth/auth.interceptor';
 
@@ -48,8 +49,8 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     EventsComponent,
     PrayerComponent,
     ProfileComponent,
-    EventsModalComponent
-
+    EventsModalComponent,
+    EventCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +64,7 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     ButtonsModule,
     ModalModule,
     CollapseModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     // fakeBackendProvider
