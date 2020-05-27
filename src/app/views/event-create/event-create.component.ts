@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsService } from '../events.service'
-import { Events } from '../events.model';
+import { EventsService } from '../../services/events.service'
+import { Events } from '../../models/events.model';
+import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-event-create',
@@ -24,17 +25,22 @@ export class EventCreateComponent implements OnInit {
 
   postEvent: Events [];
 
-  constructor(private eventsService: EventsService) { }
+  constructor(private eventsService: EventsService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onCreateEvent(form: NgForm) {
+    console.log(form.value)
     if (form.invalid) {
-      console.log(form.value)
       return;
     }
-    this.eventsService.createEvent(form.value);
+    this.eventsService.createEvent(form.value).subscribe(() => {
+      console.log(form.value)
+      this.router.navigate(['/events']);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
