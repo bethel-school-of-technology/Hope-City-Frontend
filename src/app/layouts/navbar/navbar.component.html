@@ -12,27 +12,28 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/']" routerLinkActive="router-link-active">
-          <mdb-icon fas icon=""></mdb-icon> Home<span class="sr-only">(current)</span>
+          <mdb-icon fas icon="igloo"></mdb-icon> Home<span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/events']" routerLinkActive="router-link-active">
-          <mdb-icon fas icon=""></mdb-icon> Events
+          <mdb-icon far icon="calendar-alt"></mdb-icon> Events
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/prayer']" routerLinkActive="router-link-active">
-          <mdb-icon fas icon=""></mdb-icon> Prayer
+          <mdb-icon fas icon="hand-holding-heart"></mdb-icon> Prayer
         </a>
       </li>
       <li class="nav-item" *ngIf="!userAuthorized">
         <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/signup']" routerLinkActive="router-link-active">
-          <mdb-icon fas icon=""></mdb-icon> Sign-up
+          <mdb-icon fas icon="sign-in-alt"></mdb-icon> Sign-up
         </a>
       </li>
       <li class="nav-item" *ngIf="!userAuthorized">
-        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/login'] "
-          routerLinkActive="router-link-active">Log in</a>
+        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/login'] " routerLinkActive="router-link-active">
+          <mdb-icon fas icon="user-circle"></mdb-icon> Log in
+        </a>
       </li>
       <!-- <li class="nav-item">
         <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['/login']" routerLinkActive="router-link-active"><mdb-icon fas icon=""></mdb-icon> Login</a>
@@ -40,21 +41,22 @@
 
       <!-- Dropdown -->
       <div *ngIf="userAuthorized">
-      <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-dark" *ngIf="userAuthorized" mdbWavesEffect>
-          <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span>
-        </a>
-        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <!-- <div *ngIf="userAuthorized"> -->
-          <a class="dropdown-item waves-dark" mdbWavesEffect [routerLink]="['/profile']"
-            routerLinkActive="router-link-active">My Profile</a>
-          <!-- </div> -->
-          <!-- <div *ngIf="userAuthorized"> -->
-            <a class="dropdown-item waves-dark" mdbWavesEffect (click)="onLogout()">Log out</a>
-          <!-- </div> -->
-        </div>
-      </li>
-    </div>
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-dark"
+            *ngIf="userAuthorized" mdbWavesEffect>
+            <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <!-- <div *ngIf="userAuthorized"> -->
+            <a class="dropdown-item waves-dark" mdbWavesEffect [routerLink]="['/profile']"
+              routerLinkActive="router-link-active"><mdb-icon fas icon="list-alt"></mdb-icon> My Profile</a>
+            <!-- </div> -->
+            <!-- <div *ngIf="userAuthorized"> -->
+            <a class="dropdown-item waves-dark" mdbWavesEffect (click)="onLogout()"><mdb-icon fas icon="sign-out-altpf"></mdb-icon>Log out</a>
+            <!-- </div> -->
+          </div>
+        </li>
+      </div>
 
     </ul>
     <!-- Links -->

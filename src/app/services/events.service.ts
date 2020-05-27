@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
-import { Auth } from '../auth/auth.model';
-import { Router } from '@angular/router';
+import { Auth } from '../models/auth.model';
 
 import { environment } from "../../environments/environment";
-import { Events } from "./events.model";
+import { Events } from "../models/events.model";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class EventsService {
+
+  constructor(private http: HttpClient) {}
   public auth: Observable<Auth>;
   private statusListener = new Subject<boolean>();
   events: Events[] = []
-
-  constructor(private http: HttpClient, private router: Router) {}
 
   getEvents(): Observable<Events[]> {
       return this.http.get<Events[]>(`${environment.apiUrlDev}/events`)
@@ -29,11 +28,11 @@ export class EventsService {
 
   // ↓ this is not being used right now ↓
   getEventById(id: number) {
-    return this.http.get<Events[]>(`${environment.apiUrlFull}/events/` + id)
-    .subscribe(events => {
-      this.events = events;
-        console.log(this.events)
-    })
+    return this.http.get<Events[]>(`${environment.apiUrlDev}/events/` + id)
+    // .subscribe(events => {
+    //   this.events = events;
+    //     console.log(this.events)
+    // })
   }
 
   // ↓ POST route in order to post an event to the database ↓

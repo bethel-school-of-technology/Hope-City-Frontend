@@ -1,5 +1,4 @@
-<p>{{auth.id}}{{auth.email}}{{auth.firstName}}{{auth.lastName}}{{auth.zip}}{{auth.state}}{{auth.zip}}</p>
-<!-- <div class="pageTitle">
+<div class="pageTitle">
   <h1 class="display-4">Edit your profile and view your events</h1>
 </div>
 <div class="row">
@@ -7,6 +6,7 @@
     <mdb-card cascade="true">
 
       <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+        <!-- <p>{{auth.email}}{{auth.firstName}}{{auth.lastName}}{{auth.state}}{{auth.zip}}</p> -->
         <mdb-card-img src="https://mdbootstrap.com/img/Photos/Others/men.jpg"></mdb-card-img>
         <a>
           <div class="mask rgba-white-slight"></div>
@@ -15,14 +15,16 @@
 
       <mdb-card-body cascade="true" class="text-center">
         <h4 class="card-title">
-          <strong>Billy Cullen</strong>
+          <strong>{{auth.firstName}} {{auth.lastName}}</strong>
         </h4>
-        <h5>Web developer</h5>
+        <h5>{{auth.email}}</h5>
+        <h5>{{auth.city}}</h5>
+        <h5>{{auth.state}}</h5>
+        <h5>{{auth.zip}}</h5>
 
-        <mdb-card-text>
-          Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem
-          aperiam.
-        </mdb-card-text>
+        <!-- <mdb-card-text>
+
+        </mdb-card-text> -->
 
         <a type="button" mdbBtn floating="true" size="sm" color="fb" class="waves-light" mdbWavesEffect>
           <mdb-icon fab icon="facebook-f"></mdb-icon>
@@ -55,4 +57,4 @@
   </mdb-card-body>
 </mdb-card>
   </div>
-</div> -->
+</div>
