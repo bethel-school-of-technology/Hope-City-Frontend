@@ -8,6 +8,8 @@ import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { AuthGuard } from './auth/auth.guard';
+import { EventCreateComponent } from './views/event-create/event-create.component';
+
 
 
 const routes: Routes = [
@@ -16,7 +18,11 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'events', component: EventsComponent },
   { path: 'prayer', component: PrayerComponent },
-  { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]}
+  { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
+  { path: 'profile', component: ProfileComponent},
+  // temporarily added this route so I can test it
+  { path: 'new-event', component: EventCreateComponent}
+
 
 ];
 

@@ -1,0 +1,334 @@
+<div class="view">
+  <div class="jumbotron text-center hoverable p-4">
+    <!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+
+      <div class="col-md-12 text-md-left ml-3 mt-3">
+        <div class="row">
+          <div class="col-md-12">
+            <h1>Create an event</h1>
+            <!-- This is the start of the sign up form -->
+            <form class="createEventForm" (submit)="onCreateEvent(createEventForm)" #createEventForm="ngForm">
+              <!-- Grid row 1. first name and last name -->
+              <div class="row">
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="text"
+                      name="eventName"
+                      class="form-control"
+                      placeholder="Name of your event"
+                      [(ngModel)]="inputEventName"
+                      ngModel
+                      #postEventName="ngModel"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="text"
+                      name="eventHost"
+                      class="form-control"
+                      placeholder="Name of your Church or organization"
+                      [(ngModel)]="inputChurchName"
+                      ngModel
+                      #postEventHost="ngModel"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Grid row 1. first name and last name -->
+              <div class="row">
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <textarea
+                      mdbInput
+                      type="text"
+                      name="eventInfo"
+                      class="form-control"
+                      placeholder="Describe the event your hosting"
+                      [(ngModel)]="inputInfo"
+                      ngModel
+                      #postEventInfo="ngModel"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="text"
+                      name="address"
+                      class="form-control"
+                      placeholder="Address"
+                      [(ngModel)]="inputAddress"
+                      ngModel
+                      #postEventAddress="ngModel"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Grid row 3. City, State, Zip -->
+              <div class="row">
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="text"
+                      name="city"
+                      class="form-control"
+                      placeholder="City"
+                      [(ngModel)]="inputCity"
+                      ngModel
+                      #postEventCity="ngModel"
+                    />
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="text"
+                      name="state"
+                      class="form-control"
+                      placeholder="State"
+                      [(ngModel)]="inputState"
+                      ngModel
+                      #postEventState="ngModel"
+                    />
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="text"
+                      name="zip"
+                      class="form-control"
+                      placeholder="Zip"
+                      [(ngModel)]="inputZip"
+                      ngModel
+                      #postEventZip="ngModel"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Grid row 3. Email and password -->
+              <div class="row">
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="date"
+                      name="eventDate"
+                      class="form-control"
+                      placeholder="What day will this take place?"
+                      [(ngModel)]="inputEventDay"
+                      ngModel
+                      #postEventDay="ngModel"
+                      required
+                      email
+                    />
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="time"
+                      name="eventDate"
+                      class="form-control"
+                      placeholder="When will this event start?"
+                      [(ngModel)]="inputStartTime"
+                      ngModel
+                      #postEventStartTime="ngModel"
+                      required
+                      email
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="md-form mt-0">
+                    <input
+                      mdbInput
+                      type="time"
+                      name="eventDate"
+                      class="form-control"
+                      placeholder="When will this event end?"
+                      [(ngModel)]="inputEndTime"
+                      ngModel
+                      #postEventEndTime="ngModel"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="signUpButton">
+                <button type="submit" class="btn btn-primary">
+                  Post Event
+                </button>
+              </div>
+            </form>
+
+            <!-- jumbotron -->
+            <h3 class="pageTitle display-5">Here is a preview of your event</h3>
+            <div class="pageBody">
+              <div class="row">
+                <div class="col-12">
+                  <div class="jumbotron text-center hoverable p-4">
+                    <!-- Grid row -->
+                    <div class="row">
+                      <!-- Grid column -->
+                      <div class="col-md-4 offset-md-1 mx-3 my-3">
+                        <!-- Featured image -->
+                        <div
+                          class="view overlay rounded z-depth-1 waves-light"
+                          mdbWavesEffect
+                        >
+                          <img
+                            src="../../../assets/images/EventPlaceholder.png"
+                            class="img-fluid"
+                            alt="Sample project image"
+                          />
+                          <a>
+                            <div class="mask rgba-white-slight"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <!-- Grid column -->
+
+                      <!-- Grid column -->
+                      <div class="col-md-7 text-md-left ml-3 mt-3">
+                        <h4 class="h4 mb-4">{{ inputEventName }}</h4>
+                        <h5 class="h5 mb-4">
+                          Hosted By: {{ inputChurchName }}
+                        </h5>
+                        <h5 class="h5 mb-4">Event Day: {{ inputEventDay }}</h5>
+
+                        <!-- Modal Window -->
+                        <button
+                          class=""
+                          type="button"
+                          mdbBtn
+                          color="primary"
+                          class="waves-light"
+                          data-toggle="modal"
+                          data-target="#basicExample"
+                          (click)="frame.show()"
+                          mdbWavesEffect
+                        >
+                          Preview Event Details
+                        </button>
+
+                        <div
+                          mdbModal
+                          #frame="mdbModal"
+                          class="modal fade top"
+                          id="frameModalTop"
+                          tabindex="-1"
+                          role="dialog"
+                          aria-labelledby="myModalLabel"
+                          aria-hidden="true"
+                          [config]="{
+                            backdrop: false,
+                            ignoreBackdropClick: false
+                          }"
+                        >
+                          <div
+                            class="modal-dialog modal-lg modal-top-center modal-notify modal-info"
+                            role="document"
+                          >
+                            <!-- Modal Content -->
+                            <div class="modal-content">
+                              <!-- Modal Header -->
+                              <div class="modal-header">
+                                <p class="heading">
+                                  Join {{ inputChurchName }} |
+                                  {{ inputEventName }}
+                                </p>
+
+                                <button
+                                  type="button"
+                                  class="close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                  (click)="frame.hide()"
+                                >
+                                  <span aria-hidden="true" class="white-text"
+                                    >&times;</span
+                                  >
+                                </button>
+                              </div>
+
+                              <!-- Modal Body -->
+                              <div class="modal-body">
+                                <div class="row">
+                                  <div class="col-5">
+                                    <img
+                                      src="../../../assets/images/EventPlaceholder.png"
+                                      class="img-fluid"
+                                      alt="Sample project image"
+                                    />
+                                  </div>
+
+                                  <div class="col-7">
+                                    <h3>
+                                      <strong>{{ inputEventName }}</strong>
+                                    </h3>
+                                    <hr />
+                                    <h5>{{ inputInfo }}</h5>
+                                    <br />
+                                    <h5>
+                                      <strong>Hosted By:</strong>
+                                      {{ inputChurchName }}
+                                    </h5>
+                                    <h5>
+                                      <strong>Location:</strong>
+                                      {{ inputAddress }}
+                                    </h5>
+                                    <h5>
+                                      {{ inputCity }} {{ inputState }}
+                                      {{ inputZip }}
+                                    </h5>
+                                    <h5>
+                                      <strong>Day:</strong> {{ inputEventDay }}
+                                    </h5>
+                                    <h5>
+                                      {{ inputStartTime }} - {{ inputEndTime }}
+                                    </h5>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--/.Content-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+              </div>
+            </div>
+            <!-- News jumbotron -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

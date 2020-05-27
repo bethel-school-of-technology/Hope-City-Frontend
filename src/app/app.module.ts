@@ -34,8 +34,8 @@ import { HomeComponent } from './views/home/home.component';
 import { EventsComponent } from './views/events/events.component';
 import { PrayerComponent } from './views/prayer/prayer.component';
 import { ProfileComponent } from './views/profile/profile.component';
-import { EventsModalComponent } from './views/events-modal/events-modal.component';
 import { ErrorComponent } from './error/error.component';
+import { EventCreateComponent } from './views/event-create/event-create.component';
 import { AuthInterceptor } from '../app/auth/auth.interceptor';
 
 
@@ -50,8 +50,8 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     EventsComponent,
     PrayerComponent,
     ProfileComponent,
-    EventsModalComponent,
-    ErrorComponent
+    ErrorComponent,
+    EventCreateComponent,
   ],
   imports: [
     BrowserModule,
