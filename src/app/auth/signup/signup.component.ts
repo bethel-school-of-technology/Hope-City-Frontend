@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
       this.router.navigate(['/login']);
     }, error => {
       this.authService.statusListener.next(false);
-    });;
+    });
   }
 
   ngOnDestroy() {

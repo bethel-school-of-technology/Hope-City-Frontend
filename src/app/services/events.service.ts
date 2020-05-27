@@ -36,12 +36,12 @@ export class EventsService {
   }
 
   // ↓ POST route in order to post an event to the database ↓
-  createEvent(events: Events) {
-    return this.http.post<Events[]>(`${environment.apiUrlDev}/events/`, events)
-    .subscribe(events => {
-      this.events = events;
-      console.log("This is the createEvent function in my events.service", this.events)
-    })
+  createEvent(events: Events[]) {
+    return this.http.post(`${environment.apiUrlDev}/events`, events)
+    // .subscribe(events => {
+    //   this.events = events;
+    //   console.log("This is the createEvent function in my events.service", this.events)
+    // })
   }
 
 

@@ -22,7 +22,7 @@
                       placeholder="Name of your event"
                       [(ngModel)]="inputEventName"
                       ngModel
-                      #postEventName="ngModel"
+                      #eventNameInput="ngModel"
                     />
                   </div>
                 </div>
@@ -36,7 +36,7 @@
                       placeholder="Name of your Church or organization"
                       [(ngModel)]="inputChurchName"
                       ngModel
-                      #postEventHost="ngModel"
+                      #eventHostInput="ngModel"
                     />
                   </div>
                 </div>
@@ -54,7 +54,7 @@
                       placeholder="Describe the event your hosting"
                       [(ngModel)]="inputInfo"
                       ngModel
-                      #postEventInfo="ngModel"
+                      #eventInfoInput="ngModel"
                     ></textarea>
                   </div>
                 </div>
@@ -66,12 +66,12 @@
                     <input
                       mdbInput
                       type="text"
-                      name="address"
+                      name="eventAddress"
                       class="form-control"
                       placeholder="Address"
                       [(ngModel)]="inputAddress"
                       ngModel
-                      #postEventAddress="ngModel"
+                      #eventAddressInput="ngModel"
                     />
                   </div>
                 </div>
@@ -84,12 +84,12 @@
                     <input
                       mdbInput
                       type="text"
-                      name="city"
+                      name="eventCity"
                       class="form-control"
                       placeholder="City"
                       [(ngModel)]="inputCity"
                       ngModel
-                      #postEventCity="ngModel"
+                      #eventCityInput="ngModel"
                     />
                   </div>
                 </div>
@@ -99,12 +99,12 @@
                     <input
                       mdbInput
                       type="text"
-                      name="state"
+                      name="eventState"
                       class="form-control"
                       placeholder="State"
                       [(ngModel)]="inputState"
                       ngModel
-                      #postEventState="ngModel"
+                      #eventStateInput="ngModel"
                     />
                   </div>
                 </div>
@@ -114,12 +114,12 @@
                     <input
                       mdbInput
                       type="text"
-                      name="zip"
+                      name="eventZip"
                       class="form-control"
                       placeholder="Zip"
                       [(ngModel)]="inputZip"
                       ngModel
-                      #postEventZip="ngModel"
+                      #eventZipInput="ngModel"
                     />
                   </div>
                 </div>
@@ -132,14 +132,13 @@
                     <input
                       mdbInput
                       type="date"
-                      name="eventDate"
+                      name="eventDay"
                       class="form-control"
                       placeholder="What day will this take place?"
                       [(ngModel)]="inputEventDay"
                       ngModel
-                      #postEventDay="ngModel"
+                      #eventDayInput="ngModel"
                       required
-                      email
                     />
                   </div>
                 </div>
@@ -149,14 +148,13 @@
                     <input
                       mdbInput
                       type="time"
-                      name="eventDate"
+                      name="eventStartTime"
                       class="form-control"
                       placeholder="When will this event start?"
                       [(ngModel)]="inputStartTime"
                       ngModel
-                      #postEventStartTime="ngModel"
+                      #eventStartTimeInput="ngModel"
                       required
-                      email
                     />
                   </div>
                 </div>
@@ -165,12 +163,12 @@
                     <input
                       mdbInput
                       type="time"
-                      name="eventDate"
+                      name="eventEndTime"
                       class="form-control"
                       placeholder="When will this event end?"
                       [(ngModel)]="inputEndTime"
                       ngModel
-                      #postEventEndTime="ngModel"
+                      #eventEndTimeInput="ngModel"
                       required
                     />
                   </div>
