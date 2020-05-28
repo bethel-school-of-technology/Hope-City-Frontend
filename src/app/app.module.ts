@@ -70,7 +70,7 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
   ],
   providers: [
     // fakeBackendProvider
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

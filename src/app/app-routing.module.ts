@@ -18,7 +18,9 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'events', component: EventsComponent },
   { path: 'prayer', component: PrayerComponent },
-  { path: 'profile', component: ProfileComponent , canActivate: [AuthGuard]},
+  { path: 'profile', component: ProfileComponent,
+  // canActivate: [AuthGuard]
+},
   // temporarily added this route so I can test it
   { path: 'new-event', component: EventCreateComponent}
 

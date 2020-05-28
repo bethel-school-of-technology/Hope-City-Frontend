@@ -5,16 +5,17 @@
   <div class="col-md-4">
     <mdb-card cascade="true">
 
-      <div class="view view-cascade overlay waves-light" mdbWavesEffect>
-        <!-- <p>{{auth.email}}{{auth.firstName}}{{auth.lastName}}{{auth.state}}{{auth.zip}}</p> -->
-        <mdb-card-img src="https://mdbootstrap.com/img/Photos/Others/men.jpg"></mdb-card-img>
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-      </div>
 
       <mdb-card-body cascade="true" class="text-center">
         <h4 class="card-title">
+          <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+            <div class="mage-preview" *ngIf="mageView !== '' && mageView && form.get('image').valid">
+              <mdb-card-img [src]="mageView" alt="form.image.value"></mdb-card-img>
+            </div>
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
           <strong>{{auth.firstName}} {{auth.lastName}}</strong>
         </h4>
         <h5>{{auth.email}}</h5>
@@ -25,8 +26,8 @@
         <!-- <mdb-card-text>
 
         </mdb-card-text> -->
-<!--
-        <a type="button" mdbBtn floating="true" size="sm" color="fb" class="waves-light" mdbWavesEffect>
+        <!--
+          <a type="button" mdbBtn floating="true" size="sm" color="fb" class="waves-light" mdbWavesEffect>
           <mdb-icon fab icon="facebook-f"></mdb-icon>
         </a>
         <a type="button" mdbBtn floating="true" size="sm" color="tw" class="waves-light" mdbWavesEffect>
@@ -41,20 +42,26 @@
     </mdb-card>
   </div>
   <div class="col-md-4">
-<mdb-card class="me">
-  <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-  </div>
-  <mdb-card-body>
-    <mdb-card-title>
-      <h4>Card Title</h4>
-    </mdb-card-title>
+    <mdb-card class="me">
+      <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+      </div>
+      <mdb-card-body>
+        <mdb-card-title>
+          <h4>Card Title</h4>
+        </mdb-card-title>
 
-    <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
-      content.
-    </mdb-card-text>
-
-    <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
-  </mdb-card-body>
-</mdb-card>
+        <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
+          content.
+        </mdb-card-text>
+        <form [formGroup]="form" (submit)="onAddImage()">
+          <div>
+            <!-- <button mdbBtn color="primary" mdbWavesEffect (click)="filePicker.click()">Pick Image</button> -->
+            <input formControlName="image" type="file" (change)="theChosenOne($event)">
+          </div>
+          <button mdbBtn color="primary" mdbWavesEffect type="button" (click)="onAddImage()">Add Profile Pic</button>
+        </form>
+      </mdb-card-body>
+    </mdb-card>
   </div>
 </div>
+
