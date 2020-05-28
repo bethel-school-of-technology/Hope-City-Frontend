@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.authService.token = token;
       // if (token) {
       //   console.log(token);
-        const expiresIn = 3600;
+        const expiresIn = 10000;
         this.authService.setTimer(expiresIn);
         this.authService.authorized = true;
         this.authService.userId = user.id;
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           this.authService.userId, expirationTime)
         this.router.navigate(['/']);
         return user;
-      // }
+      // } 
     }, error => {
       console.log(error)
       this.authService.statusListener.next(false);

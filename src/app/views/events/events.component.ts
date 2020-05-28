@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { EventsService } from '../../services/events.service'
-import { Events } from '../../models/events.model';
+import { Component, OnInit, Input } from "@angular/core";
+import { EventsService } from "../../services/events.service";
+import { Events } from "../../models/events.model";
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.scss']
+  selector: "app-events",
+  templateUrl: "./events.component.html",
+  styleUrls: ["./events.component.scss"],
 })
 export class EventsComponent implements OnInit {
   // @Input() id: number;
@@ -14,13 +14,13 @@ export class EventsComponent implements OnInit {
   //   return this.eventsService.getEventById(this.id);
   // }
 
-  constructor(private eventsService: EventsService) {
-  }
+  constructor(private eventsService: EventsService) {}
 
   ngOnInit() {
-   this.eventsService.getEvents()
-   .subscribe(events => this.events = events)
+      this.eventsService.getEvents()
+      .subscribe((llama) => {
+        this.events = llama, console.log("line23", llama);
+      });
   }
 
-  }
-
+}

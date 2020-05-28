@@ -4,6 +4,7 @@ import { Observable, Subject } from "rxjs";
 
 import { environment } from "../../environments/environment";
 import { Auth } from "../models/auth.model";
+import { Image } from "../models/image.model";
 import { Router } from "@angular/router";
 import { map, share } from "rxjs/operators";
 
@@ -12,6 +13,7 @@ export class AuthService {
   auth: Auth;
   public authSubject: Subject<Auth> = new Subject();
   authorized = false;
+  selectedFile: File = null;
   userId: string;
   statusListener = new Subject<boolean>();
   token: string;
@@ -93,9 +95,7 @@ export class AuthService {
     console.log("Timer " + timer);
   }
   //setting local storage
-  addAuthData(
-    token: string,
-    userId: string, expirationTime: Date) {
+  addAuthData(token: string, userId: string, expirationTime: Date) {
     // localStorage.setItem('token', token);
     localStorage.setItem("userId", userId);
     localStorage.setItem("expiration", expirationTime.toISOString());
@@ -113,7 +113,8 @@ export class AuthService {
     const expirationTime = localStorage.getItem("expiration");
     if (
       // !token ||
-      !expirationTime) {
+      !expirationTime
+    ) {
       return;
     }
     return {
@@ -121,5 +122,22 @@ export class AuthService {
       userId: userId,
       expirationTime: new Date(expirationTime),
     };
+  }
+
+  addImage() {
+    let imagine = new FormData();
+    imagine.append("file", this.selectedFile, this.selectedFile.name);
+    this.http
+      .post<{ image: File }>(`${environment.apiUrlFull}/image/upload`, imagine)
+      .subscribe((undo) => {
+        console.log(undo, "line134");
+      });
+  }
+
+  getImage(name: string) {
+    return this.http.get<{
+      name: string;
+      imagePath: string;
+    }>(`${environment.apiUrlFull}/get/` + name)
   }
 }
