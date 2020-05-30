@@ -22,7 +22,8 @@ const routes: Routes = [
   // canActivate: [AuthGuard]
 },
   // temporarily added this route so I can test it
-  { path: 'new-event', component: EventCreateComponent}
+  { path: 'new-event', component: EventCreateComponent},
+  { path: 'edit/:eventId', component: EventCreateComponent }
 
 
 ];

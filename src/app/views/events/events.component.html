@@ -1,6 +1,7 @@
 <!-- jumbotron -->
 <div class="view">
   <h1 class="pageTitle display-4">Church Events and Local Missions</h1>
+  <h3><a class="newEventButton" [routerLink]="['/new-event']" routerLinkActive="router-link-active" >Add a New Event!</a></h3>
   <div class="pageBody">
     <div class="row">
       <div class="col-4" *ngFor="let event of events">
@@ -29,7 +30,7 @@
             <!-- Grid column -->
             <div class="col-md-7 text-md-left ml-3 mt-3">
               <h3 class="h3 mb-4">{{ event.eventName }}</h3>
-              <h4 class="h4 mb-4">Hosted By: {{ event.eventHost }}</h4>
+              <h4 class="h4 mb-4">Hosted By: {{ event.hostName }}</h4>
               <h4 class="h4 mb-4">{{ event.eventDay }}</h4>
 
               <!-- ↓ Toggle button if we want to use it somewhere ↓ -->
@@ -41,8 +42,7 @@
                   <p> {{event.eventInfo}} </p>
                 </div> -->
 
-              <!-- Modal Window -->
-              <button
+                <button
                 class=""
                 type="button"
                 mdbBtn
@@ -64,8 +64,12 @@
               Attend
             </button>
 
-              <div
-                mdbModal
+            <!-- This is the edit event button -->
+            <a class="btn" [routerLink]="['/edit', event.id]">Edit Event </a>
+
+          <!-- Modal Window -->
+          <div
+          mdbModal
                 #frame="mdbModal"
                 class="modal fade top"
                 id="frameModalTop"
@@ -82,7 +86,7 @@
                   <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <p class="heading">{{ event.eventName }} | Hosted By {{ event.eventHost }} </p>
+                      <p class="heading">{{ event.eventName }} | Hosted By {{ event.hostName }} </p>
 
                       <button
                         type="button"
@@ -113,7 +117,7 @@
                           <hr>
                           <h5>{{ event.eventInfo }}</h5>
                           <br>
-                          <h5><strong>Hosted By:</strong> {{ event.eventHost }}</h5>
+                          <h5><strong>Hosted By:</strong> {{ event.hostName }}</h5>
                           <h5><strong>Location:</strong> {{ event.eventAddress }}</h5>
                           <h5> {{ event.eventCity }}, {{ event.eventState }} {{event.eventZip}}</h5>
                           <h5><strong>Time: </strong>{{event.eventStartTime}} - {{event.eventEndTime}}</h5>
@@ -128,6 +132,7 @@
                             mdbWavesEffect>
                             Attend
                           </button>
+
                         </div>
                       </div>
                     </div>
