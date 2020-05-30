@@ -43,12 +43,14 @@ export class EventCreateComponent implements OnInit {
         this.mode = 'edit';
         this.eventId = paramMap.get('eventId');
         this.events = this.eventsService.getEvent(this.eventId);
-        console.log(paramMap)
+        console.log("We are editing an event", paramMap, this.eventId)
       } else {
         this.mode = 'new-event'
         this.eventId = null;
+        console.log("We are creating a new event", this.eventId)
       }
     });
+
   }
 
 

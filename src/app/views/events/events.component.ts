@@ -8,7 +8,7 @@ import { Events } from "../../models/events.model";
 })
 export class EventsComponent implements OnInit {
   // @Input() id: number;
-  events: Events[];
+  events: Events[] = [];
 
   // getEventById(id: number) {
   //   return this.eventsService.getEventById(this.id);

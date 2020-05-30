@@ -11,7 +11,7 @@ import { map } from "rxjs/operators";
   providedIn: "root",
 })
 export class EventsService {
-  events: Events[];
+  events: Events[] = [];
   // public auth: Observable<Auth>;
   // private statusListener = new Subject<boolean>();
 
