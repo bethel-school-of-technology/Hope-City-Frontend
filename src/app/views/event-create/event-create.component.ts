@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service'
 import { Events } from '../../models/events.model';
-import { Router } from "@angular/router";
-import { NgForm } from "@angular/forms";
+import { ActivatedRoute, Router, ParamMap } from "@angular/router";
+import { NgForm, FormGroup } from "@angular/forms";
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -23,24 +23,77 @@ export class EventCreateComponent implements OnInit {
   inputStartTime: string = '';
   inputEndTime: string = '';
 
-  postEvent: Events [];
+  // postEvent: Events [];
+  // events = new Events;
+  form: FormGroup;
+  // editEvent: Events = new Events()
+  private mode = 'new-event';
+  private eventId: string;
+  public events: Events;
 
-  constructor(private eventsService: EventsService, private router: Router) { }
+  constructor(
+    public eventsService: EventsService,
+    public router: Router,
+    public route: ActivatedRoute
+    ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('eventId')) {
+        this.mode = 'edit';
+        this.eventId = paramMap.get('eventId');
+        this.events = this.eventsService.getEvent(this.eventId);
+        console.log(paramMap)
+      } else {
+        this.mode = 'new-event'
+        this.eventId = null;
+      }
+    });
   }
+
 
   onCreateEvent(form: NgForm) {
     console.log(form.value)
     if (form.invalid) {
       return;
     }
-    this.eventsService.createEvent(form.value).subscribe(() => {
-      console.log(form.value)
+    this.eventsService
+      .createEvent(form.value)
+      .subscribe(() => {
+        console.log(form.value)
       this.router.navigate(['/events']);
     }, error => {
-      console.log(error);
+        console.log(error);
     });
   }
+
+  // onCreateEvent(form: NgForm) {
+  //   console.log(form.value)
+  //   if (form.invalid) {
+  //     return;
+  //   }
+  //   if(this.mode === 'new-event') {
+  //     this.eventsService
+  //       .createEvent(form.value)
+  //       .subscribe(() => {
+  //         console.log(form.value)
+  //       this.router.navigate(['/events']);
+  //     }, error => {
+  //         console.log(error);
+  //     });
+  //   }
+  //   else {
+  //     this.eventsService
+  //     .editEvent(form.value)
+  //     .subscribe(() => {
+  //       console.log(form.value)
+  //     this.router.navigate(['/events']);
+  //   }, error => {
+  //       console.log(error);
+  //   });
+  //   }
+  //   // this is throwing an error for some reason. I think I need to define what the reset does.
+  //   // this.form.reset()
+  // }
 
 }

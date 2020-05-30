@@ -10,11 +10,13 @@ export class EventsComponent implements OnInit {
   // @Input() id: number;
   events: Events[];
 
-  // getEventById() {
+  // getEventById(id: number) {
   //   return this.eventsService.getEventById(this.id);
   // }
 
-  constructor(private eventsService: EventsService) {}
+  constructor(private eventsService: EventsService,
+
+    ) {}
 
   ngOnInit() {
       this.eventsService.getEvents()

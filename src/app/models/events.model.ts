@@ -1,6 +1,8 @@
+import { Time } from '@angular/common';
+
 export interface Events {
-  id: number;
-  eventHost: string;
+  id: string;
+  hostName: string;
   eventName: string;
   eventInfo: string;
   eventAddress: string;
