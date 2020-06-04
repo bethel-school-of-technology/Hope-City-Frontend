@@ -30,6 +30,7 @@
     "jquery": "^3.5.1",
     "json-watch": "^1.0.2",
     "nan": "^2.14.1",
+    "ngx-cookie-service": "^3.0.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.13.0",
     "zone.js": "~0.10.2"

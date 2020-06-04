@@ -7,6 +7,7 @@ import { Auth } from "../models/auth.model";
 import { Image } from "../models/image.model";
 import { Router } from "@angular/router";
 import { map, share } from "rxjs/operators";
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -19,7 +20,7 @@ export class AuthService {
   token: string;
   tokenTimer: NodeJS.Timer;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private daSnickerdoodle: CookieService) {}
   // can add in token when backend is ready to
   getToken() {
     return this.token;
@@ -96,21 +97,21 @@ export class AuthService {
   }
   //setting local storage
   addAuthData(token: string, userId: string, expirationTime: Date) {
-    // localStorage.setItem('token', token);
-    localStorage.setItem("userId", userId);
-    localStorage.setItem("expiration", expirationTime.toISOString());
+    // this.daSnickerdoodle.set('token', token);
+    this.daSnickerdoodle.set("userId", userId);
+    this.daSnickerdoodle.set("expiration", expirationTime.toISOString());
   }
   //clearing local storage
   clearAuthData() {
-    // localStorage.removeItem('token');
-    localStorage.removeItem("userId");
-    localStorage.removeItem("expiration");
+    // this.daSnickerdoodle.delete('token');
+    this.daSnickerdoodle.delete("userId");
+    this.daSnickerdoodle.delete("expiration");
   }
   //pulling items from local storage
   getAuthData() {
-    // const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("userId");
-    const expirationTime = localStorage.getItem("expiration");
+    // const token = daSnickerdoodle.get("token");
+    const userId = this.daSnickerdoodle.get("userId");
+    const expirationTime = this.daSnickerdoodle.get("expiration");
     if (
       // !token ||
       !expirationTime

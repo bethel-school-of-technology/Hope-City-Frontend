@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 // MDBBootstrap
 import {
@@ -69,6 +70,7 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     BrowserAnimationsModule
   ],
   providers: [
+    CookieService
     // fakeBackendProvider
     // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
