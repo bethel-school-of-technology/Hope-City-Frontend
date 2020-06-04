@@ -11,10 +11,12 @@ import { map } from "rxjs/operators";
   providedIn: "root",
 })
 export class EventsService {
-  events: Events[] = [];
+  private events: Events[] = [];
+  private eventsUpdated = new Subject<Events[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  // This is currently getting all the events fine but I need to change it so that the page updates after deleting an event
   getEvents(): Observable<Events[]> {
    return this.http
       .get<Events[]>(`${environment.apiUrlFull}/events/getall`)
@@ -29,6 +31,36 @@ export class EventsService {
       })
       );
     }
+
+    // Here, I was working up getting the events differently so that the page can reload after an event is deleted.
+  // getEvents() {
+  //   this.http
+  //      .get<{ event: any}>(
+  //        `${environment.apiUrlFull}/events/getall`
+  //        )
+  //    .pipe(map((data) => {
+  //           return data.event.map(events => {
+  //             console.log("line27", );
+  //          return {
+  //            eventName: events.eventName,
+  //            hostName: events.hostName,
+  //            eventInfo: events.eventInfo,
+  //            eventAddress: events.eventAddress,
+  //            eventCity: events.eventCity,
+  //            eventState: events.eventState,
+  //            eventZip: events.eventZip,
+  //            eventStartTime: events.eventStartTime,
+  //            eventEndTime: events.eventEndTime,
+  //            eventDay: events.eventDay
+  //           };
+  //         });
+  //       }))
+  //       .subscribe(transformedPosts => {
+  //         this.events = transformedPosts;
+  //         this.eventsUpdated.next([...this.events]);
+  //       });
+  //       console.log("Returning Data", );
+  //   }
 
 // ---------------------------------------------------------------------------------------
 
@@ -59,10 +91,96 @@ export class EventsService {
 
 // ---------------------------------------------------------------------------------------
 
-    // Post NEW events to the database. It will also post editing events at the moment...
-    createEvent(events: Events[]) {
-    return this.http.post(`${environment.apiUrlFull}/events/create`, events);
+    getEventUpdateListener() {
+      return this.eventsUpdated.asObservable();
+    }
+
+// ---------------------------------------------------------------------------------------
+
+    // Post NEW events to the database. This IS WORKING. It will also post editing events at the moment...
+    // I created a new createEvent() below that now works to add a new event and does not interfere with editing an event.
+  //   createEvent(events: Events[]) {
+  //   return this.http.post(`${environment.apiUrlFull}/events/create`, events);
+  // }
+
+  // This is the newest createEvent() method that is now working as of June 4th.
+  createEvent(
+    eventName: string,
+    hostName: string,
+    eventInfo: string,
+    eventAddress: string,
+    eventCity: string,
+    eventState: string,
+    eventZip: number,
+    eventStartTime: string,
+    eventEndTime: string,
+    eventDay: Date
+  ) {
+    const event: Events = {
+      id: null,
+      eventName: eventName,
+      hostName: hostName,
+      eventInfo: eventInfo,
+      eventAddress: eventAddress,
+      eventCity: eventCity,
+      eventState: eventState,
+      eventZip: eventZip,
+      eventStartTime: eventStartTime,
+      eventEndTime: eventEndTime,
+      eventDay: eventDay
+    }
+    return this.http.post<{ eventId: string }>(`${environment.apiUrlFull}/events/create`, event)
+    .subscribe(respData => {
+      const id = respData.eventId;
+      event.id = id;
+      this.events.push(event);
+      this.eventsUpdated.next([...this.events]);
+    })
   }
+
+// ---------------------------------------------------------------------------------------
+
+// UpdateEvent working on June 4th
+  updateEvent(
+    id: string,
+    eventName: string,
+    hostName: string,
+    eventInfo: string,
+    eventAddress: string,
+    eventCity: string,
+    eventState: string,
+    eventZip: number,
+    eventStartTime: string,
+    eventEndTime: string,
+    eventDay: Date
+    ) {
+      const event: Events = {
+        id: id,
+        eventName: eventName,
+        hostName: hostName,
+        eventInfo: eventInfo,
+        eventAddress: eventAddress,
+        eventCity: eventCity,
+        eventState: eventState,
+        eventZip: eventZip,
+        eventStartTime: eventStartTime,
+        eventEndTime: eventEndTime,
+        eventDay: eventDay
+      };
+      this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
+      .subscribe(response => console.log(response));
+    }
+
+// ---------------------------------------------------------------------------------------
+
+    deleteEvent(id: string) {
+      this.http.delete(`${environment.apiUrlFull}/events/delete/` + id)
+      .subscribe(() => {
+        const updatedEvents = this.events.filter(event => event.id !== id);
+        this.events = updatedEvents;
+        this.eventsUpdated.next([...this.events]);
+      })
+    }
 
 // ---------------------------------------------------------------------------------------
 

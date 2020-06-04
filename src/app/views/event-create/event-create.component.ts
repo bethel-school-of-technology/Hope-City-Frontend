@@ -3,7 +3,6 @@ import { EventsService } from '../../services/events.service'
 import { Events } from '../../models/events.model';
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 import { NgForm, FormGroup, FormControl } from "@angular/forms";
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-event-create',
@@ -91,8 +90,8 @@ export class EventCreateComponent implements OnInit {
             'eventEndTime': this.event.eventEndTime,
             'eventDay': this.event.eventDay
           })
+          console.log("We are editing an event", paramMap, this.eventId)
         })
-        console.log("We are editing an event", paramMap, this.eventId)
       } else {
         this.mode = 'new-event'
         this.eventId = null;
@@ -105,19 +104,60 @@ export class EventCreateComponent implements OnInit {
 // ---------------------------------------------------------------------------------------
 
 // ↓ This one is currently working so I will keep it for now. I'm working on the ones below as well
-  onCreateEvent(form: NgForm) {
-    console.log("this form is invalid", form.value)
+  // onCreateEvent(form: NgForm) {
+  //   console.log("this form is invalid", form.value)
+  //   if (form.invalid) {
+  //     return;
+  //   }
+  //   this.eventsService
+  //     .createEvent(form.value)
+  //     .subscribe(() => {
+  //       console.log("This form was posted to the database!", form.value)
+  //     this.router.navigate(['/events']);
+  //   }, error => {
+  //       console.log(error);
+  //   });
+  // }
+
+// ↓ Sean testing June 4th
+  onSaveEvent(form: NgForm) {
     if (form.invalid) {
+      console.log("this form is invalid", form.value)
       return;
     }
-    this.eventsService
-      .createEvent(form.value)
-      .subscribe(() => {
-        console.log("This form was posted to the database!", form.value)
-      this.router.navigate(['/events']);
-    }, error => {
-        console.log(error);
-    });
+    if (this.mode === 'new-event') {
+      this.eventsService.createEvent(
+        form.value.eventName,
+        form.value.hostName,
+        form.value.eventInfo,
+        form.value.eventAddress,
+        form.value.eventCity,
+        form.value.eventState,
+        form.value.eventZip,
+        form.value.eventStartTime,
+        form.value.eventEndTime,
+        form.value.eventDay
+        )
+        // for some reason when I save a new event it shows both console logs as if we are also editing the event...
+        // I need to have a look at this and see what's going on.
+        this.router.navigate(['/events']);
+        console.log("This is a new event and was posted to the database!", form.value)
+    } else {
+      this.eventsService.updateEvent(
+        this.eventId,
+        form.value.eventName,
+        form.value.hostName,
+        form.value.eventInfo,
+        form.value.eventAddress,
+        form.value.eventCity,
+        form.value.eventState,
+        form.value.eventZip,
+        form.value.eventStartTime,
+        form.value.eventEndTime,
+        form.value.eventDay)
+    }
+    this.router.navigate(['/events']);
+    console.log("This form was edited and posted to the database!", form.value)
   }
 
 // ---------------------------------------------------------------------------------------

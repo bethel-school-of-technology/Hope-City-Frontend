@@ -42,8 +42,8 @@
                   <p> {{event.eventInfo}} </p>
                 </div> -->
 
-                <button
-                class=""
+                <a
+                class="stretched-link"
                 type="button"
                 mdbBtn
                 color="primary"
@@ -53,7 +53,7 @@
                 (click)="frame.show()"
                 mdbWavesEffect>
                 More Info
-              </button>
+              </a>
 
               <button
               type="button"
@@ -63,9 +63,6 @@
               mdbWavesEffect>
               Attend
             </button>
-
-            <!-- This is the edit event button -->
-            <a class="btn" [routerLink]="['/edit', event.id]">Edit Event </a>
 
           <!-- Modal Window -->
           <div
@@ -131,6 +128,29 @@
                             class="waves-light"
                             mdbWavesEffect>
                             Attend
+                          </button>
+
+                          <!-- This is the edit event button -->
+                          <button
+                            class="btn"
+                            type="button"
+                            mdbBtn
+                            color="warning"
+                            class="waves-light"
+                            mdbWavesEffect
+                            [routerLink]="['/edit', event.id]">
+                            Edit
+                          </button>
+
+                            <!-- This is the delete event button -->
+                          <button
+                            type="button"
+                            mdbBtn
+                            color="danger"
+                            class="waves-light"
+                            mdbWavesEffect
+                            (click)="onDelete(event.id)">
+                            Delete
                           </button>
 
                         </div>
