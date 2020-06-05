@@ -1,4 +1,6 @@
+import { Url } from 'url';
+
 export interface Image {
   name: string;
-  imagePath: string;
+  imagePath: Url;
 }

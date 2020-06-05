@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
   }
 
   theChosenOne(event) {
-    console.log(event)
+    console.log(event, "line34")
     this.authService.selectedFile = <File>event.target.files[0];
     // const file = (event.target as HTMLInputElement).files[0];
     // this.form.patchValue({image: file});
@@ -49,6 +49,8 @@ export class ProfileComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.authService.addImage()
+    this.authService.addImage().subscribe(cheese => {
+      console.log(cheese, "line 53")
+    });
   }
 }

@@ -128,11 +128,14 @@ export class AuthService {
   addImage() {
     let imagine = new FormData();
     imagine.append("file", this.selectedFile, this.selectedFile.name);
-    this.http
+    return this.http
       .post<{ image: File }>(`${environment.apiUrlFull}/image/upload`, imagine)
-      .subscribe((undo) => {
-        console.log(undo, "line134");
-      });
+      .pipe(map(
+        poo => {
+          console.log(poo, "line 135")
+        }
+      ));
+
   }
 
   getImage(name: string) {
