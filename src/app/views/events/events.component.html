@@ -29,9 +29,9 @@
 
             <!-- Grid column -->
             <div class="col-md-7 text-md-left ml-3 mt-3">
-              <h3 class="h3 mb-4">{{ event.eventName }}</h3>
-              <h4 class="h4 mb-4">Hosted By: {{ event.hostName }}</h4>
-              <h4 class="h4 mb-4">{{ event.eventDay }}</h4>
+              <h3 class="h3 mb-4">{{ event?.eventName }}</h3>
+              <h4 class="h4 mb-4">Hosted By: {{ event?.hostName }}</h4>
+              <h4 class="h4 mb-4">{{ event?.eventDay }}</h4>
 
               <!-- ↓ Toggle button if we want to use it somewhere ↓ -->
                 <!-- <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
@@ -45,6 +45,8 @@
                 <a
                 class="stretched-link"
                 type="button"
+                gradient="peach"
+                rounded="true"
                 mdbBtn
                 color="primary"
                 class="waves-light"
@@ -57,6 +59,8 @@
 
               <button
               type="button"
+              gradient="blue"
+              rounded="true"
               mdbBtn
               color="info"
               class="waves-light"
@@ -83,7 +87,7 @@
                   <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <p class="heading">{{ event.eventName }} | Hosted By {{ event.hostName }} </p>
+                      <p class="heading">{{ event?.eventName }} | Hosted By {{ event?.hostName }} </p>
 
                       <button
                         type="button"
@@ -114,15 +118,17 @@
                           <hr>
                           <h5>{{ event.eventInfo }}</h5>
                           <br>
-                          <h5><strong>Hosted By:</strong> {{ event.hostName }}</h5>
-                          <h5><strong>Location:</strong> {{ event.eventAddress }}</h5>
-                          <h5> {{ event.eventCity }}, {{ event.eventState }} {{event.eventZip}}</h5>
-                          <h5><strong>Time: </strong>{{event.eventStartTime}} - {{event.eventEndTime}}</h5>
-                          <h5><strong>Day:</strong> {{ event.eventDay }}</h5>
+                          <h5><strong>Hosted By:</strong> {{ event?.hostName }}</h5>
+                          <h5><strong>Location:</strong> {{ event?.eventAddress }}</h5>
+                          <h5> {{ event?.eventCity }}, {{ event?.eventState }} {{event?.eventZip}}</h5>
+                          <h5><strong>Time: </strong>{{event?.eventStartTime}} - {{event?.eventEndTime}}</h5>
+                          <h5><strong>Day:</strong> {{ event?.eventDay }}</h5>
 
                           <!-- This is the button we will use if a person decides to attend an event -->
                           <button
                             type="button"
+                            outline="true"
+                            rounded="true"
                             mdbBtn
                             color="info"
                             class="waves-light"
@@ -134,6 +140,8 @@
                           <button
                             class="btn"
                             type="button"
+                            outline="true"
+                            rounded="true"
                             mdbBtn
                             color="warning"
                             class="waves-light"
@@ -145,6 +153,8 @@
                             <!-- This is the delete event button -->
                           <button
                             type="button"
+                            outline="true"
+                            rounded="true"
                             mdbBtn
                             color="danger"
                             class="waves-light"
