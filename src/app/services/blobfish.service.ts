@@ -14,7 +14,7 @@ export class BlobfishService {
   unpressurizedBlobFish(name: string):any {
     return this.http.get<any>(`${environment.apiUrlFull}/image/get/${name}`)
       .pipe(map(blob => {
-        console.log(blob, "line17");
+        console.log(blob, "blobserviceline17");
         return {
           name: name,
           imagePath: window.URL.createObjectURL(blob.picByte)

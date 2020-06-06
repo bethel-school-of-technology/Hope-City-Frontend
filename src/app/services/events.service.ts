@@ -23,10 +23,10 @@ export class EventsService {
     .pipe(
       map((data) => {
         data = data.map((reee) => {
-          console.log("line27", );
+          console.log("line27eventsService", reee);
           return reee;
         });
-        console.log("line27", data);
+        console.log("line27eventsService", data);
         return data;
       })
       );
@@ -168,7 +168,7 @@ export class EventsService {
         eventDay: eventDay
       };
       this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
-      .subscribe(response => console.log(response));
+      .subscribe(response => console.log(response, "line171 eventsService"));
     }
 
 // ---------------------------------------------------------------------------------------
