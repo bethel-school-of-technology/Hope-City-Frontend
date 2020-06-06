@@ -70,7 +70,7 @@ export class AuthService {
     const now = new Date();
     const expires = info.expirationTime.getTime() - now.getTime();
     if (expires > 0) {
-      console.log(expires);
+      console.log(expires, "line73authService");
       // this.token = info.token;
       this.authorized = true;
       this.userId = info.userId;
@@ -93,7 +93,7 @@ export class AuthService {
     this.tokenTimer = setTimeout(() => {
       this.logout();
     }, timer * 1000);
-    console.log("Timer " + timer);
+    console.log("Timer " + timer, "line96authservice");
   }
   //setting local storage
   addAuthData(token: string, userId: string, expirationTime: Date) {
@@ -128,11 +128,14 @@ export class AuthService {
   addImage() {
     let imagine = new FormData();
     imagine.append("file", this.selectedFile, this.selectedFile.name);
-    this.http
+    return this.http
       .post<{ image: File }>(`${environment.apiUrlFull}/image/upload`, imagine)
-      .subscribe((undo) => {
-        console.log(undo, "line134");
-      });
+      .pipe(map(
+        poo => {
+          console.log(poo, "line 135authservice")
+        }
+      ));
+
   }
 
   getImage(name: string) {
