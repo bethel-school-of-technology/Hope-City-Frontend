@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
     if (form.value.password === form.value.passwordMatch) {
       console.log("line27", form);
       if (form.invalid) {
+        alert ("Please make sure all of your information is correct and that your passwords match!")
         return;
       }
       this.authService.userSignUp(form.value).subscribe(
@@ -36,7 +37,7 @@ export class SignupComponent implements OnInit {
         }
       );
     } else {
-      alert ("The form your have entered is not correct. Please make sure your passwords match.")
+      alert ("The form your have entered is not correct. Please make sure all of your information is correct and that your passwords match!")
       console.log("err wrong, line35");
     }
   }
