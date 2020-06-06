@@ -122,6 +122,7 @@ export class EventCreateComponent implements OnInit {
 // ↓ Sean testing June 4th
   onSaveEvent(form: NgForm) {
     if (form.invalid) {
+      alert ("The form you have entered is invalid! Please review your information and try again.")
       console.log("this form is invalid", form.value)
       return;
     }

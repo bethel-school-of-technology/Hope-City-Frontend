@@ -173,13 +173,14 @@ export class EventsService {
 
 // ---------------------------------------------------------------------------------------
 
-    deleteEvent(id: string) {
-      this.http.delete(`${environment.apiUrlFull}/events/delete/` + id)
-      .subscribe(() => {
-        const updatedEvents = this.events.filter(event => event.id !== id);
-        this.events = updatedEvents;
-        this.eventsUpdated.next([...this.events]);
-      })
+    deleteEvent(id: string): Observable<Events> {
+      return this.http.delete<Events>(`${environment.apiUrlFull}/events/delete/` + id)
+      // .subscribe(() => {
+      //   console.log(`Deleted event by id!`)
+      //   const updatedEvents = this.events.filter(event => event.id !== eventId);
+      //   this.events = updatedEvents;
+      //   this.eventsUpdated.next([...this.events]);
+      // })
     }
 
 // ---------------------------------------------------------------------------------------

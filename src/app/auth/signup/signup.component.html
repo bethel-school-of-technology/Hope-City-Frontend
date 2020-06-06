@@ -37,7 +37,7 @@
 
               <!-- Second Step -->
               <li class="">
-                <a href="#">
+                <a routerLink="/events">
                   <span class="circle">2</span>
                   <span class="label">Find Local Missions</span>
                 </a>
@@ -45,7 +45,7 @@
 
               <!-- Third Step -->
               <li class="">
-                <a href="#">
+                <a routerLink="/events">
                   <span class="circle">3</span>
                   <span class="label">Change your City</span>
                 </a>
@@ -71,7 +71,7 @@
             </div>
             <div class="col">
               <div class="md-form mt-0">
-                <input mdbInput type="text" name="lastName" class="form-control" pattern="[A-Za-z_]+" placeholder="Last Name" ngModel
+                <input mdbInput mdbValidate type="text" name="lastName" class="form-control" pattern="[A-Za-z_]+" placeholder="Last Name" ngModel
                   #lastNameInput="ngModel" required>
                   <mdb-error *ngIf="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)">Not a name
                   </mdb-error>
@@ -83,7 +83,7 @@
           <div class="row">
             <div class="col">
               <div class="md-form mt-0">
-                <input mdbInput type="text" name="city" class="form-control" placeholder="City" ngModel
+                <input mdbInput mdbValidate type="text" name="city" class="form-control" pattern="^[a-zA-Z0-9 ]*$" placeholder="City" ngModel
                   #cityInput="ngModel" required>
                   <mdb-error *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)">Not a city
                   </mdb-error>
@@ -92,18 +92,18 @@
 
             <div class="col">
               <div class="md-form mt-0">
-                <input mdbInput type="text" name="state" class="form-control" placeholder="State" ngModel
+                <input mdbInput mdbValidate type="text" name="state" class="form-control" pattern="[A-Za-z]{2}" placeholder="State" ngModel
                   #stateInput="ngModel" required>
-                  <mdb-error *ngIf="stateInput.invalid && (stateInput.dirty || stateInput.touched)">Not a state
+                  <mdb-error *ngIf="stateInput.invalid && (stateInput.dirty || stateInput.touched)">Please enter 2 letters for your state
                   </mdb-error>
               </div>
             </div>
 
             <div class="col">
               <div class="md-form mt-0">
-                <input mdbInput type="text" name="zip" class="form-control" pattern="[0-9]{5}" placeholder="Zip" ngModel
+                <input mdbInput mdbValidate type="text" name="zip" class="form-control" pattern="[0-9]{5}" placeholder="Zip" ngModel
                   #zipInput="ngModel" required>
-                  <mdb-error *ngIf="zipInput.invalid && (zipInput.dirty || zipInput.touched)">Not a zip
+                  <mdb-error *ngIf="zipInput.invalid && (zipInput.dirty || zipInput.touched)">Please enter a valid 5 digit zip code
                   </mdb-error>
               </div>
             </div>
@@ -113,23 +113,27 @@
           <div class="row">
             <div class="col">
               <div class="md-form mt-0">
-                <input mdbInput type="email" name="email" class="form-control" placeholder="Email" ngModel
+                <input mdbInput mdbValidate type="email" name="email" class="form-control" pattern="^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$" placeholder="Email" ngModel
                   #emailInput="ngModel" required email>
-                <mdb-error *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">Not an email address
-                </mdb-error>
+                  <mdb-error *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)">Please enter a valid email address
+                  </mdb-error>
               </div>
             </div>
 
             <div class="col">
               <div class="md-form mt-0">
-                <input mdbInput type="password" name="password" class="form-control" placeholder="Password" ngModel
+                <input mdbInput mdbValidate type="password" name="password" class="form-control" pattern="(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z]))^.{8,}$" placeholder="Password" ngModel
                   #passwordInput="ngModel" required>
+                  <mdb-error *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">Please use one uppercase letter, one number, and a min of 8 characters
+                  </mdb-error>
               </div>
             </div>
             <div class="col">
               <div class="md-form mt-0">
-                <input mdbInput type="password" name="passwordMatch" class="form-control" placeholder="Password" ngModel
+                <input mdbInput mdbValidate type="password" name="passwordMatch" class="form-control" pattern="(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z]))^.{8,}$" placeholder="Password" ngModel
                   #passwordInput="ngModel" required>
+                  <mdb-error *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">Please use one uppercase letter, one number, and a min of 8 characters
+                  </mdb-error>
               </div>
             </div>
           </div>

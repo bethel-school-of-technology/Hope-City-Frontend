@@ -36,6 +36,7 @@ export class SignupComponent implements OnInit {
         }
       );
     } else {
+      alert ("The form your have entered is not correct. Please make sure your passwords match.")
       console.log("err wrong, line35");
     }
   }
