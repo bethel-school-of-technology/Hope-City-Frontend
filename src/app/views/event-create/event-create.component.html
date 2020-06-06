@@ -17,6 +17,8 @@
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="^[a-zA-Z0-9 ]*$"
                       type="text"
                       name="eventName"
                       class="form-control"
@@ -24,13 +26,21 @@
                       [(ngModel)]="inputEventName"
                       [ngModel]="event?.eventName"
                       #eventNameInput="ngModel"
+                      required
                     />
+                    <mdb-error *ngIf="eventNameInput.invalid &&
+                    (eventNameInput.dirty ||
+                    eventNameInput.touched)">
+                    No special characters are allowed
+                    </mdb-error>
                   </div>
                 </div>
                 <div class="col">
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="^[a-zA-Z0-9 ]*$"
                       type="text"
                       name="hostName"
                       class="form-control"
@@ -39,6 +49,11 @@
                       [ngModel]="event?.hostName"
                       #hostNameInput="ngModel"
                     />
+                    <mdb-error *ngIf="hostNameInput.invalid &&
+                    (hostNameInput.dirty ||
+                    hostNameInput.touched)">
+                    No special characters are allowed
+                    </mdb-error>
                   </div>
                 </div>
               </div>
@@ -49,6 +64,8 @@
                   <div class="md-form mt-0">
                     <textarea
                       mdbInput
+                      mdbValidate
+                      pattern="^[\s\S]{50,500}$"
                       type="text"
                       name="eventInfo"
                       class="form-control"
@@ -57,6 +74,11 @@
                       [ngModel]="event?.eventInfo"
                       #eventInfoInput="ngModel"
                     ></textarea>
+                    <mdb-error *ngIf="eventInfoInput.invalid &&
+                    (eventInfoInput.dirty ||
+                    eventInfoInput.touched)">
+                    Please give your event a description between 50 and 500 characters.
+                    </mdb-error>
                   </div>
                 </div>
               </div>
@@ -66,6 +88,8 @@
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="^[a-zA-Z0-9 ]*$"
                       type="text"
                       name="eventAddress"
                       class="form-control"
@@ -74,6 +98,11 @@
                       [ngModel]="event?.eventAddress"
                       #eventAddressInput="ngModel"
                     />
+                    <mdb-error *ngIf="eventCityInput.invalid &&
+                    (eventCityInput.dirty ||
+                    eventCityInput.touched)">
+                    Please enter a valid address
+                    </mdb-error>
                   </div>
                 </div>
               </div>
@@ -84,6 +113,8 @@
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="^[a-zA-Z0-9 ]*$"
                       type="text"
                       name="eventCity"
                       class="form-control"
@@ -92,6 +123,11 @@
                       [ngModel]="event?.eventCity"
                       #eventCityInput="ngModel"
                     />
+                    <mdb-error *ngIf="eventCityInput.invalid &&
+                    (eventCityInput.dirty ||
+                    eventCityInput.touched)">
+                    Please enter a valid city
+                    </mdb-error>
                   </div>
                 </div>
 
@@ -99,6 +135,8 @@
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="^[A-Za-z]{2}"
                       type="text"
                       name="eventState"
                       class="form-control"
@@ -107,6 +145,11 @@
                       [ngModel]="event?.eventState"
                       #eventStateInput="ngModel"
                     />
+                    <mdb-error *ngIf="eventStateInput.invalid &&
+                    (eventStateInput.dirty ||
+                    eventStateInput.touched)">
+                    Please enter 2 letters for your state
+                    </mdb-error>
                   </div>
                 </div>
 
@@ -114,6 +157,8 @@
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="[0-9]{5}"
                       type="text"
                       name="eventZip"
                       class="form-control"
@@ -122,6 +167,11 @@
                       [ngModel]="event?.eventZip"
                       #eventZipInput="ngModel"
                     />
+                    <mdb-error *ngIf="eventZipInput.invalid &&
+                    (eventZipInput.dirty ||
+                    eventZipInput.touched)">
+                    Please enter a valid 5 digit zip code
+                    </mdb-error>
                   </div>
                 </div>
               </div>
@@ -132,6 +182,8 @@
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])*"
                       type="date"
                       name="eventDay"
                       class="form-control"
@@ -141,6 +193,11 @@
                       #eventDayInput="ngModel"
                       required
                     />
+                    <mdb-error *ngIf="eventDayInput.invalid &&
+                    (eventDayInput.dirty ||
+                    eventDayInput.touched)">
+                    Please enter a valid date for your event
+                    </mdb-error>
                   </div>
                 </div>
 
@@ -148,6 +205,8 @@
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="^([0-1][0-9]|[2][0-3]):([0-5][0-9])$"
                       type="time"
                       name="eventStartTime"
                       class="form-control"
@@ -157,12 +216,19 @@
                       #eventStartTimeInput="ngModel"
                       required
                     />
+                    <mdb-error *ngIf="eventStartTimeInput.invalid &&
+                    (eventStartTimeInput.dirty ||
+                    eventStartTimeInput.touched)">
+                    Please enter a valid start time for your event
+                    </mdb-error>
                   </div>
                 </div>
                 <div class="col">
                   <div class="md-form mt-0">
                     <input
                       mdbInput
+                      mdbValidate
+                      pattern="^([0-1][0-9]|[2][0-3]):([0-5][0-9])$"
                       type="time"
                       name="eventEndTime"
                       class="form-control"
@@ -172,6 +238,11 @@
                       #eventEndTimeInput="ngModel"
                       required
                     />
+                    <mdb-error *ngIf="eventEndTimeInput.invalid &&
+                    (eventEndTimeInput.dirty ||
+                    eventEndTimeInput.touched)">
+                    Please enter a valid end time for your event
+                    </mdb-error>
                   </div>
                 </div>
               </div>
