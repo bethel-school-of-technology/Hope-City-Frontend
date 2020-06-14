@@ -14,5 +14,5 @@ export class BlobfishService {
   unpressurizedBlobFish(name: string):Observable<Blob> {
     return this.http.get<Blob>(`${environment.apiUrlFull}/image/get/${encodeURI(name)}`);
   }
-      
+
 }

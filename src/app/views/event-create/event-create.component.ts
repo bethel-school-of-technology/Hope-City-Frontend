@@ -3,6 +3,8 @@ import { EventsService } from '../../services/events.service'
 import { Events } from '../../models/events.model';
 import { ActivatedRoute, Router, ParamMap } from "@angular/router";
 import { NgForm, FormGroup, FormControl } from "@angular/forms";
+import { AuthService } from 'src/app/services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-event-create',
@@ -30,7 +32,9 @@ export class EventCreateComponent implements OnInit {
   constructor(
     public eventsService: EventsService,
     public router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public authService: AuthService,
+    private daSnickerdoodle: CookieService
     ) { }
 
   ngOnInit() {
@@ -57,6 +61,9 @@ export class EventCreateComponent implements OnInit {
       'eventDay': new FormControl(null, {
       }),
     });
+    // const bigCookie: boolean = this.daSnickerdoodle.check("jwt");
+    // if (bigCookie) {
+    //   console.log(bigCookie);
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('eventId')) {
         this.mode = 'edit';
@@ -98,7 +105,9 @@ export class EventCreateComponent implements OnInit {
         console.log("We are creating a new event", this.eventId)
       }
     });
-
+    // } else {
+    //     console.log("no jwt")
+    // }
   }
 
 // ---------------------------------------------------------------------------------------

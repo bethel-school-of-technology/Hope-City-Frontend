@@ -27,11 +27,13 @@ export class LoginComponent implements OnInit {
     console.log(form.value);
     this.authService.userLogin(form.value)
     .subscribe(user => {
-      console.log(user)
-      const token = this.authService.token;
-      this.authService.token = token;
-      // if (token) {
-      //   console.log(token);
+      console.log(user, "login comp line 30")
+      const jwt = user.jwt;
+      console.log(jwt, "login comp line 32")
+      this.authService.jwt = jwt;
+      console.log(jwt, "login comp line 34")
+      if (jwt) {
+        console.log(jwt, "line 36 login comp");
         const expiresIn = 10000;
         this.authService.setTimer(expiresIn);
         this.authService.authorized = true;
@@ -42,13 +44,13 @@ export class LoginComponent implements OnInit {
           now.getTime() + expiresIn * 1000
           );
         this.authService.addAuthData(
-          token,
+          jwt,
           this.authService.userId, expirationTime)
         this.router.navigate(['/']);
         return user;
-      // } 
+      }
     }, error => {
-      console.log(error)
+      console.log(error, "line 51 login comp")
       this.authService.statusListener.next(false);
     });
   }

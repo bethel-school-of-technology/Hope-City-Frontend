@@ -4,7 +4,6 @@ import { Observable, Subject } from "rxjs";
 
 import { environment } from "../../environments/environment";
 import { Auth } from "../models/auth.model";
-import { Image } from "../models/image.model";
 import { Router } from "@angular/router";
 import { map, share } from "rxjs/operators";
 import { CookieService } from 'ngx-cookie-service';
@@ -17,13 +16,13 @@ export class AuthService {
   selectedFile: File = null;
   userId: string;
   statusListener = new Subject<boolean>();
-  token: string;
+  jwt: string;
   tokenTimer: NodeJS.Timer;
 
   constructor(private http: HttpClient, private router: Router, private daSnickerdoodle: CookieService) {}
   // can add in token when backend is ready to
   getToken() {
-    return this.token;
+    return this.jwt;
   }
 
   getAuth() {
@@ -46,7 +45,7 @@ export class AuthService {
     this.authSubject.next(this.auth);
   }
   // /signup for mockdb /user/register for backend
-  userSignUp(auth: any) {
+  userSignUp(auth: Auth) {
     return this.http.post(`${environment.apiUrlFull}/user`, auth);
   }
   // /login for mockdb /user/login for backend
@@ -71,7 +70,7 @@ export class AuthService {
     const expires = info.expirationTime.getTime() - now.getTime();
     if (expires > 0) {
       console.log(expires, "line73authService");
-      // this.token = info.token;
+      this.jwt = info.jwt;
       this.authorized = true;
       this.userId = info.userId;
       this.setTimer(expires / 1000);
@@ -81,7 +80,7 @@ export class AuthService {
 
   logout() {
     this.userId = null;
-    // this.token = null;
+    this.jwt = null;
     this.authorized = false;
     this.statusListener.next(false);
     clearTimeout(this.tokenTimer);
@@ -96,30 +95,30 @@ export class AuthService {
     console.log("Timer " + timer, "line96authservice");
   }
   //setting local storage
-  addAuthData(token: string, userId: string, expirationTime: Date) {
-    // this.daSnickerdoodle.set('token', token);
+  addAuthData(jwt: string, userId: string, expirationTime: Date) {
+    this.daSnickerdoodle.set('jwt', jwt);
     this.daSnickerdoodle.set("userId", userId);
     this.daSnickerdoodle.set("expiration", expirationTime.toISOString());
   }
   //clearing local storage
   clearAuthData() {
-    // this.daSnickerdoodle.delete('token');
+    this.daSnickerdoodle.delete('jwt');
     this.daSnickerdoodle.delete("userId");
     this.daSnickerdoodle.delete("expiration");
   }
   //pulling items from local storage
   getAuthData() {
-    // const token = daSnickerdoodle.get("token");
+    const jwt = this.daSnickerdoodle.get("jwt");
     const userId = this.daSnickerdoodle.get("userId");
     const expirationTime = this.daSnickerdoodle.get("expiration");
     if (
-      // !token ||
+      !jwt ||
       !expirationTime
     ) {
       return;
     }
     return {
-      // token: token,
+      jwt: jwt,
       userId: userId,
       expirationTime: new Date(expirationTime),
     };

@@ -70,9 +70,9 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     BrowserAnimationsModule
   ],
   providers: [
-    CookieService
+    CookieService,
+    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     // fakeBackendProvider
-    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
