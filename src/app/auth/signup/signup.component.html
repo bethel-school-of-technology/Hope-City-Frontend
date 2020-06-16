@@ -130,7 +130,7 @@
             </div>
             <div class="col">
               <div class="md-form mt-0">
-                <input mdbInput mdbValidate type="password" name="passwordMatch" class="form-control" pattern="(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z]))^.{8,}$" placeholder="Password" ngModel
+                <input mdbInput mdbValidate type="password" name="passwordMatch" class="form-control" pattern="(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z]))^.{8,}$" placeholder="Confirm Password" ngModel
                   #passwordInput="ngModel" required>
                   <mdb-error *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">Please use one uppercase letter, one number, and a min of 8 characters
                   </mdb-error>
