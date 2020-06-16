@@ -46,9 +46,10 @@ export class LoginComponent implements OnInit {
           this.authService.userId, expirationTime)
         this.router.navigate(['/']);
         return user;
-      // } 
+      // }
     }, error => {
       console.log(error)
+      alert ("Sorry, but we were unable to log you in. Please make sure your email and password are correct!")
       this.authService.statusListener.next(false);
     });
   }

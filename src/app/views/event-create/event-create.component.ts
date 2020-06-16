@@ -103,22 +103,6 @@ export class EventCreateComponent implements OnInit {
 
 // ---------------------------------------------------------------------------------------
 
-// ↓ This one is currently working so I will keep it for now. I'm working on the ones below as well
-  // onCreateEvent(form: NgForm) {
-  //   console.log("this form is invalid", form.value)
-  //   if (form.invalid) {
-  //     return;
-  //   }
-  //   this.eventsService
-  //     .createEvent(form.value)
-  //     .subscribe(() => {
-  //       console.log("This form was posted to the database!", form.value)
-  //     this.router.navigate(['/events']);
-  //   }, error => {
-  //       console.log(error);
-  //   });
-  // }
-
 // ↓ Sean testing June 4th
   onSaveEvent(form: NgForm) {
     if (form.invalid) {
@@ -160,78 +144,5 @@ export class EventCreateComponent implements OnInit {
     this.router.navigate(['/events']);
     console.log("This form was edited and posted to the database!", form.value)
   }
-
-// ---------------------------------------------------------------------------------------
-
-  // onCreateEvent(form: NgForm) {
-  //   console.log(form.value)
-  //   if (form.invalid) {
-  //     return;
-  //   }
-  //   if(this.mode === 'new-event') {
-  //     this.eventsService
-  //       .createEvent(form.value)
-  //       .subscribe(() => {
-  //         console.log(form.value)
-  //       this.router.navigate(['/events']);
-  //     }, error => {
-  //         console.log(error);
-  //     });
-  //   }
-  //   else {
-  //     this.eventsService
-  //     .editEvent(form.value)
-  //     .subscribe(() => {
-  //       console.log(form.value)
-  //     this.router.navigate(['/events']);
-  //   }, error => {
-  //       console.log(error);
-  //   });
-  //   }
-  //   // this is throwing an error for some reason. I think I need to define what the reset does.
-  //   this.form.reset()
-  // }
-
-// ---------------------------------------------------------------------------------------
-
-  // ↓ The newest onCreateEvent route that will most likely be the one that will work.
-
-  // onCreateEvent() {
-  //   if (this.form.invalid) {
-  //     console.log("There was an error filling out the form", this.form)
-  //     return;
-  //   }
-  //   if(this.mode === 'new-event') {
-  //     this.eventsService.createEvent(
-  //       this.form.value.eventName,
-  //       this.form.value.hostName,
-  //       this.form.value.eventInfo,
-  //       this.form.value.eventAddress,
-  //       this.form.value.eventCity,
-  //       this.form.value.eventState,
-  //       this.form.value.eventZip,
-  //       this.form.value.eventDay,
-  //       this.form.value.eventStartTime,
-  //       this.form.value.eventEndTime
-  //       );
-  //       console.log("We created a new form!", this.form)
-  //   } else {
-  //     this.eventsService.editEvent(
-  //       this.eventId,
-  //       this.form.value.eventName,
-  //       this.form.value.hostName,
-  //       this.form.value.eventInfo,
-  //       this.form.value.eventAddress,
-  //       this.form.value.eventCity,
-  //       this.form.value.eventState,
-  //       this.form.value.eventZip,
-  //       this.form.value.eventDay,
-  //       this.form.value.eventStartTime,
-  //       this.form.value.eventEndTime
-  //     );
-  //     console.log("We edited the form!", this.form)
-  //   }
-  //    this.form.reset()
-  // }
 
 }
