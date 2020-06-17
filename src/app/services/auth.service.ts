@@ -40,9 +40,9 @@ export class AuthService {
     }
   }
 
-  getuserId() {
-    return this.userId;
-  }
+  // getuserId() {
+  //   return this.userId;
+  // }
 
   // doing some testing so I duplicated the above method so I can change it a little.
   // using this for attending() in the events.component.ts. Right now it's getting the event id, not the user id

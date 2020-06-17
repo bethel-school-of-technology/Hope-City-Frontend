@@ -149,8 +149,8 @@ export class EventCreateComponent implements OnInit {
         form.value.eventEndTime,
         form.value.eventDay)
         this.router.navigate(['/events']);
-        console.log("This form was edited and posted to the database!", form.value)
-    }
+      }
+      console.log("This form was edited and posted to the database!", form.value)
 
     //setTimeout(function(){alert("you've edited your event!")},2000)
     //this.router.navigate(['/events']);

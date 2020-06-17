@@ -108,7 +108,7 @@ export class EventsService {
       this.events.push(event);
       this.eventsUpdated.next([...this.events]);
     }))
-      console.log("line 110 create event", respData)
+      // console.log("line 110 create event", respData)
   }
 
 // ---------------------------------------------------------------------------------------
