@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
+import { Auth } from 'src/app/models/auth.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,14 +9,19 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  auth:Auth;
   userAuthorized = false;
   private authListenerSubs: Subscription;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.userAuthorized = this.authService.getAuth();
+    this.authService.getUser().subscribe((u) => {
+      this.auth = u;
+      this.userAuthorized = u != null;
+    });
+    this.authService.refetchUser();
+
     this.authListenerSubs = this.authService
     .getStatusListener()
     .subscribe((isAuthorized => {

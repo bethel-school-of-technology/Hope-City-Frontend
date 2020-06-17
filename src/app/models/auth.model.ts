@@ -1,5 +1,6 @@
 export interface Auth {
   id: string;
+  jwt: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -7,4 +8,5 @@ export interface Auth {
   state: string;
   zip: number;
   password: string;
+  userId: string;
 }

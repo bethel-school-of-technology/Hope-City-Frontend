@@ -102,14 +102,13 @@ export class EventsService {
       eventDay: eventDay
     }
     return this.http.post<{ eventId: string }>(`${environment.apiUrlFull}/events/create`, event)
-    // return this.http.post<{ eventId: string }>(`${environment.apiUrlDev}/events`, event)
-    .subscribe(respData => {
+    .pipe(map(respData => {//should be pipe map
       const id = respData.eventId;
       event.id = id;
       this.events.push(event);
       this.eventsUpdated.next([...this.events]);
+    }))
       console.log("line 110 create event", respData)
-    })
   }
 
 // ---------------------------------------------------------------------------------------
@@ -180,8 +179,8 @@ export class EventsService {
         eventDay: eventDay
       };
       this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
-      // this.http.put(`${environment.apiUrlDev}/events/` + id, event)
-      .subscribe(response => console.log(response, "line171 eventsService"));
+      .pipe(map(response => console.log(response, "line171 eventsService")));
+
     }
 
 // ---------------------------------------------------------------------------------------

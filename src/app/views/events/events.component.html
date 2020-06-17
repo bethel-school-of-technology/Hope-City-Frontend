@@ -1,8 +1,14 @@
 <!-- jumbotron -->
 <div class="view">
   <h1 class="pageTitle display-4">Church Events and Local Missions</h1>
-  <h3><a class="newEventButton" [routerLink]="['/new-event']" routerLinkActive="router-link-active" >Add a New Event!</a></h3>
-
+  <div *ngIf="userAuthorized">
+    <h3>
+      <button class="btn btn-primary">
+        <a class="newEventButton" [routerLink]="['/new-event']" routerLinkActive="router-link-active">Add a New
+          Event!</a>
+      </button>
+    </h3>
+  </div>
   <div class="pageBody">
     <div class="row">
       <div class="col-4" *ngFor="let event of events">
@@ -12,15 +18,8 @@
             <!-- Grid column -->
             <div class="col-md-4 offset-md-1 mx-3 my-3">
               <!-- Featured image -->
-              <div
-                class="view overlay rounded z-depth-1 waves-light"
-                mdbWavesEffect
-              >
-                <img
-                  src="../../../assets/images/EventPlaceholder.png"
-                  class="img-fluid"
-                  alt="Sample project image"
-                />
+              <div class="view overlay rounded z-depth-1 waves-light" mdbWavesEffect>
+                <img src="../../../assets/images/EventPlaceholder.png" class="img-fluid" alt="Sample project image" />
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
@@ -35,7 +34,7 @@
               <h4 class="h4 mb-4">{{ event?.eventDay | date }}</h4>
 
               <!-- ↓ Toggle button if we want to use it somewhere ↓ -->
-                <!-- <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
+              <!-- <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
                   Toggle collapse
                 </button>
 
@@ -43,21 +42,11 @@
                   <p> {{event.eventInfo}} </p>
                 </div> -->
 
-                <a
-                class="stretched-link"
-                type="button"
-                outline="true"
-                rounded="true"
-                mdbBtn
-                color="default"
-                class="waves-light"
-                data-toggle="modal"
-                data-target="#basicExample"
-                (click)="frame.show()"
+              <a class="stretched-link" type="button" outline="true" rounded="true" mdbBtn color="default"
+                class="waves-light" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
                 mdbWavesEffect>
                 More Info
               </a>
-
               <button
               type="button"
               outline="true"
@@ -81,9 +70,7 @@
                 aria-labelledby="myModalLabel"
                 aria-hidden="true"
                 [config]="{ backdrop: false, ignoreBackdropClick: false }">
-                <div
-                  class="modal-dialog modal-lg modal-top-center modal-notify modal-info"
-                  role="document">
+                <div class="modal-dialog modal-lg modal-top-center modal-notify modal-info" role="document">
 
                   <!-- Modal Content -->
                   <div class="modal-content">
@@ -91,16 +78,9 @@
                     <div class="modal-header">
                       <p class="heading">{{ event?.eventName }} | Hosted By {{ event?.hostName }} </p>
 
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                        (click)="frame.hide()"
-                      >
-                        <span aria-hidden="true" class="white-text"
-                          >&times;</span
-                        >
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        (click)="frame.hide()">
+                        <span aria-hidden="true" class="white-text">&times;</span>
                       </button>
                     </div>
 
@@ -108,11 +88,8 @@
                     <div class="modal-body">
                       <div class="row">
                         <div class="col-5">
-                          <img
-                            src="../../../assets/images/EventPlaceholder.png"
-                            class="img-fluid"
-                            alt="Sample project image"
-                          />
+                          <img src="../../../assets/images/EventPlaceholder.png" class="img-fluid"
+                            alt="Sample project image" />
                         </div>
 
                         <div class="col-7">
@@ -127,43 +104,24 @@
                           <h5><strong>Day:</strong> {{ event?.eventDay | date }}</h5>
 
                           <!-- This is the button we will use if a person decides to attend an event -->
-                          <button
-                            type="button"
-                            outline="true"
-                            rounded="true"
-                            mdbBtn
-                            color="default"
-                            class="waves-light"
+                          <button type="button" outline="true" rounded="true" mdbBtn color="default" class="waves-light"
                             mdbWavesEffect>
                             Attend
                           </button>
 
                           <!-- This is the edit event button -->
-                          <button
-                            class="btn"
-                            type="button"
-                            outline="true"
-                            rounded="true"
-                            mdbBtn
-                            color="warning"
-                            class="waves-light"
-                            mdbWavesEffect
-                            [routerLink]="['/edit', event.id]">
+                          <button class="btn" type="button" outline="true" rounded="true" mdbBtn color="warning"
+                            class="waves-light" mdbWavesEffect [routerLink]="['/edit', event.id]">
                             Edit
                           </button>
 
-                            <!-- This is the delete event button -->
-                          <button
-                            type="button"
-                            outline="true"
-                            rounded="true"
-                            mdbBtn
-                            color="danger"
-                            class="waves-light"
-                            mdbWavesEffect
-                            (click)="onDelete(event.id)">
+                          <!-- This is the delete event button -->
+                          <div *ngIf="userAuthorized">
+                            <button type="button" outline="true" rounded="true" mdbBtn color="danger" class="waves-light"
+                            mdbWavesEffect (click)="onDelete(event.id)">
                             Delete
-                          </button>
+                            </button>
+                          </div>
 
                         </div>
                       </div>
