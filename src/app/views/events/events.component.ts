@@ -60,45 +60,14 @@ export class EventsComponent implements OnInit {
 
 // -------------------------------------------------------------------------------------------------------------
 
-  attendingEvent(id: string, userId: string, eventId: string) {
+  attendingEvent(eventId: number){
+    this.eventsService.attendEvent(eventId)
+      .subscribe(data => console.log("Data we are sending to userEvents. Line 90", data))
+      alert("The event you're attending has an id of " + eventId + ". " + "This has been successfully been posted to the database!")
+
     this.eventsService
-      .getEventById(id)
-      .subscribe(getId => console.log("Getting event by the id. Line 66", getId))
-
-      this.authService
-          .getThisUserId(id)
-          console.log("get userId here", id)
-
-      this.eventsService
-      .attendEvent(
-        id = this.id,
-        // userId = this.user?.id,
-        // eventId = this.event?.id
-        userId = '2',
-        eventId = '3',
-      )
-      .subscribe(data => console.log("Data we are sending to userEvents. Line 80", data))
-
-
-        this.eventsService
-          .getAllUserEvents()
-          .subscribe(getEventData => console.log("Get all userEvents. Line 81", getEventData))
+      .getAllUserEvents()
+      .subscribe(getEventData => console.log("Get all userEvents. Line 81", getEventData))
   }
-
-// -------------------------------------------------------------------------------------------------------------
-
-// ↓ another attendingEvent that I was testing
-
-  // attendingEvent() {
-  //   this.attending = new UserEvents();
-  //     this.attending.id = 'test id';
-  //     this.attending.userId = 'test userId';
-  //     this.attending.eventId = 'test eventId';
-  //     this.eventsService.attendEvent(this.attending).subscribe((res : respData) => {
-  //       this.resultData = res;
-  //       console.log(this.resultData.id);
-  //       this.data = this.resultData.id + '-' + this.resultData.eventId
-  //     })
-  // }
 
 }

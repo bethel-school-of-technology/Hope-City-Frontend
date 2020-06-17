@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { environment } from "../../environments/environment";
 import { Events } from "../models/events.model";
-import { Auth } from "../models/auth.model"
+// import { Auth } from "../models/auth.model"
 import { map } from "rxjs/operators";
 import { UserEvents } from '../models/userEvents.model';
 
@@ -14,10 +14,10 @@ import { UserEvents } from '../models/userEvents.model';
 })
 export class EventsService {
   private events: Events[] = [];
-  private users: Auth[] = [];
-  private userEvents: UserEvents[] = [];
+  // private users: Auth[] = [];
+  // private userEvents: UserEvents;
   private eventsUpdated = new Subject<Events[]>();
-  private userEventUpdated = new Subject<UserEvents[]>();
+  // private userEventUpdated = new Subject<UserEvents[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -114,20 +114,20 @@ export class EventsService {
 
 // ---------------------------------------------------------------------------------------
 
-  attendEvent(id: string, userId: string, eventId: string): Observable<any>{
-    const attending: UserEvents = {
-      id: id,
-      userId: userId,
-      eventId: eventId    }
-    return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, attending)
+  attendEvent(eId:number) {
+    const userEvents : UserEvents = {
+      eventId: eId,
+      userId: 22
+    }
+    // return this.http.post<any>(`${environment.apiUrlFull}/userEvents/`, userEvents)
+    return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, userEvents)
   }
 
-// ---------------------------------------------------------------------------------------
+// ↓ this is more like the method I will have to make once the backend is hooked up
 
-// this is not yet running in the events.component. I used it to test the attending route
-  postEventId(event: Events): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, event)
-  }
+  //attendEvent(eId:number) {
+  //  return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, eId)
+  //}
 
 // ---------------------------------------------------------------------------------------
 

@@ -99,6 +99,8 @@ export class EventCreateComponent implements OnInit {
       }
     });
 
+
+
   }
 
 // ---------------------------------------------------------------------------------------
@@ -125,6 +127,7 @@ export class EventCreateComponent implements OnInit {
         )
         // for some reason when I save a new event it shows both console logs as if we are also editing the event...
         // I need to have a look at this and see what's going on.
+        setTimeout(function(){alert("you've edited your event!")},2000)
         this.router.navigate(['/events']);
         console.log("This is a new event and was posted to the database!", form.value)
     } else {
@@ -141,6 +144,7 @@ export class EventCreateComponent implements OnInit {
         form.value.eventEndTime,
         form.value.eventDay)
     }
+    setTimeout(function(){alert("you've edited your event!")},2000)
     this.router.navigate(['/events']);
     console.log("This form was edited and posted to the database!", form.value)
   }
