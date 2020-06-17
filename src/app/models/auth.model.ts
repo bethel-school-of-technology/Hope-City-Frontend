@@ -8,4 +8,5 @@ export interface Auth {
   state: string;
   zip: number;
   password: string;
+  userId: string;
 }

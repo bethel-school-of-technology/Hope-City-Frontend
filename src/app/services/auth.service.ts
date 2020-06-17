@@ -6,32 +6,40 @@ import { environment } from "../../environments/environment";
 import { Auth } from "../models/auth.model";
 import { Router } from "@angular/router";
 import { map, share } from "rxjs/operators";
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from "ngx-cookie-service";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
   auth: Auth;
   public authSubject: Subject<Auth> = new Subject();
-  authorized = false;
+
   selectedFile: File = null;
-  userId: string;
+
   statusListener = new Subject<boolean>();
-  jwt: string;
+
   tokenTimer: NodeJS.Timer;
 
-  constructor(private http: HttpClient, private router: Router, private daSnickerdoodle: CookieService) {}
-  // can add in token when backend is ready to
-  getToken() {
-    return this.jwt;
+  thisThing = [
+    "userId",
+    "jwt",
+    "firstName",
+    "lastName",
+    "email",
+    "city",
+    "state",
+    "zip",
+  ];
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private daSnickerdoodle: CookieService
+  ) {
+    if (this.auth == null) {
+      this.authUser();
+    }
   }
 
-  getAuth() {
-    return this.authorized;
-  }
-
-  getuserId() {
-    return this.userId;
-  }
   //creating an observable of type subject bool
   getStatusListener() {
     return this.statusListener.asObservable();
@@ -66,26 +74,37 @@ export class AuthService {
     if (!info) {
       return;
     }
+    if (this.auth == null) {
+      var refresh = {};
+      this.thisThing.forEach((these) => {
+        refresh[these] = this.daSnickerdoodle.get(these);
+      });
+      this.auth = <Auth>(refresh);
+    }
     const now = new Date();
     const expires = info.expirationTime.getTime() - now.getTime();
     if (expires > 0) {
       console.log(expires, "line73authService");
-      this.jwt = info.jwt;
-      this.authorized = true;
-      this.userId = info.userId;
+      this.auth.jwt = info.jwt;
+      // this.auth.authorized = true;
+      this.auth.userId = info.userId;
       this.setTimer(expires / 1000);
       this.statusListener.next(true);
+      this.refetchUser();
     }
   }
 
   logout() {
-    this.userId = null;
-    this.jwt = null;
-    this.authorized = false;
+    // this.auth.userId = null;
+    // this.auth.jwt = null;
+    // this.auth.authorized = false;
+    this.auth = null; //this can replace the last 3 lines
+
     this.statusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(["/events"]);
+    this.refetchUser();
   }
 
   public setTimer(timer: number) {
@@ -95,14 +114,15 @@ export class AuthService {
     console.log("Timer " + timer, "line96authservice");
   }
   //setting local storage
-  addAuthData(jwt: string, userId: string, expirationTime: Date) {
-    this.daSnickerdoodle.set('jwt', jwt);
-    this.daSnickerdoodle.set("userId", userId);
+  addAuthData(jwt: string, userId: Auth, expirationTime: Date) {
+    this.thisThing.forEach((these) => {
+      this.daSnickerdoodle.set(these, userId[these]);
+    });
     this.daSnickerdoodle.set("expiration", expirationTime.toISOString());
   }
   //clearing local storage
   clearAuthData() {
-    this.daSnickerdoodle.delete('jwt');
+    this.daSnickerdoodle.delete("jwt");
     this.daSnickerdoodle.delete("userId");
     this.daSnickerdoodle.delete("expiration");
   }
@@ -111,10 +131,7 @@ export class AuthService {
     const jwt = this.daSnickerdoodle.get("jwt");
     const userId = this.daSnickerdoodle.get("userId");
     const expirationTime = this.daSnickerdoodle.get("expiration");
-    if (
-      !jwt ||
-      !expirationTime
-    ) {
+    if (!jwt || !expirationTime) {
       return;
     }
     return {
@@ -129,18 +146,17 @@ export class AuthService {
     imagine.append("file", this.selectedFile, this.selectedFile.name);
     return this.http
       .post<{ image: File }>(`${environment.apiUrlFull}/image/upload`, imagine)
-      .pipe(map(
-        poo => {
-          console.log(poo, "line 135authservice")
-        }
-      ));
-
+      .pipe(
+        map((poo) => {
+          console.log(poo, "line 135authservice");
+        })
+      );
   }
 
   getImage(name: string) {
     return this.http.get<{
       name: string;
       imagePath: string;
-    }>(`${environment.apiUrlFull}/get/` + name)
+    }>(`${environment.apiUrlFull}/get/` + name);
   }
 }

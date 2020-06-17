@@ -34,7 +34,6 @@ export class EventCreateComponent implements OnInit {
     public router: Router,
     public route: ActivatedRoute,
     public authService: AuthService,
-    private daSnickerdoodle: CookieService
     ) { }
 
   ngOnInit() {
@@ -61,9 +60,6 @@ export class EventCreateComponent implements OnInit {
       'eventDay': new FormControl(null, {
       }),
     });
-    // const bigCookie: boolean = this.daSnickerdoodle.check("jwt");
-    // if (bigCookie) {
-    //   console.log(bigCookie);
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('eventId')) {
         this.mode = 'edit';
@@ -105,9 +101,6 @@ export class EventCreateComponent implements OnInit {
         console.log("We are creating a new event", this.eventId)
       }
     });
-    // } else {
-    //     console.log("no jwt")
-    // }
   }
 
 // ---------------------------------------------------------------------------------------
@@ -147,11 +140,13 @@ export class EventCreateComponent implements OnInit {
         form.value.eventStartTime,
         form.value.eventEndTime,
         form.value.eventDay
-        )
+        ).subscribe(e=>{
+          // this.router.navigate(['/events']);
+          console.log("This is a new event and was posted to the database!", form.value)
+        })
         // for some reason when I save a new event it shows both console logs as if we are also editing the event...
         // I need to have a look at this and see what's going on.
-        this.router.navigate(['/events']);
-        console.log("This is a new event and was posted to the database!", form.value)
+
     } else {
       this.eventsService.updateEvent(
         this.eventId,
@@ -166,7 +161,7 @@ export class EventCreateComponent implements OnInit {
         form.value.eventEndTime,
         form.value.eventDay)
     }
-    this.router.navigate(['/events']);
+    // this.router.navigate(['/events']);
     console.log("This form was edited and posted to the database!", form.value)
   }
 

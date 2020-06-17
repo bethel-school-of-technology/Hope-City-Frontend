@@ -55,7 +55,7 @@ export class EventsService {
   //           };
   //         });
   //       }))
-  //       .subscribe(transformedPosts => {
+  //       .pipe(map(transformedPosts => {
   //         this.events = transformedPosts;
   //         this.eventsUpdated.next([...this.events]);
   //       });
@@ -130,12 +130,12 @@ export class EventsService {
       eventDay: eventDay
     }
     return this.http.post<{ eventId: string }>(`${environment.apiUrlFull}/events/create`, event)
-    .subscribe(respData => {
+    .pipe(map(respData => {//should be pipe map
       const id = respData.eventId;
       event.id = id;
       this.events.push(event);
       this.eventsUpdated.next([...this.events]);
-    })
+    }))
   }
 
 // ---------------------------------------------------------------------------------------
@@ -168,14 +168,14 @@ export class EventsService {
         eventDay: eventDay
       };
       this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
-      .subscribe(response => console.log(response, "line171 eventsService"));
+      .pipe(map(response => console.log(response, "line171 eventsService")));
     }
 
 // ---------------------------------------------------------------------------------------
 
     deleteEvent(id: string): Observable<Events> {
       return this.http.delete<Events>(`${environment.apiUrlFull}/events/delete/` + id)
-      // .subscribe(() => {
+      // .pipe(map(() => {
       //   console.log(`Deleted event by id!`)
       //   const updatedEvents = this.events.filter(event => event.id !== eventId);
       //   this.events = updatedEvents;
@@ -282,9 +282,9 @@ export class EventsService {
 
     }
     this.http.put<Events>(`${environment.apiUrlFull}/events/update/`, eventData)
-    .subscribe(taco => {
+    .pipe(map(taco => {
       this.router.navigate(['/events']);
-    })
+    }))
   }
 
 // ---------------------------------------------------------------------------------------

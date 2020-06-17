@@ -71,7 +71,7 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
   ],
   providers: [
     CookieService,
-    // {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
     // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
