@@ -151,5 +151,15 @@
     }
   ],
   "userEvents": [
+    {
+      "id": 22,
+      "eventId": 3,
+      "userId": 22
+    },
+    {
+      "eventId": 3,
+      "userId": 22,
+      "id": 23
+    }
   ]
 }
