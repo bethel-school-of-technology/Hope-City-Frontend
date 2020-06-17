@@ -141,7 +141,7 @@ export class EventCreateComponent implements OnInit {
         form.value.eventEndTime,
         form.value.eventDay
         ).subscribe(e=>{
-          // this.router.navigate(['/events']);
+          this.router.navigate(['/events']);
           console.log("This is a new event and was posted to the database!", form.value)
         })
         // for some reason when I save a new event it shows both console logs as if we are also editing the event...
@@ -160,9 +160,9 @@ export class EventCreateComponent implements OnInit {
         form.value.eventStartTime,
         form.value.eventEndTime,
         form.value.eventDay)
+        this.router.navigate(['/events']);
+        console.log("This form was edited and posted to the database!", form.value)
     }
-    // this.router.navigate(['/events']);
-    console.log("This form was edited and posted to the database!", form.value)
   }
 
 // ---------------------------------------------------------------------------------------
