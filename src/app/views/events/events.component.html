@@ -31,7 +31,7 @@
             <div class="col-md-7 text-md-left ml-3 mt-3">
               <h3 class="h3 mb-4">{{ event?.eventName }}</h3>
               <h4 class="h4 mb-4">Hosted By: {{ event?.hostName }}</h4>
-              <h4 class="h4 mb-4">{{ event?.eventDay }}</h4>
+              <h4 class="h4 mb-4">{{ event?.eventDay | date }}</h4>
 
               <!-- ↓ Toggle button if we want to use it somewhere ↓ -->
               <!-- <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
@@ -47,15 +47,28 @@
                 mdbWavesEffect>
                 More Info
               </a>
+              <button
+              type="button"
+              outline="true"
+              rounded="true"
+              mdbBtn
+              color="warning"
+              class="waves-light"
+              (click)="attendingEvent(event.id)"
+              mdbWavesEffect>
+              Attend
+            </button>
 
-              <button type="button" outline="true" rounded="true" mdbBtn color="warning" class="waves-light"
-                mdbWavesEffect>
-                Attend
-              </button>
-
-              <!-- Modal Window -->
-              <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
-                aria-labelledby="myModalLabel" aria-hidden="true"
+          <!-- Modal Window -->
+          <div
+                mdbModal
+                #frame="mdbModal"
+                class="modal fade top"
+                id="frameModalTop"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true"
                 [config]="{ backdrop: false, ignoreBackdropClick: false }">
                 <div class="modal-dialog modal-lg modal-top-center modal-notify modal-info" role="document">
 
@@ -87,8 +100,8 @@
                           <h5><strong>Hosted By:</strong> {{ event?.hostName }}</h5>
                           <h5><strong>Location:</strong> {{ event?.eventAddress }}</h5>
                           <h5> {{ event?.eventCity }}, {{ event?.eventState }} {{event?.eventZip}}</h5>
-                          <h5><strong>Time: </strong>{{event?.eventStartTime}} - {{event?.eventEndTime}}</h5>
-                          <h5><strong>Day:</strong> {{ event?.eventDay }}</h5>
+                          <h5><strong>Time: </strong>{{event?.eventStartTime }} - {{event?.eventEndTime}}</h5>
+                          <h5><strong>Day:</strong> {{ event?.eventDay | date }}</h5>
 
                           <!-- This is the button we will use if a person decides to attend an event -->
                           <button type="button" outline="true" rounded="true" mdbBtn color="default" class="waves-light"

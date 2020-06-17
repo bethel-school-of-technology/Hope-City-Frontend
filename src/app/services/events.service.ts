@@ -5,21 +5,27 @@ import { Router } from '@angular/router';
 
 import { environment } from "../../environments/environment";
 import { Events } from "../models/events.model";
+// import { Auth } from "../models/auth.model"
 import { map } from "rxjs/operators";
+import { UserEvents } from '../models/userEvents.model';
 
 @Injectable({
   providedIn: "root",
 })
 export class EventsService {
   private events: Events[] = [];
+  // private users: Auth[] = [];
+  // private userEvents: UserEvents;
   private eventsUpdated = new Subject<Events[]>();
+  // private userEventUpdated = new Subject<UserEvents[]>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  // This is currently getting all the events fine but I need to change it so that the page updates after deleting an event
+  // This is currently getting all the events for the events page
   getEvents(): Observable<Events[]> {
    return this.http
       .get<Events[]>(`${environment.apiUrlFull}/events/getall`)
+      // .get<Events[]>(`${environment.apiUrlDev}/events`)
     .pipe(
       map((data) => {
         data = data.map((reee) => {
@@ -32,39 +38,10 @@ export class EventsService {
       );
     }
 
-    // Here, I was working up getting the events differently so that the page can reload after an event is deleted.
-  // getEvents() {
-  //   this.http
-  //      .get<{ event: any}>(
-  //        `${environment.apiUrlFull}/events/getall`
-  //        )
-  //    .pipe(map((data) => {
-  //           return data.event.map(events => {
-  //             console.log("line27", );
-  //          return {
-  //            eventName: events.eventName,
-  //            hostName: events.hostName,
-  //            eventInfo: events.eventInfo,
-  //            eventAddress: events.eventAddress,
-  //            eventCity: events.eventCity,
-  //            eventState: events.eventState,
-  //            eventZip: events.eventZip,
-  //            eventStartTime: events.eventStartTime,
-  //            eventEndTime: events.eventEndTime,
-  //            eventDay: events.eventDay
-  //           };
-  //         });
-  //       }))
-  //       .pipe(map(transformedPosts => {
-  //         this.events = transformedPosts;
-  //         this.eventsUpdated.next([...this.events]);
-  //       });
-  //       console.log("Returning Data", );
-  //   }
-
 // ---------------------------------------------------------------------------------------
 
     // this will get all events and post them to the events page
+    // this is being used for the ngOnInit on the events.component.ts
     getEvent(id: string) {
       return this.http.get<{
         id: string,
@@ -78,15 +55,17 @@ export class EventsService {
         eventStartTime: string;
         eventEndTime: string;
         eventDay: Date;
-
-      }>(`${environment.apiUrlFull}/events/get/` + id);
+      }>
+      (`${environment.apiUrlFull}/events/get/` + id);
+      // (`${environment.apiUrlDev}/events/` + id);
     }
 
 // ---------------------------------------------------------------------------------------
 
-    // ↓ this is not being used right now but we probably don't need it ↓
-    getEventById(id: string) {
-      return this.http.get<Events>(`${environment.apiUrlFull}/events/get/` + id);
+    // ↓ Getting event by the id
+    getEventById(id: string): Observable<Events[]> {
+      return this.http.get<Events[]>(`${environment.apiUrlFull}/events/get/` + id);
+      // return this.http.get<Events[]>(`${environment.apiUrlDev}/events/` + id);
     }
 
 // ---------------------------------------------------------------------------------------
@@ -97,13 +76,6 @@ export class EventsService {
 
 // ---------------------------------------------------------------------------------------
 
-    // Post NEW events to the database. This IS WORKING. It will also post editing events at the moment...
-    // I created a new createEvent() below that now works to add a new event and does not interfere with editing an event.
-  //   createEvent(events: Events[]) {
-  //   return this.http.post(`${environment.apiUrlFull}/events/create`, events);
-  // }
-
-  // This is the newest createEvent() method that is now working as of June 4th.
   createEvent(
     eventName: string,
     hostName: string,
@@ -136,9 +108,48 @@ export class EventsService {
       this.events.push(event);
       this.eventsUpdated.next([...this.events]);
     }))
+      console.log("line 110 create event", respData)
   }
 
 // ---------------------------------------------------------------------------------------
+
+  attendEvent(eId:number) {
+    const userEvents : UserEvents = {
+      eventId: eId,
+      userId: 22
+    }
+    // return this.http.post<any>(`${environment.apiUrlFull}/userEvents/`, userEvents)
+    return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, userEvents)
+  }
+
+// ↓ this is more like the method I will have to make once the backend is hooked up
+
+  //attendEvent(eId:number) {
+  //  return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, eId)
+  //}
+
+// ---------------------------------------------------------------------------------------
+
+  getAllUserEvents(): Observable<UserEvents[]> {
+    // return this.http.get<UserEvents[]>(`${environment.apiUrlFull}/userEvents`)
+    return this.http.get<UserEvents[]>(`${environment.apiUrlDev}/userEvents`)
+  }
+
+// ---------------------------------------------------------------------------------------
+
+// this route it to get the userEvent which shows the event that the user is going to. (different than getEventById)
+  getOneUserEvent(id: string) {
+    return this.http.get<{
+      id: string,
+      userId: string,
+      eventId: string
+    }>
+    // (`${environment.apiUrlFull}/userEvents/` + id)
+    (`${environment.apiUrlDev}/userEvents/` + id)
+  }
+
+// ---------------------------------------------------------------------------------------
+
 
 // UpdateEvent working on June 4th
   updateEvent(
@@ -169,128 +180,14 @@ export class EventsService {
       };
       this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
       .pipe(map(response => console.log(response, "line171 eventsService")));
+
     }
 
 // ---------------------------------------------------------------------------------------
 
     deleteEvent(id: string): Observable<Events> {
       return this.http.delete<Events>(`${environment.apiUrlFull}/events/delete/` + id)
-      // .pipe(map(() => {
-      //   console.log(`Deleted event by id!`)
-      //   const updatedEvents = this.events.filter(event => event.id !== eventId);
-      //   this.events = updatedEvents;
-      //   this.eventsUpdated.next([...this.events]);
-      // })
+      // return this.http.delete<Events>(`${environment.apiUrlDev}/events/` + id)
     }
 
-// ---------------------------------------------------------------------------------------
-
-  // ↓ New createEvent() route I'm working on. Not working yet... DO NOT DELETE.
-
-  // createEvent(
-  //   eventName: string,
-  //   hostName: string,
-  //   eventInfo: string,
-  //   eventAddress: string,
-  //   eventCity: string,
-  //   eventState: string,
-  //   eventZip: number,
-  //   eventStartTime: string,
-  //   eventEndTime: string,
-  //   eventDay: Date,
-  // )
-  // {
-  //   const eventData = new FormData();
-  //   eventData.append('eventName', eventName);
-  //   eventData.append('hostName', hostName);
-  //   eventData.append('eventInfo', eventInfo);
-  //   eventData.append('eventAddress', eventAddress);
-  //   eventData.append('eventCity', eventCity);
-  //   eventData.append('eventState', eventState);
-
-  //   eventData.append('eventStartTime', eventStartTime);
-  //   eventData.append('eventEndTime', eventEndTime);
-  //   this.http
-  //     .post
-
-  //     (`${environment.apiUrlFull}/events/create`, eventData);
-  // }
-
-// ---------------------------------------------------------------------------------------
-
-  // ↓ editEvent() route that I'm currently working on.
-
-  // editEvent(id: string): Observable<Events> {
-  //   return this.http.put
-  //   <{
-  //     id: string,
-  //     eventName: string,
-  //     hostName: string,
-  //     eventInfo: string,
-  //     eventAddress: string,
-  //     eventCity: string;
-  //     eventState: string;
-  //     eventZip: number;
-  //     eventStartTime: string;
-  //     eventEndTime: string;
-  //     eventDay: Date;
-  //   }>
-  //     (`${environment.apiUrlFull}/events/update/`, event);
-  // }
-
-// ---------------------------------------------------------------------------------------
-
-  // editEvent() not yet working but I think I'm close.
-  editEvent(
-    id: string,
-    eventName: string,
-    hostName: string,
-    eventInfo: string,
-    eventAddress: string,
-    eventCity: string,
-    eventState: string,
-    eventZip: number,
-    eventStartTime: string,
-    eventEndTime: string,
-    eventDay: Date
-  ) {
-    let eventData: Events | FormData;
-    eventData = new FormData();
-    eventData.append('id', id);
-    eventData.append('eventName', eventName);
-    eventData.append('hostName', hostName);
-    eventData.append('eventInfo', eventInfo);
-    eventData.append('eventAddress', eventAddress);
-    eventData.append('eventCity', eventCity);
-    eventData.append('eventState', eventState);
-    eventData.append('eventZip', eventState);
-    eventData.append('eventStartTime', eventStartTime);
-    eventData.append('eventEndTime', eventEndTime);
-
-    eventData = {
-      id: id,
-      eventName: eventName,
-      hostName: hostName,
-      eventInfo: eventInfo,
-      eventAddress: eventAddress,
-      eventCity: eventCity,
-      eventState: eventState,
-      eventZip: eventZip,
-      eventStartTime: eventStartTime,
-      eventEndTime: eventEndTime,
-      eventDay: eventDay
-
-    }
-    this.http.put<Events>(`${environment.apiUrlFull}/events/update/`, eventData)
-    .pipe(map(taco => {
-      this.router.navigate(['/events']);
-    }))
-  }
-
-// ---------------------------------------------------------------------------------------
-
-  // this ↓ is the route we need to make if a user clicks a button to attend an event.
-  // goingToEvent(id:number) :Observable<Events[]> {
-  //       return this.http.put<Events[]>(`${environment.apiUrlFull}/events/` + id)
-  //     }
 }

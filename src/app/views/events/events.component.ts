@@ -4,28 +4,36 @@ import { Events } from "../../models/events.model";
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { Auth } from 'src/app/models/auth.model';
+import { UserEvents } from "../../models/userEvents.model"
+// import { respData } from "../../models/userEvents.model"
+
 @Component({
   selector: "app-events",
   templateUrl: "./events.component.html",
   styleUrls: ["./events.component.scss"],
 })
 export class EventsComponent implements OnInit {
-  // @Input() id: number;
+
   auth:Auth;
   events: Events[] = [];
   private eventsSub: Subscription;
   userAuthorized = false;
   private authListenerSubs: Subscription;
+  // @Input() attendingEvent: UserEvents = new UserEvents;
+  event: Events;
+  user: Auth;
+  attending: UserEvents;
+  // resultData: respData;
+  data: string;
+  id: string;
+  userId: string;
 
-  // getEventById(id: number) {
-  //   return this.eventsService.getEventById(this.id);
-  // }
 
   constructor(private eventsService: EventsService,
     private authService: AuthService
     ) {}
 
-    // this is working fine, just testing another one below to update the page after an event is deleted
+    // This was the original ngOnInit. I changed it below to see if the page reloads differently
     // ngOnInit() {
     //   this.eventsService.getEvents()
     //   .subscribe((llama) => {
@@ -54,20 +62,7 @@ export class EventsComponent implements OnInit {
       this.getEvents()
     }
 
-
-    // Testing to see if we can reload the page after an event is deleted
-    //   ngOnInit() {
-      //     this.eventsService.getEvents()
-      //     this.eventsSub = this.eventsService.getEventUpdateListener()
-      //     .subscribe((llama: Events[]) => {
-        //     this.events = llama, console.log("line23", llama);
-        //     });
-        // }
-
-        // This doesn't look like it deletes because for now we have to reload the page. I will fix this.
-        // onDelete(id: string) {
-          //   this.eventsService.deleteEvent(id);
-  // }
+// -------------------------------------------------------------------------------------------------------------
 
 
   onDelete(id: string): void {
@@ -75,6 +70,7 @@ export class EventsComponent implements OnInit {
       this.eventsService
       .deleteEvent(id)
       .subscribe((e) => this.getEvents());
+      console.log("Event was successfully deleted!")
     }
   }
 
@@ -84,5 +80,16 @@ export class EventsComponent implements OnInit {
     ngOnDestroy() {
       this.authListenerSubs.unsubscribe();
     }
+// -------------------------------------------------------------------------------------------------------------
+
+  attendingEvent(eventId: number){
+    this.eventsService.attendEvent(eventId)
+      .subscribe(data => console.log("Data we are sending to userEvents. Line 90", data))
+      alert("The event you're attending has an id of " + eventId + ". " + "This has been successfully been posted to the database!")
+
+    this.eventsService
+      .getAllUserEvents()
+      .subscribe(getEventData => console.log("Get all userEvents. Line 81", getEventData))
+  }
 
 }

@@ -99,16 +99,16 @@
     },
     {
       "id": 2,
-      "eventHost": "MorningStar Fellowship Church",
-      "eventName": "Neighbor Evangelism Training.",
+      "eventName": "Neighbor Evangelism Training",
+      "hostName": "MorningStar Fellowship Church",
       "eventInfo": "Having a hard time knowing how to make an influence in your neighborhood? Come and learn how you can evangelize to your neighbors. We will teach you how to share the gospel in 5 easy steps!",
-      "eventAddress": "8734 Church Street",
-      "eventCity": "Charlotte",
-      "eventState": "NC",
+      "eventAddress": "1547 Legion rd",
+      "eventCity": "Fort mill",
+      "eventState": "SC",
       "eventZip": "29715",
-      "eventStartTime": "8:00 AM",
-      "eventEndTime": "10:30 AM",
-      "eventDay": "May 28, 2020"
+      "eventStartTime": "13:47",
+      "eventEndTime": "16:45",
+      "eventDay": "2020-06-19"
     },
     {
       "id": 3,
@@ -122,19 +122,6 @@
       "eventStartTime": "8:00 AM",
       "eventEndTime": "10:30 AM",
       "eventDay": "June 3, 2020"
-    },
-    {
-      "id": 4,
-      "eventHost": "Trips for Kids",
-      "eventName": "Charlotte Bike Donation Day",
-      "eventInfo": "Bring a used bike and donate it to someone in need at our yearly bike donation day. THere are so many kids out there that would love to have a bike. Spread the love and donate your bike to someone in need.",
-      "eventAddress": "7446 Park Rd",
-      "eventCity": "Charlotte",
-      "eventState": "NC",
-      "eventZip": "29715",
-      "eventStartTime": "8:00 AM",
-      "eventEndTime": "10:30 AM",
-      "eventDay": "June 5, 2020"
     },
     {
       "id": 5,
@@ -151,16 +138,28 @@
     },
     {
       "id": 6,
-      "eventHost": "The City of Charlotte",
       "eventName": "Charlotte Family Fun Day",
+      "hostName": "MorningStar",
       "eventInfo": "Don't miss this family fun day at Freedom Park. This is a day to build our community and relationships with family and friends. Bring some outdoor games and sunscreen. It's going to be a blast!",
       "eventAddress": "90876 Freedom Park Rd",
       "eventCity": "Charlotte",
       "eventState": "NC",
       "eventZip": "29715",
-      "eventStartTime": "8:00 AM",
-      "eventEndTime": "10:30 AM",
-      "eventDay": "June 3, 2020"
+      "eventStartTime": "23:27",
+      "eventEndTime": "13:27",
+      "eventDay": "2020-06-20"
+    }
+  ],
+  "userEvents": [
+    {
+      "id": 22,
+      "eventId": 3,
+      "userId": 22
+    },
+    {
+      "eventId": 3,
+      "userId": 22,
+      "id": 23
     }
   ]
 }

@@ -40,6 +40,17 @@ export class AuthService {
     }
   }
 
+  getuserId() {
+    return this.userId;
+  }
+
+  // doing some testing so I duplicated the above method so I can change it a little.
+  // using this for attending() in the events.component.ts. Right now it's getting the event id, not the user id
+  getThisUserId(id: string): Observable<Auth[]> {
+    return this.http.get<Auth[]>(`${environment.apiUrlFull}/user/` + id)
+    // return this.http.get<Auth[]>(`${environment.apiUrlDev}/userEvents/` + id)
+  }
+
   //creating an observable of type subject bool
   getStatusListener() {
     return this.statusListener.asObservable();
@@ -55,11 +66,14 @@ export class AuthService {
   // /signup for mockdb /user/register for backend
   userSignUp(auth: Auth) {
     return this.http.post(`${environment.apiUrlFull}/user`, auth);
+    // return this.http.post(`${environment.apiUrlDev}/signup`, auth);
   }
   // /login for mockdb /user/login for backend
   userLogin(auth: Auth): Observable<Auth> {
     const pho = this.http
-      .post<Auth>(`${environment.apiUrlFull}/user/login`, auth)
+      .post<Auth>
+        (`${environment.apiUrlFull}/user/login`, auth)
+        // (`${environment.apiUrlDev}/login`, auth)
       .pipe(share());
     pho.subscribe((user: Auth) => {
       this.auth = user;
@@ -145,6 +159,7 @@ export class AuthService {
     let imagine = new FormData();
     imagine.append("file", this.selectedFile, this.selectedFile.name);
     return this.http
+
       .post<{ image: File }>(`${environment.apiUrlFull}/image/upload`, imagine)
       .pipe(
         map((poo) => {
