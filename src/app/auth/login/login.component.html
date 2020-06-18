@@ -1,8 +1,48 @@
-<h1>Login Page</h1>
+<div class="view">
+  <div class="jumbotron text-center hoverable p-4">
+    <!-- Grid row -->
 
-<div class="card">
-  <div class="card-body">
-    <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-12 text-md-left ml-3 mt-3">
+
+        <!-- Horizontal Steppers -->
+        <div class="row">
+          <div class="col-md-12">
+
+            <h1>Hope City Login</h1>
+            <!-- Steppers Wrapper. This is the 1, 2, 3 at the top of the sign up form -->
+            <ul class="stepper stepper-horizontal">
+
+              <!-- First Step -->
+              <li class="active">
+                <a href="#">
+                  <span class="circle">1</span>
+                  <span class="label">Login</span>
+                </a>
+              </li>
+
+              <!-- Second Step -->
+              <li class="">
+                <a routerLink="/events">
+                  <span class="circle">2</span>
+                  <span class="label">Find Local Missions</span>
+                </a>
+              </li>
+
+              <!-- Third Step -->
+              <li class="">
+                <a routerLink="/events">
+                  <span class="circle">3</span>
+                  <span class="label">Change your City</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+         <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input type="email" name="email" class="form-control" placeholder="Enter email" ngModel #email="ngModel"
@@ -13,7 +53,17 @@
         <input type="password" name="password" class="form-control" placeholder="Password" ngModel
           #password="ngModel" required>
       </div>
-      <button type="submit" class="btn btn-primary">LOGIN</button>
+      <button
+        type="button"
+        rounded="true"
+        mdbBtn
+        color="default"
+        class="btn peach-gradient"
+        type="submit">
+        LOGIN
+      </button>
     </form>
+      </div>
+
   </div>
 </div>
