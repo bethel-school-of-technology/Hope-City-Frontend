@@ -1,4 +1,44 @@
 h1 {
-  margin-top: 100px;
+  margin-top: 20px;
   text-align: center;
 }
+
+h2 {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.jumbotron {
+  margin: 5% 20%;
+  margin-bottom: 10vh;
+  border-radius: 10px;
+}
+.view {
+  background: url('../../../assets/images/loginBGCity.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.signUpForm {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+button {
+margin-bottom: 50px;
+margin-top: 50px;
+width: 100%;
+text-align: center;
+font-size: 18px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+div .col-md-12{
+  padding-right: 45px;
+}
+
+label {
+  font-size: 18px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ }
