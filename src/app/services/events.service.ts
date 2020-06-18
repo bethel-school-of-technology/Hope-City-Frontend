@@ -107,8 +107,8 @@ export class EventsService {
       event.id = id;
       this.events.push(event);
       this.eventsUpdated.next([...this.events]);
+      console.log("line 110 create event", respData)
     }))
-      // console.log("line 110 create event", respData)
   }
 
 // ---------------------------------------------------------------------------------------
@@ -178,7 +178,7 @@ export class EventsService {
         eventEndTime: eventEndTime,
         eventDay: eventDay
       };
-      this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
+      return this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
       .pipe(map(response => console.log(response, "line171 eventsService")));
 
     }

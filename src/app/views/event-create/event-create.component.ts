@@ -147,8 +147,9 @@ export class EventCreateComponent implements OnInit {
         form.value.eventZip,
         form.value.eventStartTime,
         form.value.eventEndTime,
-        form.value.eventDay)
-        this.router.navigate(['/events']);
+        form.value.eventDay).subscribe( r => {
+          this.router.navigate(['/events']);
+        })
       }
       console.log("This form was edited and posted to the database!", form.value)
 
