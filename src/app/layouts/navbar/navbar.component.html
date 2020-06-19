@@ -1,37 +1,74 @@
 <!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light white sticky-top" [containerInside]="false">
-
+<mdb-navbar
+  SideClass="navbar navbar-expand-lg navbar-light white sticky-top"
+  [containerInside]="false"
+>
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active"> <img
-        class="navTitle navbar-brand" src="../../../assets/images//HCnavTitle2.png" alt=""></a></mdb-navbar-brand>
+  <mdb-navbar-brand
+    ><a
+      class="navbar-brand"
+      [routerLink]="['/']"
+      routerLinkActive="router-link-active"
+    >
+      <img
+        class="navTitle navbar-brand"
+        src="../../../assets/images//HCnavTitle2.png"
+        alt="" /></a
+  ></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
-
     <!-- Links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/']" routerLinkActive="router-link-active">
-          <mdb-icon fas icon="igloo"></mdb-icon> Home<span class="sr-only">(current)</span>
+        <a
+          class="nav-link waves-dark"
+          mdbWavesEffect
+          [routerLink]="['/']"
+          routerLinkActive="router-link-active"
+        >
+          <mdb-icon fas icon="igloo"></mdb-icon> Home<span class="sr-only"
+            >(current)</span
+          >
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/events']" routerLinkActive="router-link-active">
+        <a
+          class="nav-link waves-dark"
+          mdbWavesEffect
+          [routerLink]="['/events']"
+          routerLinkActive="router-link-active"
+        >
           <mdb-icon far icon="calendar-alt"></mdb-icon> Events
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/prayer']" routerLinkActive="router-link-active">
+        <a
+          class="nav-link waves-dark"
+          mdbWavesEffect
+          [routerLink]="['/prayer']"
+          routerLinkActive="router-link-active"
+        >
           <mdb-icon fas icon="hand-holding-heart"></mdb-icon> Prayer
         </a>
       </li>
       <li class="nav-item" *ngIf="!userAuthorized">
-        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/signup']" routerLinkActive="router-link-active">
+        <a
+          class="nav-link waves-dark"
+          mdbWavesEffect
+          [routerLink]="['/signup']"
+          routerLinkActive="router-link-active"
+        >
           <mdb-icon fas icon="sign-in-alt"></mdb-icon> Sign-up
         </a>
       </li>
       <li class="nav-item" *ngIf="!userAuthorized">
-        <a class="nav-link waves-dark" mdbWavesEffect [routerLink]="['/login'] " routerLinkActive="router-link-active">
+        <a
+          class="nav-link waves-dark"
+          mdbWavesEffect
+          [routerLink]="['/login']"
+          routerLinkActive="router-link-active"
+        >
           <mdb-icon fas icon="user-circle"></mdb-icon> Log in
         </a>
       </li>
@@ -42,26 +79,46 @@
       <!-- Dropdown -->
       <div *ngIf="userAuthorized">
         <li class="nav-item dropdown" dropdown>
-          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-dark"
-            *ngIf="userAuthorized" mdbWavesEffect>
-            <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span>
+          <a
+            dropdownToggle
+            mdbWavesEffect
+            type="button"
+            class="nav-link dropdown-toggle waves-dark"
+            *ngIf="userAuthorized"
+            mdbWavesEffect
+          >
+            <mdb-icon fas icon="user"></mdb-icon> Profile<span
+              class="caret"
+            ></span>
           </a>
-          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <div
+            *dropdownMenu
+            class="dropdown-menu dropdown-menu-right dropdown dropdown-primary"
+            role="menu"
+          >
             <!-- <div *ngIf="userAuthorized"> -->
-            <a class="dropdown-item waves-dark" mdbWavesEffect [routerLink]="['/profile']"
-              routerLinkActive="router-link-active"><mdb-icon fas icon="list-alt"></mdb-icon> My Profile</a>
+            <a
+              class="dropdown-item waves-dark"
+              mdbWavesEffect
+              [routerLink]="['/profile']"
+              routerLinkActive="router-link-active"
+              ><mdb-icon fas icon="list-alt"></mdb-icon> My Profile</a
+            >
             <!-- </div> -->
             <!-- <div *ngIf="userAuthorized"> -->
-            <a class="dropdown-item waves-dark" mdbWavesEffect (click)="onLogout()"><mdb-icon fas icon="sign-out-altpf"></mdb-icon>Log out</a>
+            <a
+              class="dropdown-item waves-dark"
+              mdbWavesEffect
+              (click)="onLogout()"
+              ><mdb-icon fas icon="sign-out-altpf"></mdb-icon>Log out</a
+            >
             <!-- </div> -->
           </div>
         </li>
       </div>
-
     </ul>
     <!-- Links -->
   </links>
   <!-- Collapsible content -->
-
 </mdb-navbar>
 <!--/.Navbar-->

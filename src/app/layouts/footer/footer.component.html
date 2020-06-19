@@ -1,102 +1,121 @@
 <!-- Footer -->
 <footer class="page-footer font-small special-color-dark">
-
   <!-- Footer Links -->
   <div class="container-fluid text-center text-md-left">
-
     <!-- Grid row -->
     <div class="footerLinks row">
-
       <!-- Grid column -->
       <div class="col-md-6 mt-md-0 mt-3">
-
         <!-- Content -->
-        <h5 class="text-uppercase">Hope City</h5>
+        <a class="home" [routerLink]="['/']">
+          <h5 class="text-uppercase">Hope City</h5></a
+        >
         <!-- Facebook -->
         <a
-        class="fb-ic"
-        href="https://facebook.com/sharer.php?u=https://betheltech.net/"
-        target="_blank"
+          class="fb-ic"
+          href="https://facebook.com/sharer.php?u=https://betheltech.net/"
+          target="_blank"
         >
-          <mdb-icon fab icon="facebook" size="2x" class="white-text mr-md-5 mr-3"></mdb-icon>
+          <mdb-icon
+            fab
+            icon="facebook"
+            size="2x"
+            class="white-text mr-md-5 mr-3"
+          ></mdb-icon>
         </a>
 
         <!--Linkedin -->
         <a
-        class="li-ic"
-        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbetheltech.net%2F"
-        target="_blank"
+          class="li-ic"
+          href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbetheltech.net%2F"
+          target="_blank"
         >
-        <mdb-icon fab icon="linkedin" size="2x" class="white-text mr-md-5 mr-3"></mdb-icon>
-      </a>
+          <mdb-icon
+            fab
+            icon="linkedin"
+            size="2x"
+            class="white-text mr-md-5 mr-3"
+          ></mdb-icon>
+        </a>
 
-      <!-- Twitter -->
-      <a
-      class="tw-ic"
-      href="https://twitter.com/intent/tweet?url=https://betheltech.net/"
-      target="_blank"
-      >
-          <mdb-icon fab icon="twitter" size="2x" class="white-text mr-md-5 mr-3"></mdb-icon>
-      </a>
-
+        <!-- Twitter -->
+        <a
+          class="tw-ic"
+          href="https://twitter.com/intent/tweet?url=https://betheltech.net/"
+          target="_blank"
+        >
+          <mdb-icon
+            fab
+            icon="twitter"
+            size="2x"
+            class="white-text mr-md-5 mr-3"
+          ></mdb-icon>
+        </a>
       </div>
       <!-- Grid column -->
 
-      <hr class="clearfix w-100 d-md-none pb-3">
+      <hr class="clearfix w-100 d-md-none pb-3" />
 
       <!-- Grid column -->
       <div class="col-md-3 mb-md-0 mb-3">
+        <!-- Links -->
+        <!-- <h5 class="text-uppercase">Links</h5> -->
 
-          <!-- Links -->
-          <!-- <h5 class="text-uppercase">Links</h5> -->
+        <ul class="list-unstyled">
+          <li>
+            <a [routerLink]="['/']" routerLinkActive="router-link-active"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['/events']" routerLinkActive="router-link-active"
+              >Events</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['/prayer']" routerLinkActive="router-link-active"
+              >Prayer</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Grid column -->
 
-          <ul class="list-unstyled">
-            <li>
-              <a [routerLink]="['/']" routerLinkActive="router-link-active">Home</a>
-            </li>
-            <li>
-              <a [routerLink]="['/events']" routerLinkActive="router-link-active">Events</a>
-            </li>
-            <li>
-              <a [routerLink]="['/prayer']" routerLinkActive="router-link-active">Prayer</a>
-            </li>
-          </ul>
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+        <!-- Links -->
+        <!-- <h5 class="text-uppercase">Links</h5> -->
 
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-
-          <!-- Links -->
-          <!-- <h5 class="text-uppercase">Links</h5> -->
-
-          <ul class="list-unstyled">
-            <li>
-              <a [routerLink]="['/profile']" routerLinkActive="router-link-active">Profile</a>
-            </li>
-            <li>
-              <a [routerLink]="['/signup']" routerLinkActive="router-link-active">Sign Up</a>
-            </li>
-            <li>
-              <a [routerLink]="['/login']" routerLinkActive="router-link-active">Log In</a>
-            </li>
-          </ul>
-
-        </div>
-        <!-- Grid column -->
-
+        <ul class="list-unstyled">
+          <li>
+            <a [routerLink]="['/profile']" routerLinkActive="router-link-active"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['/signup']" routerLinkActive="router-link-active"
+              >Sign Up</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+              >Log In</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Grid column -->
     </div>
     <!-- Grid row -->
-
   </div>
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="copyright footer-copyright text-center py-3">© 2020 Copyright: Awesome app built by <span><strong>Team CodeBrew</strong></span>
-    <br><span>Check out</span><a href="https://betheltech.net/"> Bethel School of Technology!</a>
+  <div class="copyright footer-copyright text-center py-3">
+    © 2020 Copyright: Awesome app built by
+    <span><strong>Team CodeBrew</strong></span> <br /><span>Check out</span
+    ><a href="https://betheltech.net/"> Bethel School of Technology!</a>
   </div>
   <!-- Copyright -->
-
 </footer>
 <!-- Footer -->

@@ -1,25 +1,39 @@
 <!-- jumbotron -->
 <div class="view">
   <h1 class="pageTitle display-4">Church Events and Local Missions</h1>
+
   <div *ngIf="userAuthorized">
     <h3>
-      <button class="btn btn-primary">
-        <a class="newEventButton" [routerLink]="['/new-event']" routerLinkActive="router-link-active">Add a New
-          Event!</a>
-      </button>
+      <a
+        class="newEventButton btn primary"
+        type="button"
+        outline="true"
+        mdbBtn
+        color="default"
+        [routerLink]="['/new-event']"
+        routerLinkActive="router-link-active"
+        >Add a New Event!</a
+      >
     </h3>
   </div>
   <div class="pageBody">
     <div class="row">
       <div class="col-4" *ngFor="let event of events">
-        <div class="jumbotron text-center hoverable p-4">
+        <div class="jumbotron eventCards text-center hoverable p-4">
           <!-- Grid row -->
           <div class="row">
             <!-- Grid column -->
             <div class="col-md-4 offset-md-1 mx-3 my-3">
               <!-- Featured image -->
-              <div class="view overlay rounded z-depth-1 waves-light" mdbWavesEffect>
-                <img src="../../../assets/images/EventPlaceholder.png" class="img-fluid" alt="Sample project image" />
+              <div
+                class="view overlay rounded z-depth-1 waves-light"
+                mdbWavesEffect
+              >
+                <img
+                  src="../../../assets/images/EventPlaceholder.png"
+                  class="img-fluid"
+                  alt="Sample project image"
+                />
                 <a>
                   <div class="mask rgba-white-slight"></div>
                 </a>
@@ -42,25 +56,36 @@
                   <p> {{event.eventInfo}} </p>
                 </div> -->
 
-              <a class="stretched-link" type="button" outline="true" rounded="true" mdbBtn color="default"
-                class="waves-light" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
-                mdbWavesEffect>
+              <a
+                class="stretched-link"
+                type="button"
+                outline="true"
+                rounded="true"
+                mdbBtn
+                color="default"
+                class="waves-light"
+                data-toggle="modal"
+                data-target="#basicExample"
+                (click)="frame.show()"
+                mdbWavesEffect
+              >
                 More Info
               </a>
               <button
-              type="button"
-              outline="true"
-              rounded="true"
-              mdbBtn
-              color="warning"
-              class="waves-light"
-              (click)="attendingEvent(event.id)"
-              mdbWavesEffect>
-              Attend
-            </button>
+                type="button"
+                outline="true"
+                rounded="true"
+                mdbBtn
+                color="warning"
+                class="waves-light"
+                (click)="attendingEvent(event.id)"
+                mdbWavesEffect
+              >
+                Attend
+              </button>
 
-          <!-- Modal Window -->
-          <div
+              <!-- Modal Window -->
+              <div
                 mdbModal
                 #frame="mdbModal"
                 class="modal fade top"
@@ -69,18 +94,30 @@
                 role="dialog"
                 aria-labelledby="myModalLabel"
                 aria-hidden="true"
-                [config]="{ backdrop: false, ignoreBackdropClick: false }">
-                <div class="modal-dialog modal-lg modal-top-center modal-notify modal-info" role="document">
-
+                [config]="{ backdrop: false, ignoreBackdropClick: false }"
+              >
+                <div
+                  class="modal-dialog modal-lg modal-top-center modal-notify modal-info"
+                  role="document"
+                >
                   <!-- Modal Content -->
                   <div class="modal-content">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <p class="heading">{{ event?.eventName }} | Hosted By {{ event?.hostName }} </p>
+                      <p class="heading">
+                        {{ event?.eventName }} | Hosted By {{ event?.hostName }}
+                      </p>
 
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        (click)="frame.hide()">
-                        <span aria-hidden="true" class="white-text">&times;</span>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        (click)="frame.hide()"
+                      >
+                        <span aria-hidden="true" class="white-text"
+                          >&times;</span
+                        >
                       </button>
                     </div>
 
@@ -88,41 +125,81 @@
                     <div class="modal-body">
                       <div class="row">
                         <div class="col-5">
-                          <img src="../../../assets/images/EventPlaceholder.png" class="img-fluid"
-                            alt="Sample project image" />
+                          <img
+                            src="../../../assets/images/EventPlaceholder.png"
+                            class="img-fluid"
+                            alt="Sample project image"
+                          />
                         </div>
 
                         <div class="col-7">
-                          <h3><strong>{{ event.eventName }}</strong></h3>
-                          <hr>
+                          <h3>
+                            <strong>{{ event.eventName }}</strong>
+                          </h3>
+                          <hr />
                           <h5>{{ event.eventInfo }}</h5>
-                          <br>
-                          <h5><strong>Hosted By:</strong> {{ event?.hostName }}</h5>
-                          <h5><strong>Location:</strong> {{ event?.eventAddress }}</h5>
-                          <h5> {{ event?.eventCity }}, {{ event?.eventState }} {{event?.eventZip}}</h5>
-                          <h5><strong>Time: </strong>{{event?.eventStartTime }} - {{event?.eventEndTime}}</h5>
-                          <h5><strong>Day:</strong> {{ event?.eventDay | date }}</h5>
+                          <br />
+                          <h5>
+                            <strong>Hosted By:</strong> {{ event?.hostName }}
+                          </h5>
+                          <h5>
+                            <strong>Location:</strong> {{ event?.eventAddress }}
+                          </h5>
+                          <h5>
+                            {{ event?.eventCity }}, {{ event?.eventState }}
+                            {{ event?.eventZip }}
+                          </h5>
+                          <h5>
+                            <strong>Time: </strong>{{ event?.eventStartTime }} -
+                            {{ event?.eventEndTime }}
+                          </h5>
+                          <h5>
+                            <strong>Day:</strong> {{ event?.eventDay | date }}
+                          </h5>
 
                           <!-- This is the button we will use if a person decides to attend an event -->
-                          <button type="button" outline="true" rounded="true" mdbBtn color="default" class="waves-light"
-                            mdbWavesEffect>
+                          <button
+                            type="button"
+                            outline="true"
+                            rounded="true"
+                            mdbBtn
+                            color="default"
+                            class="waves-light"
+                            mdbWavesEffect
+                          >
                             Attend
                           </button>
 
                           <!-- This is the edit event button -->
-                          <button class="btn" type="button" outline="true" rounded="true" mdbBtn color="warning"
-                            class="waves-light" mdbWavesEffect [routerLink]="['/edit', event.id]">
+                          <button
+                            class="btn"
+                            type="button"
+                            outline="true"
+                            rounded="true"
+                            mdbBtn
+                            color="warning"
+                            class="waves-light"
+                            mdbWavesEffect
+                            [routerLink]="['/edit', event.id]"
+                          >
                             Edit
                           </button>
 
                           <!-- This is the delete event button -->
                           <div *ngIf="userAuthorized">
-                            <button type="button" outline="true" rounded="true" mdbBtn color="danger" class="waves-light"
-                            mdbWavesEffect (click)="onDelete(event.id)">
-                            Delete
+                            <button
+                              type="button"
+                              outline="true"
+                              rounded="true"
+                              mdbBtn
+                              color="danger"
+                              class="waves-light"
+                              mdbWavesEffect
+                              (click)="onDelete(event.id)"
+                            >
+                              Delete
                             </button>
                           </div>
-
                         </div>
                       </div>
                     </div>
@@ -137,6 +214,37 @@
         </div>
       </div>
       <!-- News jumbotron -->
+    </div>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid aboutHosting">
+    <div class="row">
+      <div class="col-md-1 offset-md-1 mx-1 my-3"></div>
+      <div class="col-md-7 offset-md-1 mx-1 my-3">
+        <div class="container">
+          <h2 class="display-4">Host your Event with Hope City</h2>
+          <p class="lead">
+            Ask us about how your church or local mission can host events on
+            HopeCity.com! Together, we can make a better city for our
+            families, our future, and the next generation. Get involved and change the world!
+          </p>
+        </div>
+      </div>
+      <div class="col-md-2 offset-md-mx my-3">
+        <a
+          mdbBtn
+          type="button"
+          outline="true"
+          rounded="true"
+          mdbBtn
+          color="primary"
+          class="adminBtn waves-light"
+          size="lg"
+          mdbWavesEffect
+          >Get involved</a
+        >
+      </div>
+      <div class="col-md-1 offset-md-1 mx-1 my-3"></div>
     </div>
   </div>
 </div>
