@@ -32,10 +32,6 @@ mdb-card-footer, mdb-card-header, mdb-card-text {
   }
 }
 
-.jumbotron {
-  border-radius: 10px;
-}
-
 .view {
   background: url('../../../assets/images/cityBG.png');
   background-repeat: no-repeat;
@@ -49,7 +45,7 @@ img {
 .pageBody {
   margin-left: 6%;
   margin-right: 6%;
-  margin-bottom: 6%
+  margin-bottom: 6%;
 }
 
 h1 {
@@ -61,5 +57,22 @@ h3 {
   margin-bottom: 30px;
 }
 .newEventButton {
-  color: white;
+}
+
+.eventCards {
+  border-radius: 3px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+  background-color: lighten($color: #ffffffef, $amount: 0);
+}
+
+.adminBtn {
+ margin-top: 50px;
+ font-size: 30px;
+}
+
+.aboutHosting {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+  background-color: lighten($color: #ffffffca, $amount: 0);
+  margin-bottom: 60px;
 }
