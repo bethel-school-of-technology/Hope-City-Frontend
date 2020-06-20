@@ -1,7 +1,13 @@
 .footerLinks {
-  padding-top: 70px;
+  padding-top: 90px;
   padding-bottom: 70px;
-  padding-left: 10%;
+  padding-left: 8%;
+  padding-right: 8%;
+
+}
+
+mdb-icon {
+  margin-bottom: 2rem;
 }
 
 li {
@@ -17,3 +23,13 @@ h5 {
 a:hover {
 text-decoration: none;
 }
+
+a:hover .email {
+  margin-right: 15px;
+  text-decoration: underline;
+}
+
+.mapGo {
+width: 100%;}
+
+

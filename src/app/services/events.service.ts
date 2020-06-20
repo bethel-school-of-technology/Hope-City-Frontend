@@ -179,7 +179,7 @@ export class EventsService {
         eventDay: eventDay
       };
       return this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
-      .pipe(map(response => console.log(response, "line171 eventsService")));
+      .pipe(map(response => console.log(response, "line182 eventsService")));
 
     }
 
