@@ -5,59 +5,61 @@
     <!-- Grid row -->
     <div class="footerLinks row">
       <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
+      <div class="col-md-4 mt-md-0 mt-3">
         <!-- Content -->
         <a class="home" [routerLink]="['/']">
           <h5 class="text-uppercase">Hope City</h5></a
         >
         <!-- Facebook -->
-        <a
-          class="fb-ic"
-          href="https://facebook.com/sharer.php?u=https://betheltech.net/"
-          target="_blank"
-        >
-          <mdb-icon
-            fab
-            icon="facebook"
-            size="2x"
-            class="white-text mr-md-5 mr-3"
-          ></mdb-icon>
-        </a>
+          <div class="socialLinks">
+          <a
+            class="fb-ic"
+            href="https://facebook.com/sharer.php?u=https://betheltech.net/"
+            target="_blank"
+          >
+            <mdb-icon
+              fab
+              icon="facebook"
+              size="2x"
+              class="white-text mr-md-5 mr-3"
+            ></mdb-icon>
+          </a>
 
-        <!--Linkedin -->
-        <a
-          class="li-ic"
-          href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbetheltech.net%2F"
-          target="_blank"
-        >
-          <mdb-icon
-            fab
-            icon="linkedin"
-            size="2x"
-            class="white-text mr-md-5 mr-3"
-          ></mdb-icon>
-        </a>
+          <!--Linkedin -->
+          <a
+            class="li-ic"
+            href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbetheltech.net%2F"
+            target="_blank"
+          >
+            <mdb-icon
+              fab
+              icon="linkedin"
+              size="2x"
+              class="white-text mr-md-5 mr-3"
+            ></mdb-icon>
+          </a>
 
-        <!-- Twitter -->
-        <a
-          class="tw-ic"
-          href="https://twitter.com/intent/tweet?url=https://betheltech.net/"
-          target="_blank"
-        >
-          <mdb-icon
-            fab
-            icon="twitter"
-            size="2x"
-            class="white-text mr-md-5 mr-3"
-          ></mdb-icon>
-        </a>
+          <!-- Twitter -->
+          <a
+            class="tw-ic"
+            href="https://twitter.com/intent/tweet?url=https://betheltech.net/"
+            target="_blank"
+          >
+            <mdb-icon
+              fab
+              icon="twitter"
+              size="2x"
+              class="white-text mr-md-5 mr-3"
+            ></mdb-icon>
+          </a>
+        </div>
       </div>
       <!-- Grid column -->
 
       <hr class="clearfix w-100 d-md-none pb-3" />
 
       <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
+      <div class="col-md-2 mb-md-0 mb-3">
         <!-- Links -->
         <!-- <h5 class="text-uppercase">Links</h5> -->
 
@@ -82,10 +84,8 @@
       <!-- Grid column -->
 
       <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
+      <div class="col-md-2 mb-md-0 mb-3">
         <!-- Links -->
-        <!-- <h5 class="text-uppercase">Links</h5> -->
-
         <ul class="list-unstyled">
           <li>
             <a [routerLink]="['/profile']" routerLinkActive="router-link-active"
@@ -105,8 +105,16 @@
         </ul>
       </div>
       <!-- Grid column -->
+
+      <div class="mapDiv col-md-3 mb-md-0 mb-3">
+        <div class="mapGo">
+          <a href="mailto:info@hopeformycity.com"><p class="email text-center text-uppercase">info@HopeForMyCity.com</p></a>
+            <app-google-maps></app-google-maps>
+        </div>
+      </div>
     </div>
     <!-- Grid row -->
+
   </div>
   <!-- Footer Links -->
 

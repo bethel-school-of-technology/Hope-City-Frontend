@@ -9,6 +9,7 @@ import { PrayerComponent } from './views/prayer/prayer.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EventCreateComponent } from './views/event-create/event-create.component';
+import { GoogleMapsComponent } from './views/google-maps/google-maps.component';
 
 
 
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'new-event', component: EventCreateComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'edit/:eventId', component: EventCreateComponent, canActivate: [AuthGuard] }
+  { path: 'edit/:eventId', component: EventCreateComponent, canActivate: [AuthGuard] },
+  { path: 'map', component: GoogleMapsComponent}
 
 
 ];

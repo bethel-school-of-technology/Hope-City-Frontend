@@ -16,6 +16,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
+import { AgmCoreModule } from '@agm/core'
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppComponent } from './app.component';
@@ -38,6 +39,9 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { ErrorComponent } from './error/error.component';
 import { EventCreateComponent } from './views/event-create/event-create.component';
 import { AuthInterceptor } from '../app/auth/auth.interceptor';
+import { GoogleMapsComponent } from './views/google-maps/google-maps.component';
+import { environment } from 'src/environments/environment';
+import { GOOGLE_MAPS_API } from 'src/environments/api';
 
 
 @NgModule({
@@ -53,6 +57,7 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     ProfileComponent,
     ErrorComponent,
     EventCreateComponent,
+    GoogleMapsComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +72,11 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
     ModalModule,
     CollapseModule,
     InputsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    // this is for Google maps
+    AgmCoreModule.forRoot({apiKey: GOOGLE_MAPS_API.API,
+    libraries: ["places", "geometry"]})
+
   ],
   providers: [
     CookieService,
