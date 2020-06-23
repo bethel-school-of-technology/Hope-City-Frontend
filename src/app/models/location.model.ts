@@ -1,4 +1,6 @@
 export interface Location {
   latitude: number;
-  longitude: number
+  longitude: number;
+  mapType?: string;
+  zoom?: number;
 }
