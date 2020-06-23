@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '../../models/location.model';
-import { AgmCoreModule } from '@agm/core'
-
 @Component({
   selector: 'app-google-maps',
   templateUrl: './google-maps.component.html',
@@ -9,7 +7,6 @@ import { AgmCoreModule } from '@agm/core'
 })
 export class GoogleMapsComponent implements OnInit {
   location: Location
-  zoom: number = 8;
 
   constructor() { }
 
@@ -17,6 +14,8 @@ export class GoogleMapsComponent implements OnInit {
     this.location = {
         latitude: 34.992960,
         longitude: -80.915830,
+        mapType: "roadmap",
+        zoom: 8,
     }
   }
 

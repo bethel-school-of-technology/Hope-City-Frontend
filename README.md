@@ -1,3 +1,9 @@
+## Add Google API Key Sample. Ask Sean Rathbun for Google API Key
+## add this to a new api.ts file within the environments folder for the google map to run.
+export const GOOGLE_MAPS_API = {
+  API: "GOOGLE_API_KEY_HERE"
+};
+
 # Hope-City-Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
