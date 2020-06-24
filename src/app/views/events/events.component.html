@@ -1,4 +1,3 @@
-<!-- jumbotron -->
 <div class="view">
   <h1 class="pageTitle display-4">Church Events and Local Missions</h1>
 
@@ -20,11 +19,8 @@
     <div class="row">
       <div class="col-4" *ngFor="let event of events">
         <div class="jumbotron eventCards text-center hoverable p-4">
-          <!-- Grid row -->
           <div class="row">
-            <!-- Grid column -->
             <div class="col-md-4 offset-md-1 mx-3 my-3">
-              <!-- Featured image -->
               <div
                 class="view overlay rounded z-depth-1 waves-light"
                 mdbWavesEffect
@@ -39,23 +35,11 @@
                 </a>
               </div>
             </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
             <div class="col-md-7 text-md-left ml-3 mt-3">
               <h3 class="h3 mb-4">{{ event?.eventName }}</h3>
               <h4 class="h4 mb-4">Hosted By: {{ event?.hostName }}</h4>
               <h4 class="h4 mb-4">{{ event?.eventDay | date }}</h4>
-
-              <!-- ↓ Toggle button if we want to use it somewhere ↓ -->
-              <!-- <button mdbBtn color="primary" class="waves-light" type="button" (click)="test.toggle()" mdbWavesEffect>
-                  Toggle collapse
-                </button>
-
-                <div class="" mdbCollapse #test="bs-collapse">
-                  <p> {{event.eventInfo}} </p>
-                </div> -->
-
               <a
                 class="stretched-link"
                 type="button"
@@ -204,16 +188,12 @@
                       </div>
                     </div>
                   </div>
-                  <!--/.Content-->
                 </div>
               </div>
             </div>
-            <!-- Grid column -->
           </div>
-          <!-- Grid row -->
         </div>
       </div>
-      <!-- News jumbotron -->
     </div>
   </div>
 
