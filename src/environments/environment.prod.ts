@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrlDeploy: 'http://localhost:8080'
-};
+  apiUrlDeploy: 'https://sheltered-reaches-56415.herokuapp.com',
+}

@@ -40,7 +40,7 @@ import { ErrorComponent } from './error/error.component';
 import { EventCreateComponent } from './views/event-create/event-create.component';
 import { AuthInterceptor } from '../app/auth/auth.interceptor';
 // import { GoogleMapsComponent } from './views/google-maps/google-maps.component';
-// import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 // import { GOOGLE_MAPS_API } from 'src/environments/api';
 
 
