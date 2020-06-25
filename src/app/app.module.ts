@@ -42,6 +42,7 @@ import { AuthInterceptor } from '../app/auth/auth.interceptor';
 import { GoogleMapsComponent } from './views/google-maps/google-maps.component';
 import { environment } from 'src/environments/environment';
 import { GOOGLE_MAPS_API } from 'src/environments/api';
+import { ErrorInterceptor } from './error-interceptor';
 
 
 @NgModule({
@@ -80,7 +81,8 @@ import { GOOGLE_MAPS_API } from 'src/environments/api';
   ],
   providers: [
     CookieService,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
     // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
