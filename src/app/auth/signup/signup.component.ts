@@ -16,12 +16,14 @@ export class SignupComponent implements OnInit {
   constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
+    //subbing to subject boolean
     this.authStatusSub = this.authService
       .getStatusListener()
       .subscribe((r) => {});
   }
 
   onSignup(form: NgForm) {
+    //checking the both passwords match
     if (form.value.password === form.value.passwordMatch) {
       console.log("line27", form);
       if (form.invalid) {
@@ -43,6 +45,7 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    //unsubbing from subject
     this.authStatusSub.unsubscribe();
   }
 }

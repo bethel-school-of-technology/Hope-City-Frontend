@@ -12,6 +12,7 @@ import { mergeMap, materialize, delay, dematerialize } from "rxjs/operators";
 
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
+// starter backend tester that we never used
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
   intercept(

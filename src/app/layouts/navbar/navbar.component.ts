@@ -16,12 +16,13 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
+    //getting user and refreshing for component
     this.authService.getUser().subscribe((u) => {
       this.auth = u;
       this.userAuthorized = u != null;
     });
     this.authService.refetchUser();
-
+    //subbing to subject boolean
     this.authListenerSubs = this.authService
     .getStatusListener()
     .subscribe((isAuthorized => {

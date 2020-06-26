@@ -11,10 +11,11 @@ import { CookieService } from "ngx-cookie-service";
 @Injectable({ providedIn: "root" })
 export class AuthService {
   auth: Auth;
+  //subject for user
   public authSubject: Subject<Auth> = new Subject();
 
   selectedFile: File = null;
-
+  //subject for authorized or not
   statusListener = new Subject<boolean>();
 
   tokenTimer: NodeJS.Timer;
@@ -109,18 +110,14 @@ export class AuthService {
   }
 
   logout() {
-    // this.auth.userId = null;
-    // this.auth.jwt = null;
-    // this.auth.authorized = false;
-    this.auth = null; //this can replace the last 3 lines
-
+    this.auth = null;
     this.statusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(["/events"]);
     this.refetchUser();
   }
-
+  //timer for logout stuff
   public setTimer(timer: number) {
     this.tokenTimer = setTimeout(() => {
       this.logout();

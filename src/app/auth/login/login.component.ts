@@ -17,9 +17,10 @@ export class LoginComponent implements OnInit {
   constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
+    //getting user and refreshing for component
     this.authService.getUser().subscribe((u) => (this.auth = u));
     this.authService.refetchUser();
-
+    //subbing to subject boolean
     this.authStatusSub = this.authService
       .getStatusListener()
       .subscribe((r) => {});
@@ -32,21 +33,22 @@ export class LoginComponent implements OnInit {
     console.log(form.value);
     this.authService.userLogin(form.value).subscribe(
       (user) => {
-        console.log(user, "login comp line 30");
         const jwt = user.jwt;
-        console.log(jwt, "login comp line 32");
         this.auth.jwt = jwt;
-        console.log(jwt, "login comp line 34");
+        console.log(jwt, "login comp line 38");
+        console.log(user, "login comp line 39");
         if (jwt) {
           console.log(jwt, "line 36 login comp");
           const expiresIn = 10000;
           this.authService.setTimer(expiresIn);
           // this.auth.authorized = true;
           this.auth.userId = user.id;
+          //authorizing
           this.authService.statusListener.next(true);
           const now = new Date();
           const expirationTime = new Date(now.getTime() + expiresIn * 1000);
           this.authService.addAuthData(jwt, this.auth, expirationTime);
+          //current user as a subject
           this.authService.authSubject.next(this.auth);
           this.router.navigate(["/"]);
           return user;
