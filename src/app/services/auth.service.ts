@@ -162,8 +162,8 @@ export class AuthService {
 
       .post<{ image: File }>(`${environment.apiUrlFull}/image/upload`, imagine)
       .pipe(
-        map((poo) => {
-          console.log(poo, "line 135authservice");
+        map((s) => {
+          console.log(s, "line 135authservice");
         })
       );
   }
