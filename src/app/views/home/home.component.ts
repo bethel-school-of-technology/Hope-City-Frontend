@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       //   var reader = 'data:image/png;base64,' + base64;
       //   var base64 = reader.result.split(',')[1];
       // }
-      // poo.imageURL = window["URL"].createObjectURL(poo.picByte);
+      // s.imageURL = window["URL"].createObjectURL(s.picByte);
     });
   }
 
