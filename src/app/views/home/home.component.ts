@@ -15,23 +15,23 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     //testing img upload
-    this.blob.unpressurizedBlobFish("download (2).jpg").subscribe(stuff => {
-      const reader = new FileReader();
-      reader.onload = (e) => this.stuff = e.target.result;
-      reader.onload = () => {
-        this.stuff = this.sanitizer.bypassSecurityTrustUrl(reader.result as string);
-        console.log(reader, "line 22");
-        console.log(reader.result, "line 22");
-      }
-      const headers = new Headers();
-      reader.readAsDataURL(new Blob([stuff["picByte"],  'image/jpeg'
-    ]));
+    // this.blob.unpressurizedBlobFish("download (2).jpg").subscribe(stuff => {
+    //   const reader = new FileReader();
+    //   reader.onload = (e) => this.stuff = e.target.result;
+    //   reader.onload = () => {
+    //     this.stuff = this.sanitizer.bypassSecurityTrustUrl(reader.result as string);
+    //     console.log(reader, "line 22");
+    //     console.log(reader.result, "line 22");
+    //   }
+    //   const headers = new Headers();
+    //   reader.readAsDataURL(new Blob([stuff["picByte"],  'image/jpeg'
+    // ]));
       // reader.onload = function() {
       //   var reader = 'data:image/png;base64,' + base64;
       //   var base64 = reader.result.split(',')[1];
       // }
       // s.imageURL = window["URL"].createObjectURL(s.picByte);
-    });
+    // });
   }
 
 }

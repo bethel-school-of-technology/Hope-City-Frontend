@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log(error, "line 51 login comp");
-        alert ("Sorry, but we were unable to log you in. Please make sure your email and password are correct!")
+        // alert ("Sorry, but we were unable to log you in. Please make sure your email and password are correct!")
         this.authService.statusListener.next(false);
       }
     );
