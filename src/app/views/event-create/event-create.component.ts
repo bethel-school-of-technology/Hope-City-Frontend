@@ -13,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class EventCreateComponent implements OnInit {
 
+// properties with empty string for our two way data binding in the modal window
   inputChurchName: string = '';
   inputInfo: string = '';
   inputEventName: string = '';
@@ -25,7 +26,7 @@ export class EventCreateComponent implements OnInit {
   inputEndTime: string = '';
 
   form: FormGroup;
-  private mode = 'new-event';
+  private mode = 'new-event'; // this mode checks the path in the app-routing.module
   private eventId: string;
   event: Events;
 
@@ -39,7 +40,7 @@ export class EventCreateComponent implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       'eventName': new FormControl(null, {
-        // form validators can go here
+        // form validators can go here, though we are using MDBValidate in our HTML instead
       }),
       'hostName': new FormControl(null, {
       }),
@@ -61,6 +62,7 @@ export class EventCreateComponent implements OnInit {
       }),
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      // if statement checking to see if the URL has an eventId attached. If it does, we are in edit mode
       if (paramMap.has('eventId')) {
         this.mode = 'edit';
         this.eventId = paramMap.get('eventId');
@@ -79,8 +81,8 @@ export class EventCreateComponent implements OnInit {
             eventStartTime: eventData.eventStartTime,
             eventEndTime: eventData.eventEndTime,
             eventDay: eventData.eventDay
-
           }
+          // we have subscribed to the eventData and we are setting the value of the form to that of the eventId
           this.form.setValue({
             'eventName': this.event.eventName,
             'hostName': this.event.hostName,
@@ -96,6 +98,7 @@ export class EventCreateComponent implements OnInit {
           console.log("We are editing an event", paramMap, this.eventId)
         })
       } else {
+        // if the URL is /new-event the we know that we are just loading the event-create.component.html page without preloaded data
         this.mode = 'new-event'
         this.eventId = null;
         console.log("We are creating a new event", this.eventId)
@@ -106,14 +109,16 @@ export class EventCreateComponent implements OnInit {
 
 // ---------------------------------------------------------------------------------------
 
-// ↓ Sean testing June 4th
   onSaveEvent(form: NgForm) {
+    // if the form is invalid the user will get an alert so they know to review their information and resubmit it
     if (form.invalid) {
       alert ("The form you have entered is invalid! Please review your information and try again.")
       console.log("this form is invalid", form.value)
       return;
     }
+    // when clicking the save event button we are checking the URL to see if this is a new event or if we are editing an event
     if (this.mode === 'new-event') {
+      // if the URL is /new-event then we are calling the createEvent method in the eventService and posting that data to the database
       this.eventsService.createEvent(
         form.value.eventName,
         form.value.hostName,
@@ -126,16 +131,14 @@ export class EventCreateComponent implements OnInit {
         form.value.eventEndTime,
         form.value.eventDay
         ).subscribe(e=>{
+          // once the form is submitted we will immediately navigate to the events page where the user can see the newly created event
           this.router.navigate(['/events']);
           console.log("This is a new event and was posted to the database!", form.value)
         })
-        // for some reason when I save a new event it shows both console logs as if we are also editing the event...
-        // I need to have a look at this and see what's going on.
-        //setTimeout(function(){alert("you've edited your event!")},2000)
-        //this.router.navigate(['/events']);
-        //console.log("This is a new event and was posted to the database!", form.value)
 
     } else {
+      // if the URL is not /new-event then we are calling the updateEvent method in the eventsService
+      // this will put (update) that event by the id rather than posting a new event
       this.eventsService.updateEvent(
         this.eventId,
         form.value.eventName,
@@ -148,15 +151,11 @@ export class EventCreateComponent implements OnInit {
         form.value.eventStartTime,
         form.value.eventEndTime,
         form.value.eventDay).subscribe( r => {
+          // we are subscribing to that data and also navigating to the events page
           this.router.navigate(['/events']);
         })
       }
       console.log("This form was edited and posted to the database!", form.value)
-
-    //setTimeout(function(){alert("you've edited your event!")},2000)
-    //this.router.navigate(['/events']);
-    //console.log("This form was edited and posted to the database!", form.value)
-
   }
 
 }

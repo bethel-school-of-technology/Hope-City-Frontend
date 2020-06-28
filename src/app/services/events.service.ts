@@ -1,25 +1,21 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
-import { Router } from '@angular/router';
 
 import { environment } from "../../environments/environment";
 import { Events } from "../models/events.model";
-// import { Auth } from "../models/auth.model"
 import { map } from "rxjs/operators";
 import { UserEvents } from '../models/userEvents.model';
 
 @Injectable({
   providedIn: "root",
 })
+
 export class EventsService {
   private events: Events[] = [];
-  // private users: Auth[] = [];
-  // private userEvents: UserEvents;
   private eventsUpdated = new Subject<Events[]>();
-  // private userEventUpdated = new Subject<UserEvents[]>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
   // This is currently getting all the events for the events page
   getEvents(): Observable<Events[]> {
@@ -40,8 +36,8 @@ export class EventsService {
 
 // ---------------------------------------------------------------------------------------
 
-    // this will get all events and post them to the events page
-    // this is being used for the ngOnInit on the events.component.ts
+    // this will get the event by the id and render it to the edit page
+    // this is being used for the ngOnInit on the events-create.component.ts
     getEvent(id: string) {
       return this.http.get<{
         id: string,
@@ -62,20 +58,13 @@ export class EventsService {
 
 // ---------------------------------------------------------------------------------------
 
-    // ↓ Getting event by the id
-    getEventById(id: string): Observable<Events[]> {
-      return this.http.get<Events[]>(`${environment.apiUrlFull}/events/get/` + id);
-      // return this.http.get<Events[]>(`${environment.apiUrlDev}/events/` + id);
-    }
-
-// ---------------------------------------------------------------------------------------
-
     getEventUpdateListener() {
       return this.eventsUpdated.asObservable();
     }
 
 // ---------------------------------------------------------------------------------------
 
+// we are taking all of the data within our model and posting it to the database
   createEvent(
     eventName: string,
     hostName: string,
@@ -88,6 +77,7 @@ export class EventsService {
     eventEndTime: string,
     eventDay: Date
   ) {
+    // we are telling which data to post in the request
     const event: Events = {
       id: null,
       eventName: eventName,
@@ -102,9 +92,10 @@ export class EventsService {
       eventDay: eventDay
     }
     return this.http.post<{ eventId: string }>(`${environment.apiUrlFull}/events/create`, event)
-    .pipe(map(respData => {//should be pipe map
+    .pipe(map(respData => {
       const id = respData.eventId;
       event.id = id;
+      // ↓ we are pushing the events data to the Events table
       this.events.push(event);
       this.eventsUpdated.next([...this.events]);
       console.log("line 110 create event", respData)
@@ -113,45 +104,8 @@ export class EventsService {
 
 // ---------------------------------------------------------------------------------------
 
-  attendEvent(eId:number) {
-    const userEvents : UserEvents = {
-      eventId: eId,
-      userId: 22
-    }
-    // return this.http.post<any>(`${environment.apiUrlFull}/userEvents/`, userEvents)
-    return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, userEvents)
-  }
 
-// ↓ this is more like the method I will have to make once the backend is hooked up
-
-  //attendEvent(eId:number) {
-  //  return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, eId)
-  //}
-
-// ---------------------------------------------------------------------------------------
-
-  getAllUserEvents(): Observable<UserEvents[]> {
-    // return this.http.get<UserEvents[]>(`${environment.apiUrlFull}/userEvents`)
-    return this.http.get<UserEvents[]>(`${environment.apiUrlDev}/userEvents`)
-  }
-
-// ---------------------------------------------------------------------------------------
-
-// this route it to get the userEvent which shows the event that the user is going to. (different than getEventById)
-  getOneUserEvent(id: string) {
-    return this.http.get<{
-      id: string,
-      userId: string,
-      eventId: string
-    }>
-    // (`${environment.apiUrlFull}/userEvents/` + id)
-    (`${environment.apiUrlDev}/userEvents/` + id)
-  }
-
-// ---------------------------------------------------------------------------------------
-
-
-// UpdateEvent working on June 4th
+// UpdateEvent is connected to the event-create.component.ts
   updateEvent(
     id: string,
     eventName: string,
@@ -178,16 +132,62 @@ export class EventsService {
         eventEndTime: eventEndTime,
         eventDay: eventDay
       };
+      // updating the event by the id based on the properties in the const above that are in the model
       return this.http.put(`${environment.apiUrlFull}/events/update/` + id, event)
-      .pipe(map(response => console.log(response, "line182 eventsService")));
+      .pipe(map(response => console.log(response, "line136 eventsService")));
 
     }
 
 // ---------------------------------------------------------------------------------------
 
+// deleting events in the database
     deleteEvent(id: string): Observable<Events> {
       return this.http.delete<Events>(`${environment.apiUrlFull}/events/delete/` + id)
       // return this.http.delete<Events>(`${environment.apiUrlDev}/events/` + id)
     }
 
+// ---------------------------------------------------------------------------------------
+
+// attendEvent() is attached to the attending button on the events page
+// So far we are able to post the eventId and I have hard coded a userId for now
+// run json-server mockDatabase.json to see the eventId post to the mockDatabase
+attendEvent(eId:number) {
+  const userEvents : UserEvents = {
+    eventId: eId,
+    userId: 22
+  }
+  // return this.http.post<any>(`${environment.apiUrlFull}/userEvents/`, userEvents)
+  return this.http.post<any>(`${environment.apiUrlDev}/userEvents/`, userEvents) // right now we are running off the mockDatabase since the backend is not fully set up for attending
 }
+
+// ↓ this is more like the method I will have to make once the backend is hooked up
+// the backend should handle the userId information to make it more secure
+
+//attendEvent(eId:number) {
+//  return this.http.post<any>(`${environment.apiUrlFull}/userEvents/`, eId)
+//}
+
+// ---------------------------------------------------------------------------------------
+
+// This is for attending so that an admin can see all the data in our attending table (many to many table)
+getAllUserEvents(): Observable<UserEvents[]> {
+  // return this.http.get<UserEvents[]>(`${environment.apiUrlFull}/userEvents`)
+  return this.http.get<UserEvents[]>(`${environment.apiUrlDev}/userEvents`)
+}
+
+// ---------------------------------------------------------------------------------------
+
+// This is for attending
+// this route it to get the userEvent which shows the event that the user is going to. (different than getEventById)
+getOneUserEvent(id: string) {
+  return this.http.get<{
+    id: string,
+    userId: string,
+    eventId: string
+  }>
+  // (`${environment.apiUrlFull}/userEvents/` + id)
+  (`${environment.apiUrlDev}/userEvents/` + id)
+}
+
+}
+

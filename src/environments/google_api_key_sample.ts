@@ -1,12 +1,15 @@
-// this is a sample of how we are storing the API key
-// we are using gitIgnore to ignore a file called api.ts
-// api.ts is the folder where we are storing the api key in this project
+// THIS IS A SAMPLE OF HOW WE ARE STORING THE GOOGLE API KEY
+// we are using gitIgnore to ignore a file called api.ts which is why the API Key is not in our project
 
-// BELOW IS AN EXAMPLE OF HOW THE API KEY SHOULD LOOK IN THE api.ts file within the environments folder
+// @DARRIN DEAL
+// 1. create a api.ts file within the environments folder
+// 2. add this code below to the api.ts file
 
 export const GOOGLE_MAPS_API = {
-  API: "GOOGLE_API_KEY_HERE"
+  API: "PLACE_GOOGLE_API_KEY_HERE"
 };
 
-// First half of the Google API key is here AIzaSyDXGrSmjNA
-// second half of the API key is here Jy0qvEQthZiQGlXrSAryQuwY
+// 3. ENTER IN THE API KEY BELOW
+
+// First half of the API key AIzaSyDXGrSmjNA
+// Second half of the API key Jy0qvEQthZiQGlXrSAryQuwY
