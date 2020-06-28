@@ -1,5 +1,6 @@
-## Add Google API Key Sample. Ask Sean Rathbun for Google API Key
+## READ THE google_api_key_sample.ts FILE TO ADD THE GOOGLE API KEY. Ask Sean Rathbun if you have questions
 ## add this to a new api.ts file within the environments folder for the google map to run.
+## You may need to run 'npm i @agm/core'
 export const GOOGLE_MAPS_API = {
   API: "GOOGLE_API_KEY_HERE"
 };

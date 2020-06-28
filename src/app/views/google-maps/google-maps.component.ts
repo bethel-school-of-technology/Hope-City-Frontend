@@ -10,7 +10,11 @@ export class GoogleMapsComponent implements OnInit {
 
   constructor() { }
 
+// CHECK THE google_api_key_sample FILE FOR THIS TO WORK!
+// You must add an api.ts file within the environments folder to store the api key!
+
   ngOnInit() {
+    // this location is my (Sean Rathbun's home address)
     this.location = {
         latitude: 34.992960,
         longitude: -80.915830,
